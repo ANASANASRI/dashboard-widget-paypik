@@ -13,6 +13,9 @@ import { EventsComponent } from './views/events/events.component';
 import { TestComponent } from './views/events/test/test.component';
 import { ProfileComponent } from './views/settings/profile/profile.component';
 import { UsersComponent } from './views/settings/users/users.component';
+import { AlertComponent } from '../shared/components/alert/alert.component';
+import { TransactionComponent } from './views/transaction/transaction.component';
+import { MoreComponent } from './views/more/more.component';
 
 
 const routes: Routes = [
@@ -21,11 +24,23 @@ const routes: Routes = [
     redirectTo: AdminRoutes.Dashboard,
     pathMatch: 'full',
   },
+
   {
     title: 'Dashboard',
     path: AdminRoutes.Dashboard,
-    component: DashboardComponent,
+    children: [
+      {
+        path: '',
+        component: DashboardComponent,
+      },
+      {
+        path: 'more',
+        component: MoreComponent,
+      },
+    ],
   },
+
+
   {
     title: 'Events',
     path: AdminRoutes.Events,
@@ -38,6 +53,7 @@ const routes: Routes = [
       },
     ],
   },
+
   {
     title: 'Elements',
     path: AdminRoutes.Elements,
@@ -73,6 +89,7 @@ const routes: Routes = [
       },
     ],
   },
+
   {
     path: AdminRoutes.Settings,
     children: [

@@ -1,3 +1,5 @@
+import { MoreComponent } from './views/more/more.component';
+import { TransactionComponent } from './views/transaction/transaction.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -11,6 +13,7 @@ import { TableComponent } from './views/table/table.component';
 import { EventsComponent } from './views/events/events.component';
 import { SettingsModule } from './views/settings/settings.module';
 import { ElementsModule } from './views/elements/elements.module';
+import { ScrollToTopComponent } from './views/scroll-to-top/scroll-to-top.component';
 
 
 @NgModule({
@@ -19,7 +22,7 @@ import { ElementsModule } from './views/elements/elements.module';
     DashboardComponent,
     AdminPageNotFoundComponent,
     EventsComponent,
-    
+    MoreComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +30,9 @@ import { ElementsModule } from './views/elements/elements.module';
     LayoutsModule,
     SettingsModule,
     ElementsModule,
-    TableComponent
+    TableComponent,
+    TransactionComponent,
+    ScrollToTopComponent
   ]
 })
 export class AdminModule { }

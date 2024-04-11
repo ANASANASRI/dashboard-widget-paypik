@@ -11,7 +11,7 @@ const routes: Routes = [
     path: '',
     component: PublicComponent,
     loadChildren: () => import('./public/public.module').then((m) => m.PublicModule)
-  },
+},
   {
     path: AppRoutes.Admin,
     component: AdminComponent,
