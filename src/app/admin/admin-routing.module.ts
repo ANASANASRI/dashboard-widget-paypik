@@ -16,6 +16,7 @@ import { UsersComponent } from './views/settings/users/users.component';
 import { AlertComponent } from '../shared/components/alert/alert.component';
 import { TransactionComponent } from './views/transaction/transaction.component';
 import { MoreComponent } from './views/more/more.component';
+import { AddmerchantformComponent } from './views/addmerchantform/addmerchantform.component';
 
 
 const routes: Routes = [
@@ -34,8 +35,12 @@ const routes: Routes = [
         component: DashboardComponent,
       },
       {
-        path: 'more',
+        path: AdminRoutes.More,
         component: MoreComponent,
+      },
+      {
+        path: AdminRoutes.Add,
+        component: AddmerchantformComponent,
       },
     ],
   },

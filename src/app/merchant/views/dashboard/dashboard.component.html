@@ -1,5 +1,5 @@
 <div [@pageTransition]>
-    <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+    <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 pb-4">
         <div class="card flex items-center gap-3">
             <div class="bg-gradient-to-br from-emerald-500 to-emerald-700 py-2 px-3 rounded-lg text-white">
                 <span class="bi bi-calendar-event text-3xl"></span>
@@ -38,9 +38,52 @@
         </div>
     </section>
 </div>
-<app-table></app-table>
-<!-- <app-transaction></app-transaction> -->
 
+<div [@pageTransition]>
+    <section class="grid grid-cols-1 mb-4 xl:grid-cols-2 gap-5">
+        <div class="card p-8">
+            <div class="card-title flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold leading-none">Area Wise Sale</h3>
+            </div>
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-5">
+                <div class="">
+                    <canvas id="areaWiseSale"></canvas>
+                </div>
+                <div class="xl:grid-cols-2">
+                    Chart Data
+                </div>
+            </div>
+        </div>
+        <div class="card p-8 bg-emerald-600 text-gray-50">
+            <h3 class="text-2xl">
+                Description Détaillée
+            </h3>
+            <h2 class="my-5 text-emerald-100 hover:text-white hover:underline" (click)="scrollToSection()">
+                <span class="text-4xl font-bold">
+                    278
+                </span> 
+                Transactions
+            </h2>
+            
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque molestiae incidunt officiis veritatis,
+                architecto nam soluta, exercitationem minima laudantium harum qui.
+            </p>
+            <div class="my-5"></div>
+        </div>
+    </section>
+    
+    <div class="my-5"></div>
+    
+    <section #detailedDescription>
+        <div class="card p-5 mt-5">
+            <div class="card-title flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold leading-none">Details des transactions</h3>
+            </div>
+            <app-transaction></app-transaction>
+        </div>
+    </section>
+</div>
 
-
+<!-- ///////////// Scroll To Top ////////////////// -->
 <app-scroll-to-top></app-scroll-to-top>

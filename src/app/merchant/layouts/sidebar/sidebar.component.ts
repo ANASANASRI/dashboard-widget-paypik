@@ -12,7 +12,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { AppRoutes } from 'src/app/app.routes';
-import { MerchantRoutes, ElementRoutes, SettingRoutes } from '../../merchant.routes';
+import { MerchantRoutes, SettingRoutes } from '../../merchant.routes';
 
 @Component({
   selector: 'app-sidebar',
@@ -26,7 +26,6 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly appRoutes = AppRoutes;
   readonly merchantRoutes = MerchantRoutes;
   readonly settingRoutes = SettingRoutes;
-  readonly elementRoutes = ElementRoutes;
   private routerSubscription: Subscription = new Subscription();
 
   @Output() sidebarCollapsed = new EventEmitter<boolean>();

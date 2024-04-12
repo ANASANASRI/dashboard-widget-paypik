@@ -3,8 +3,6 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-table',
-  standalone: true,
-  imports: [NgClass, NgIf],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
@@ -21,4 +19,5 @@ export class TableComponent {
   sortingDown() {
     this.shorting = !this.shorting;
   }
+  
 }

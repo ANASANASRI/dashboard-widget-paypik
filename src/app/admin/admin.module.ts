@@ -14,6 +14,8 @@ import { EventsComponent } from './views/events/events.component';
 import { SettingsModule } from './views/settings/settings.module';
 import { ElementsModule } from './views/elements/elements.module';
 import { ScrollToTopComponent } from './views/scroll-to-top/scroll-to-top.component';
+import { ModalModule } from '../shared/components/modal/modal.module';
+import { AddmerchantformComponent } from './views/addmerchantform/addmerchantform.component';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { ScrollToTopComponent } from './views/scroll-to-top/scroll-to-top.compon
     DashboardComponent,
     AdminPageNotFoundComponent,
     EventsComponent,
-    MoreComponent
+    MoreComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
@@ -30,9 +33,11 @@ import { ScrollToTopComponent } from './views/scroll-to-top/scroll-to-top.compon
     LayoutsModule,
     SettingsModule,
     ElementsModule,
-    TableComponent,
     TransactionComponent,
-    ScrollToTopComponent
+    ScrollToTopComponent,
+    CommonModule,
+    ModalModule,
+    AddmerchantformComponent
   ]
 })
 export class AdminModule { }

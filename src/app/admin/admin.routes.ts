@@ -1,6 +1,7 @@
 export enum AdminRoutes {
   Dashboard = 'dashboard',
-  More = 'dashboard/more',
+  More = 'more',
+  Add = 'merchant/add',
   Events = 'events',
   Settings = 'settings',
   Elements = 'elements',

@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef} from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { pageTransition } from 'src/app/shared/utils/animations';
 Chart.register(...registerables);
@@ -47,4 +47,14 @@ export class DashboardComponent implements OnInit {
       },
     });
   }
+
+    ////////////Scroll to section //////////////
+
+    @ViewChild('detailedDescription') detailedDescription!: ElementRef;
+
+    scrollToSection() {
+      if (this.detailedDescription && this.detailedDescription.nativeElement) {
+        this.detailedDescription.nativeElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
 }
