@@ -5,6 +5,7 @@ import {AppComponent} from './app.component';
 import {AppRoutes} from './app.routes';
 import {PageNotFoundComponent} from './public/page-not-found/page-not-found.component';
 import { PublicComponent } from './public/public.component';
+import { MerchantComponent } from './merchant/merchant.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,11 @@ const routes: Routes = [
     path: AppRoutes.Admin,
     component: AdminComponent,
     loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
+    path: AppRoutes.Merchant,
+    component: MerchantComponent,
+    loadChildren: () => import('./merchant/merchant.module').then((m) => m.MerchantModule),
   },
   {
     path: '**',
