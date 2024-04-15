@@ -25,7 +25,8 @@ import { AddmerchantformComponent } from './views/addmerchantform/addmerchantfor
     AdminPageNotFoundComponent,
     EventsComponent,
     MoreComponent,
-    TableComponent
+    TableComponent,
+    AddmerchantformComponent
   ],
   imports: [
     CommonModule,
@@ -36,8 +37,7 @@ import { AddmerchantformComponent } from './views/addmerchantform/addmerchantfor
     TransactionComponent,
     ScrollToTopComponent,
     CommonModule,
-    ModalModule,
-    AddmerchantformComponent
+    ModalModule
   ]
 })
 export class AdminModule { }
