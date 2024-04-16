@@ -17,7 +17,7 @@ export class MoreComponent implements OnInit{
     var myChart = new Chart("areaWiseSale", {
       type: 'doughnut',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green'],
+        labels: ['Token', 'Card', 'Epay', 'Paypal'],
         datasets: [{
           label: '# of Votes',
           data: [12, 19, 3, 5],

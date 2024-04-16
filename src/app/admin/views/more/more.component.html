@@ -10,37 +10,48 @@
 </nav>
 
 <div [@pageTransition]>
+
+    <section >
+            <div class="card p-4 bg-gradient-to-r from-emerald-50 via-white via-10-90 to-emerald-50 bg-opacity-25">
+                <img src="https://source.unsplash.com/130x130/?portrait?3" alt="" class="shadow-xl w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square">
+                <div class="space-y-4 text-center divide-y dark:divide-gray-300">
+                    <div class="my-2 space-y-1">
+                        <h2 class="text-xl font-semibold sm:text-2xl">Merchant 1</h2>
+                        <p class="px-5 text-xs sm:text-base dark:text-gray-600">Shop</p>
+                    </div>	
+                </div>
+            </div>
+    </section>
+
     <section class="grid grid-cols-1 mb-4 xl:grid-cols-2 gap-5">
         <div class="card p-8">
             <div class="card-title flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold leading-none">most used methodes</h3>
+                <h3 class="text-xl font-bold leading-none">most used methods</h3>
             </div>
-            <div class="grid grid-cols-1 xl:grid-cols-3 gap-5">
-                <div class="">
+            <div id="chart" class="w-2/5 mx-auto">
+                <div class="flex justify-center items-center">
                     <canvas id="areaWiseSale"></canvas>
                 </div>
-                <div class="xl:grid-cols-2">
-                    Chart Data
-                </div>
-            </div>
-        </div>
+            </div>            
+        </div>        
+
         <div class="card p-8 bg-emerald-600 text-gray-50">
             <h3 class="text-2xl">
                 Description Détaillée
             </h3>
-            <h2 class="my-5 text-emerald-100 hover:text-white hover:underline" (click)="scrollToSection()">
-                <span class="text-4xl font-bold">
-                    278
-                </span> 
-                Transactions
-            </h2>
-            
+            <a (click)="scrollToSection()" class="inline-flex my-5 items-center justify-center p-5 text-base font-medium text-white rounded-lg bg-emerald-300 bg-opacity-25 hover:text-gray-900 hover:bg-emerald-200 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                <span class="w-full">278 Transactions</span>
+                <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a> 
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque molestiae incidunt officiis veritatis,
                 architecto nam soluta, exercitationem minima laudantium harum qui.
             </p>
             <div class="my-5"></div>
         </div>
+
     </section>
     
     <div class="my-5"></div>
@@ -137,7 +148,7 @@
     </section>
 
     <div class="my-5"></div>
-    
+
     <section #detailedDescription>
         <div class="card p-5 mt-5">
             <div class="card-title flex justify-between items-center mb-4">
