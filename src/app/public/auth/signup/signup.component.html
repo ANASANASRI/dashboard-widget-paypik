@@ -5,8 +5,66 @@
                 Commencez dès maintenant
             </h2>
 
+            <p class="text-xs">Ouvrir un compte marchand</p>
             <p class="text-xs">Veuillez saisir vos identifiants pour créer votre compte</p>
             
+
+
+
+
+            <form name="prospect" id="register_form" action="javascript:;" data-ajax-action="/app/prospects" method="post">
+                <input type="text" name="c_name" data-email="required" id="c_name" placeholder="* Nom entité (entreprise ou auto-entrepreneur)" class="medium-input">
+                <div class="medium-select">
+                <select style="height:44px;" name="c_type" data-email="required" id="c_type">
+                <option value="">* Forme juridique</option>
+                <option value="entreprise">Entreprise</option>
+                <option value="auto-entrepreneur">Auto-Entrepreneur</option>
+                <option value="association">Association</option>
+                </select>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
+                <input type="text" name="c_number" data-email="required" id="c_number" placeholder="* RC ou IF (A.E.)" class="medium-input">
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
+                <input type="number" name="c_capital" id="c_capital" placeholder="Capital (optionnel)" class="medium-input">
+                </div>
+                <input type="text" name="c_address" data-email="required" id="c_address" placeholder="* Addresse du siège social" class="medium-input">
+                <input type="text" name="c_dg_name" data-email="required" id="c_dg_name" placeholder="* Nom du DG ou gérant" class="medium-input">
+                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
+                <input type="number" name="c_phone" data-email="required" id="c_phone" placeholder="* Téléphone" class="medium-input">
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
+                <input type="number" name="c_fax" id="c_fax" placeholder="Fax (optionnel)" class="medium-input">
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
+                <input type="email" name="c_email" data-email="required" id="c_email" placeholder="* Addresse e-mail" class="medium-input">
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
+                <input type="url" name="c_website" data-email="required" id="c_website" placeholder="* Addresse site web" class="medium-input">
+                </div>
+                <hr>
+                <div class="col-md-8 col-sm-8 col-xs-12 no-padding">
+                <input type="text" name="c_field" data-email="required" id="c_field" placeholder="* Type de l'activité" class="medium-input">
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 no-padding medium-select">
+                <select style="height:44px;" name="c_fieldyears" data-email="required" id="c_fieldyears">
+                <option value="">* Années d'activité</option>
+                <option value="-1">Moins &lt; 1 an</option>
+                <option value="1-5">1 an à 5 ans</option>
+                <option value="+5">Plus &gt; 5 ans</option>
+                </select>
+                </div>
+                <textarea name="c_products" id="comment" data-email="required" placeholder="* Description des produits ou serices vendus" class="medium-input"></textarea>
+                <button id="register_button" class="submit-ap-form btn-medium btn-circle font-weight-300 btn bg-sky-blue text-white tz-text" type="submit" style="color: rgb(255, 255, 255); font-size: 12px; font-family: Montserrat, sans-serif; text-transform: none; border-radius: 30px; background-color: rgb(106, 168, 79) !important; font-weight: bold !important;">ENVOYER MA DEMANDE</button>
+                </form>
+
+
+
+
+
+
+
+
             <form class="my-5 mt-14" (submit)="onFormSubmitHandler($event)">
                 <div class="form-group">
                     <label class="form-label" for="username">Username</label>
@@ -51,7 +109,7 @@
                 <div class="my-5"></div>
                 <button type="submit" class="btn w-full btn-theme" [disabled]="isLoading">
                     <btn-spinner *ngIf="isLoading"></btn-spinner>
-                    Inscrivez-vous.
+                    ENVOYER MA DEMANDE
                 </button>
             </form>
             <div class="text-sm text-gray-400">

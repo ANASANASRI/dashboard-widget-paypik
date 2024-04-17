@@ -1,7 +1,7 @@
-export enum MerchantRoutes {
+export enum MarchandRoutes {
     Dashboard = 'dashboard',
     More = 'dashboard/more',
-    Events = 'events',
+    Support = 'support',
     Settings = 'settings',
     Elements = 'elements',
 }
@@ -9,4 +9,9 @@ export enum MerchantRoutes {
 export enum SettingRoutes {
     Profile = 'profile',
     Users = 'users',
+}
+
+export enum SupportRoutes {
+    FAQ = 'faq',
+    Contact = 'contact',
 }

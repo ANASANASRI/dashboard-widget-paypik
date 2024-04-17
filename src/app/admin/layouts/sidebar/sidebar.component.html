@@ -11,9 +11,12 @@
             <a [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Dashboard)"
                 routerLinkActive="active" class="menu-item" ariaCurrentWhenActive="page">
                 <i class="bi bi-columns-gap"></i>
-                <span>Dashboard</span>
+                <span>Tableau de bord
+                </span>
             </a>
         </li>
+        
+
 
     <!-- 
         <li>
@@ -76,38 +79,40 @@
         </li> 
     -->
 
+
         <li> 
             <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="false"
                 (click)="subMenuToggleHandler($event)">
                 <i class="bi bi-sliders2-vertical"></i>
-                <span>Settings</span>
+                <span>Paramètres</span>
             </a>
             <ul class="sub-menu-item">
                 <li>
                     <a class="menu-item"
                         [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Settings, settingRoutes.Profile)"
                         routerLinkActive="active" ariaCurrentWhenActive="page">
-                        <span>Profile</span>
+                        <span>Profil</span>
                     </a>
                 </li>
                 <li>
                     <a class="menu-item"
                         [routerLink]="commonServices.prepareRoute(appRoutes.Admin, adminRoutes.Settings, settingRoutes.Users)"
                         routerLinkActive="active" ariaCurrentWhenActive="page">
-                        <span>Users</span>
+                        <span>Utilisateurs</span>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="menu-item" ariaCurrentWhenActive="page">
-                        <span>Website</span>
+                        <span>Site web</span>
                     </a>
                 </li>
+
             </ul>
         </li>
         <li>
             <a href="#" class="menu-item">
                 <i class="bi bi-box-arrow-right"></i>
-                <span>Logout</span>
+                <span>Se déconnecter</span>
             </a>
         </li>
     </ul>

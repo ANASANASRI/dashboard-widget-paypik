@@ -8,52 +8,77 @@
     </div>
     <ul class="menu-links">
         <li>
-            <a [routerLink]="commonServices.prepareRoute(appRoutes.Merchant, merchantRoutes.Dashboard)"
+            <a [routerLink]="commonServices.prepareRoute(appRoutes.Marchand, marchandRoutes.Dashboard)"
                 routerLinkActive="active" class="menu-item" ariaCurrentWhenActive="page">
                 <i class="bi bi-columns-gap"></i>
-                <span>Dashboard</span>
-            </a>
-        </li>
-        <li>
-            <a class="menu-item" [routerLink]="commonServices.prepareRoute(appRoutes.Merchant, merchantRoutes.Events)"
-                routerLinkActive="active" ariaCurrentWhenActive="page">
-                <i class="bi bi-calendar4-event"></i>
-                <span>Events</span>
+                <span>Tableau de bord</span>
             </a>
         </li>
         
+
+
+        
         <li>
-            <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="false"
+            <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="true"
                 (click)="subMenuToggleHandler($event)">
                 <i class="bi bi-sliders2-vertical"></i>
-                <span>Settings</span>
+                <span>Paramètres</span>
             </a>
             <ul class="sub-menu-item">
                 <li>
                     <a class="menu-item"
-                        [routerLink]="commonServices.prepareRoute(appRoutes.Merchant, merchantRoutes.Settings, settingRoutes.Profile)"
+                        [routerLink]="commonServices.prepareRoute(appRoutes.Marchand, marchandRoutes.Settings, settingRoutes.Profile)"
                         routerLinkActive="active" ariaCurrentWhenActive="page">
-                        <span>Profile</span>
+                        <span>Profil</span>
                     </a>
                 </li>
                 <li>
                     <a class="menu-item"
-                        [routerLink]="commonServices.prepareRoute(appRoutes.Merchant, merchantRoutes.Settings, settingRoutes.Users)"
+                        [routerLink]="commonServices.prepareRoute(appRoutes.Marchand, marchandRoutes.Settings, settingRoutes.Users)"
                         routerLinkActive="active" ariaCurrentWhenActive="page">
-                        <span>Users</span>
+                        <span>Utilisateurs</span>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="menu-item" ariaCurrentWhenActive="page">
-                        <span>Website</span>
+                        <span>Site web</span>
                     </a>
                 </li>
             </ul>
         </li>
+
+
+
+        <li>
+            <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="true"
+            (click)="subMenuToggleHandler($event)" >
+                <i class="bi bi-headset"></i>
+                <span>Support</span>
+            </a>
+            <ul class="sub-menu-item">
+                <li>
+                    <a class="menu-item"
+                        [routerLink]="commonServices.prepareRoute(appRoutes.Marchand, marchandRoutes.Support, supportRoutes.FAQ)"
+                        routerLinkActive="active" ariaCurrentWhenActive="page">
+                        <span>FAQ</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-item"
+                        [routerLink]="commonServices.prepareRoute(appRoutes.Marchand, marchandRoutes.Support, supportRoutes.Contact)"
+                        routerLinkActive="active" ariaCurrentWhenActive="page">
+                        <span>Nous contacter</span>
+                    </a>
+                </li>
+            </ul>
+        </li>        
+
+
+        
         <li>
             <a href="#" class="menu-item">
                 <i class="bi bi-box-arrow-right"></i>
-                <span>Logout</span>
+                <span>Se déconnecter</span>
             </a>
         </li>
     </ul>

@@ -3,10 +3,10 @@ import { TransactionComponent } from './views/transaction/transaction.component'
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { merchantRoutingModule } from './merchant-routing.module';
+import { marchandRoutingModule } from './marchand-routing.module';
 import { LayoutsModule } from './layouts/layouts.module';
 
-import { MerchantComponent } from './merchant.component';
+import { MarchandComponent } from './marchand.component';
 import { AdminPageNotFoundComponent } from './views/admin-page-not-found/admin-page-not-found.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { EventsComponent } from './views/events/events.component';
@@ -16,7 +16,7 @@ import { ScrollToTopComponent } from './views/scroll-to-top/scroll-to-top.compon
 
 @NgModule({
 declarations: [
-    MerchantComponent,
+    MarchandComponent,
     DashboardComponent,
     AdminPageNotFoundComponent,
     EventsComponent,
@@ -24,11 +24,12 @@ declarations: [
 ],
 imports: [
     CommonModule,
-    merchantRoutingModule,
+    marchandRoutingModule,
     LayoutsModule,
     SettingsModule,
     TransactionComponent,
-    ScrollToTopComponent
+    ScrollToTopComponent,
+    
 ]
 })
-export class MerchantModule { }
+export class MarchandModule { }
