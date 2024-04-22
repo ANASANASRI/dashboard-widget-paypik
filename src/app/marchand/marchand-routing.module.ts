@@ -30,7 +30,7 @@ children: [
     component: DashboardComponent,
     },
     {
-    path: 'more',
+    path: MarchandRoutes.More,
     component: MoreComponent,
     },
 ],

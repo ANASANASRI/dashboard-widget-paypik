@@ -15,7 +15,8 @@ import { SettingsModule } from './views/settings/settings.module';
 import { ElementsModule } from './views/elements/elements.module';
 import { ScrollToTopComponent } from './views/scroll-to-top/scroll-to-top.component';
 import { ModalModule } from '../shared/components/modal/modal.module';
-import { AddmerchantformComponent } from './views/addmerchantform/addmerchantform.component';
+import { AddmarchandformComponent } from './views/addmarchandform/addmarchandform.component';
+import { SingletransactionComponent } from './views/singletransaction/singletransaction.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AddmerchantformComponent } from './views/addmerchantform/addmerchantfor
     EventsComponent,
     MoreComponent,
     TableComponent,
-    AddmerchantformComponent
+    AddmarchandformComponent,
+    SingletransactionComponent
   ],
   imports: [
     CommonModule,

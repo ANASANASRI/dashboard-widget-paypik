@@ -1,0 +1,142 @@
+<nav class="flex items-center justify-between pb-4" aria-label="Pagination">
+    <a class="relative inline-flex items-center rounded-md border border-emerald-700 bg-transparent px-4 py-2 text-sm font-medium text-emerald-700 hover:bg-emerald-50"
+        rel="prev" href="/admin/dashboard"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+            height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z">
+            </path>
+        </svg> &nbsp; Previous
+    </a>
+</nav>
+<div [@pageTransition]>
+    <section class="grid grid-cols-1 my-4 xl:grid-cols-2 2xl:grid-cols-3 gap-5">
+            <div class="card p-8 2xl:col-span-2">
+                <div class="card-title">
+                    <h3 class="text-xl font-bold leading-none">Marchand form</h3>
+                </div>
+    
+                <div class="mt-5">
+                    <form class="max-w-2xl p-4">
+                        <div class="grid grid-cols-12 gap-x-6 space-y-4">
+                            <div class="col-span-12 md:col-span-8 mb-4">
+                                <div class="col-span-full">
+                                    <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">
+                                        Cover photo
+                                    </label>
+                                    <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-8">
+                                        <div class="text-center">
+                                            <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
+                                                aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <div class="mt-4 flex text-sm leading-6 text-gray-600">
+                                                <label for="file-upload"
+                                                    class="relative cursor-pointer rounded-md bg-white font-semibold text-emerald-600 focus-within:outline-none  hover:text-emerald-500">
+                                                    <span>Upload a Logo</span>
+                                                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                                </label>
+                                                <p class="pl-1">or drag and drop</p>
+                                            </div>
+                                            <p class="text-xs leading-5 text-gray-600">PNG, JPG up to 10MB</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="form-group">
+                                    <label for="name" class="form-label required"> Name</label>
+                                    <input type="text" id="name" placeholder="Name" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="form-group">
+                                    <label for="Desctiption" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Desctiption</label>
+                                    <textarea id="Desctiption" rows="4" class="form-control block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-emerald-500 focus:border-emerald-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500" placeholder="Write your thoughts here..."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="form-group">
+                                    <label for="email" class="form-label required"> Gmail</label>
+                                    <input type="text" id="email" placeholder="example@gmail.com" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="form-group">
+                                    <label for="host" class="form-label"> Host</label>
+                                    <input type="text" id="host" placeholder="Host" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="form-group">
+                                    <label for="sms" class="form-label"> SMS</label>
+                                    <input type="text" id="sms" placeholder="SMS" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="form-group">
+                                    <label for="callback" class="form-label"> Callback</label>
+                                    <input type="text" id="callback" placeholder="Callback" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="form-group">
+                                    <label for="secretKey" class="form-label"> Secret Key</label>
+                                    <input type="text" id="secretKey" placeholder="Secret Key" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="form-group">
+                                    <label for="accessKey" class="form-label"> Access Key</label>
+                                    <input type="text" id="accessKey" placeholder="Access Key" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="form-group">
+                                    <label for="paymentMethods" class="form-label"> Payment Methods</label>
+                                    <input type="text" id="paymentMethods" placeholder="Payment Methods" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-10 flex gap-x-6">
+                            <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+                            <button type="submit" class="btn bg-emerald-300 hover:bg-emerald-600 btn-sm">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    
+        <div class="card p-8" style="max-height: 560px;">
+            <div class="card-title flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold leading-none">Attribuer les Modes de Paiement</h3>
+            </div>
+            <div class="overflow-y-auto overflow-x-hidden pr-4" style="max-height: 460px;">
+                <ul role="list" class="divide-y divide-gray-200">
+                    <li class="py-3 sm:py-4" *ngFor="let i of [1, 2, 3, 4, 5, 6,7,8,8,8,8,8,8,8]">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/100x100" alt="user image">
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium text-gray-900 truncate">
+                                    Token
+                                </p>
+                            </div>
+                            <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                                <label class="inline-flex items-center me-5 cursor-pointer">
+                                    <input type="checkbox" value="" class="sr-only peer">
+                                    <div class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-emerald-300 dark:peer-focus:ring-emerald-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-emerald-600"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<app-scroll-to-top></app-scroll-to-top>

@@ -1,9 +1,9 @@
-<header class="bg-slate-50 shadow fixed top-0 w-full z-50 h-16">
+<header class="backdrop-blur-lg bg-slate-50/40  shadow fixed top-0 w-full z-50 h-20">
    <nav class="container flex  items-center justify-between px-6 py-4 lg:px-8" aria-label="Global">
       <div class="flex lg:flex-1">
          <a href="#" class="-m-1.5 p-1.5">
             <span class="sr-only">Your Company</span>
-            <img class="h-8 w-auto" src={{mainLogo}} alt="">
+            <img class="h-12 w-auto" src={{mainLogo}} alt="">
          </a>
       </div>
       <div class="flex lg:hidden">
@@ -17,20 +17,20 @@
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
          <a [routerLink]="commonService.prepareRoute(publicRoutes.Home)"
-            class="text-sm font-semibold leading-6 text-gray-900">Home</a>
+            class="text-sm font-semibold leading-6 text-gray-900 hover:text-emerald-600">Home</a>
 
          <a [routerLink]="commonService.prepareRoute(appRoutes.Admin, adminRoutes.Dashboard)"
-            class="text-sm font-semibold leading-6 text-gray-900">Dashboard Admin</a>
+            class="text-sm font-semibold leading-6 text-gray-900  hover:text-emerald-600">Dashboard Admin</a>
 
          <a [routerLink]="commonService.prepareRoute(appRoutes.Marchand)"
-         class="text-sm font-semibold leading-6 text-gray-900">Dashboard Marchand</a>
+         class="text-sm font-semibold leading-6 text-gray-900  hover:text-emerald-600">Dashboard Marchand</a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
 
          <a [routerLink]="commonService.prepareRoute(publicRoutes.Signup)"
-            class="text-sm font-semibold leading-6 text-gray-900 mr-4">Signup</a>
+            class="text-sm font-semibold leading-6 text-gray-900 mr-4  hover:text-emerald-600">Signup</a>
          <a [routerLink]="commonService.prepareRoute(publicRoutes.Signin)"
-            class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+            class="text-sm font-semibold leading-6 text-gray-900  hover:text-emerald-600">Log in <span aria-hidden="true">&rarr;</span></a>
       </div>
    </nav>
    <!-- Mobile menu, show/hide based on menu open state. -->

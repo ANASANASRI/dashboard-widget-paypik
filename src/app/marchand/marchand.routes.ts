@@ -1,6 +1,6 @@
 export enum MarchandRoutes {
     Dashboard = 'dashboard',
-    More = 'dashboard/more',
+    More = 'transaction',
     Support = 'support',
     Settings = 'settings',
     Elements = 'elements',

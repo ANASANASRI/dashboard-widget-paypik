@@ -29,7 +29,6 @@ imports: [
     SettingsModule,
     TransactionComponent,
     ScrollToTopComponent,
-    
 ]
 })
 export class MarchandModule { }

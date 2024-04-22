@@ -6,7 +6,7 @@ export interface IAuth {
 }
 export class Images {
   public static readonly mainLogo: string = './assets/images/logo/my-logo.png';
-  public static readonly bannerLogo: string = './assets/images/logo/my-logo2.png';
+  public static readonly bannerLogo: string = './assets/images/logogif1.gif';
 
   public static readonly auth: IAuth = {
     signup: './assets/images/authpage/signup.jpg',

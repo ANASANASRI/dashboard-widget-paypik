@@ -1,133 +1,156 @@
-<div [@pageTransition] class="bg-slate-50 flex justify-center items-center pt-8">
+<div [@pageTransition] class="main shadow-2xl flex justify-center items-center pt-24">
     <div class="card p-5 w-10/12 xl:w-1/2 grid grid-cols-1 md:grid-cols-2">
         <div class="relative flex flex-col p-1 md:p-8">
-            <h2 class="text-lg  pb-2">
-                Commencez dès maintenant
-            </h2>
-
-            <p class="text-xs">Ouvrir un compte marchand</p>
-            <p class="text-xs">Veuillez saisir vos identifiants pour créer votre compte</p>
             
-
-
-
-
-            <form name="prospect" id="register_form" action="javascript:;" data-ajax-action="/app/prospects" method="post">
-                <input type="text" name="c_name" data-email="required" id="c_name" placeholder="* Nom entité (entreprise ou auto-entrepreneur)" class="medium-input">
-                <div class="medium-select">
-                <select style="height:44px;" name="c_type" data-email="required" id="c_type">
-                <option value="">* Forme juridique</option>
-                <option value="entreprise">Entreprise</option>
-                <option value="auto-entrepreneur">Auto-Entrepreneur</option>
-                <option value="association">Association</option>
-                </select>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-                <input type="text" name="c_number" data-email="required" id="c_number" placeholder="* RC ou IF (A.E.)" class="medium-input">
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-                <input type="number" name="c_capital" id="c_capital" placeholder="Capital (optionnel)" class="medium-input">
-                </div>
-                <input type="text" name="c_address" data-email="required" id="c_address" placeholder="* Addresse du siège social" class="medium-input">
-                <input type="text" name="c_dg_name" data-email="required" id="c_dg_name" placeholder="* Nom du DG ou gérant" class="medium-input">
-                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-                <input type="number" name="c_phone" data-email="required" id="c_phone" placeholder="* Téléphone" class="medium-input">
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-                <input type="number" name="c_fax" id="c_fax" placeholder="Fax (optionnel)" class="medium-input">
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-                <input type="email" name="c_email" data-email="required" id="c_email" placeholder="* Addresse e-mail" class="medium-input">
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12 no-padding">
-                <input type="url" name="c_website" data-email="required" id="c_website" placeholder="* Addresse site web" class="medium-input">
-                </div>
-                <hr>
-                <div class="col-md-8 col-sm-8 col-xs-12 no-padding">
-                <input type="text" name="c_field" data-email="required" id="c_field" placeholder="* Type de l'activité" class="medium-input">
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12 no-padding medium-select">
-                <select style="height:44px;" name="c_fieldyears" data-email="required" id="c_fieldyears">
-                <option value="">* Années d'activité</option>
-                <option value="-1">Moins &lt; 1 an</option>
-                <option value="1-5">1 an à 5 ans</option>
-                <option value="+5">Plus &gt; 5 ans</option>
-                </select>
-                </div>
-                <textarea name="c_products" id="comment" data-email="required" placeholder="* Description des produits ou serices vendus" class="medium-input"></textarea>
-                <button id="register_button" class="submit-ap-form btn-medium btn-circle font-weight-300 btn bg-sky-blue text-white tz-text" type="submit" style="color: rgb(255, 255, 255); font-size: 12px; font-family: Montserrat, sans-serif; text-transform: none; border-radius: 30px; background-color: rgb(106, 168, 79) !important; font-weight: bold !important;">ENVOYER MA DEMANDE</button>
-                </form>
-
-
-
-
-
-
-
-
-            <form class="my-5 mt-14" (submit)="onFormSubmitHandler($event)">
-                <div class="form-group">
-                    <label class="form-label" for="username">Username</label>
+            <form #marchandForm="ngForm" class="" (ngSubmit)="submitMarchandForm(marchandForm)">
+                
                     <div class="relative">
-                        <input type="text" id="username" class="form-control w-full ps-10"
-                            placeholder="please enter your username">
+                        <input type="text" id="username" name="username" class="form-control w-full ps-10" placeholder="* Nom entité (entreprise ou auto-entrepreneur)" required>
+                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                            <i class="bi bi-shop"></i>
+                        </span>
+                    </div>
+                
+                    <div class="my-5"></div>
+                
+                    <div class="relative">
+                        <select id="juridique" name="juridique" class="form-select w-full ps-10" [class.text-gray-400]="selectedOption === ''" [class.text-black]="selectedOption !== ''" (change)="handleChange($event)">
+                            <option value="">* Forme juridique</option>
+                            <option value="entreprise">Entreprise</option>
+                            <option value="auto-entrepreneur">Auto-Entrepreneur</option>
+                            <option value="association">Association</option>
+                        </select>
+                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                            <i class="bi bi-bank2"></i>
+                        </span>
+                    </div>
+                    
+
+                    <div class="my-5"></div>
+
+                    <div class="relative">
+                        <input type="text" id="c_capital" class="form-control w-full ps-10"
+                            placeholder="* RC ou IF (A.E.)">
+                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                            <i class="bi bi-pencil-square"></i>
+                        </span>
+                    </div>
+
+                    <div class="my-5"></div>
+
+                    <div class="relative">
+                        <input type="text" id="c_address" class="form-control w-full ps-10"
+                            placeholder="* Addresse du siège social">
+                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                            <i class="bi bi-geo-alt"></i>
+                        </span>
+                    </div>
+
+                    <div class="my-5"></div>
+
+                    <div class="relative">
+                        <input type="text" id="c_dg" class="form-control w-full ps-10"
+                            placeholder="* Nom du DG ou gérant">
                         <span class="absolute top-2 left-0 ps-3 text-gray-400">
                             <i class="bi bi-person-circle"></i>
                         </span>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="email">Email</label>
+
+                    <div class="my-5"></div>
+
                     <div class="relative">
-                        <input type="email" id="email" class="form-control w-full ps-10"
-                            placeholder="please enter your email">
+                        <input type="text" id="c_field" class="form-control w-full ps-10"
+                            placeholder="* Type de l'activité">
                         <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-envelope-at"></i>
+                            <i class="bi bi-ui-checks-grid"></i>
                         </span>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="phone">Phone number</label>
+
+                    <div class="my-5"></div>
+
                     <div class="relative">
-                        <input type="phone" id="phone" class="form-control w-full ps-10"
-                            placeholder="please enter your phone number">
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-telephone"></i>
-                        </span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="web">Votre Web site host</label>
-                    <div class="relative">
-                        <input type="web" id="web" class="form-control w-full ps-10"
-                            placeholder="please enter your host">
+                        <input type="text" id="c_web" class="form-control w-full ps-10"
+                            placeholder="* Addresse site web">
                         <span class="absolute top-2 left-0 ps-3 text-gray-400">
                             <i class="bi bi-pc-display"></i>
                         </span>
                     </div>
-                </div>
-                <div class="my-5"></div>
-                <button type="submit" class="btn w-full btn-theme" [disabled]="isLoading">
-                    <btn-spinner *ngIf="isLoading"></btn-spinner>
-                    ENVOYER MA DEMANDE
-                </button>
+
+                    <div class="my-5"></div>
+                
+                    <div class="relative">
+                        <input type="text" id="email" class="form-control w-full ps-10"
+                            placeholder="* Addresse e-mail">
+                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                            <i class="bi bi-envelope-at"></i>
+                        </span>
+                    </div>
+                
+                    <div class="my-5"></div>
+
+                    <div class="relative">
+                        <input type="text" id="phone" class="form-control w-full ps-10"
+                            placeholder="* Téléphone">
+                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                            <i class="bi bi-telephone"></i>
+                        </span>
+                    </div>
+                
+                    <div class="my-5"></div>
+                
+                    <div class="relative">
+                        <select id="c_fieldyears" name="c_fieldyears" class="form-select w-full ps-10" [class.text-gray-400]="selectedOption === ''" [class.text-black]="selectedOption !== ''" (change)="handleChange($event)">
+                            <option value="">* Années d'activité</option>
+                            <option value="-1">Moins &lt; 1 an</option>
+                            <option value="1-5">1 an à 5 ans</option>
+                            <option value="+5">Plus &gt; 5 ans</option>
+                        </select>
+                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                            <i class="bi bi-calendar3"></i>
+                        </span>
+                    </div>
+
+                    <div class="my-5"></div>
+
+                    <div class="relative">
+                        <textarea name="c_products" id="comment" data-email="required" class="form-control w-full ps-10 text-gray-400" placeholder="* Description des produits ou services vendus"></textarea>
+                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                            <i class="bi bi-body-text"></i>
+                        </span>
+                    </div>
+
             </form>
-            <div class="text-sm text-gray-400">
+        </div>
+
+
+        <div class="md:block hidden text-white bg-emerald-600 rounded-lg p-4 xl:p-12">
+
+            <h2 class="text-lg xl:text-2xl pb-1">Ouvrir un compte marchand</h2>
+
+            <p class="text-xs pb-1">La manière la plus simple de<br>gérer vos paiements</p>
+
+            <div class="py-3 pt-10">
+                <img src={{signupbannerImage}} alt="login page image"
+                    class="border rounded-lg border-emerald-600 shadow">
+            </div>
+
+            <!-- Move the button here -->
+            <!-- The button for the second div -->
+            <button type="button" class="btn w-full bg-emerald-50 text-emerald-700  rounded-lg  hover:bg-emerald-100 focus:ring-4 focus:ring-emerald-300 dark:bg-emerald-600 dark:hover:bg-emerald-600 dark:focus:ring-emerald-700" 
+            (click)="submitMarchandForm(marchandForm)">
+                ENVOYER MA DEMANDE
+            </button>
+
+            <div class="text-sm text-gray-300 pt-1">
                 <p>
                     Déjà inscrit ? 
-                    <a [routerLink]="commonService.prepareRoute(publicRoutes.Signin)" class="text-emerald-600">
+                    <a [routerLink]="commonService.prepareRoute(publicRoutes.Signin)" class="text-white">
                         Connectez-vous 
                     </a>
                     plutôt.
                 </p>
             </div>
-        </div>
-        <div class="md:block hidden text-white bg-emerald-600 rounded-lg p-8 xl:p-12">
-            <h2 class="text-lg xl:text-2xl pb-3">La manière la plus simple de<br>gérer vos paiements</h2>
-            <div class="py-3">
-                <img src={{signupbannerImage}} alt="login page image"
-                    class="border rounded-lg border-emerald-600 shadow">
-            </div>
+
         </div>
     </div>
 </div>
