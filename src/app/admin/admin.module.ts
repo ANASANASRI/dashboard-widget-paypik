@@ -17,6 +17,7 @@ import { ScrollToTopComponent } from './views/scroll-to-top/scroll-to-top.compon
 import { ModalModule } from '../shared/components/modal/modal.module';
 import { AddmarchandformComponent } from './views/addmarchandform/addmarchandform.component';
 import { SingletransactionComponent } from './views/singletransaction/singletransaction.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,18 +29,19 @@ import { SingletransactionComponent } from './views/singletransaction/singletran
     MoreComponent,
     TableComponent,
     AddmarchandformComponent,
-    SingletransactionComponent
+    SingletransactionComponent,
+    
   ],
   imports: [
     CommonModule,
+    FormsModule,
     AdminRoutingModule,
     LayoutsModule,
     SettingsModule,
     ElementsModule,
     TransactionComponent,
     ScrollToTopComponent,
-    CommonModule,
-    ModalModule
+    CommonModule
   ]
 })
 export class AdminModule { }
