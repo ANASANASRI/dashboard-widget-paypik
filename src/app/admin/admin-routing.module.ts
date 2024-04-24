@@ -9,8 +9,8 @@ import { AdminDataTableComponent } from './views/elements/data-table/data-table.
 import { FormsComponent } from './views/elements/forms/forms.component';
 import { AdminModalComponent } from './views/elements/modal/admin-modal.component';
 import { AdminTabComponent } from './views/elements/tab/admin-tab.component';
-import { EventsComponent } from './views/events/events.component';
-import { TestComponent } from './views/events/test/test.component';
+import { EventsComponent } from './views/validation/validation.component';
+import { TestComponent } from './views/validation/test/test.component';
 import { ProfileComponent } from './views/settings/profile/profile.component';
 import { UsersComponent } from './views/settings/users/users.component';
 import { AlertComponent } from '../shared/components/alert/alert.component';
@@ -52,8 +52,8 @@ const routes: Routes = [
 
 
   {
-    title: 'Events',
-    path: AdminRoutes.Events,
+    title: 'Validation',
+    path: AdminRoutes.Validation,
     component: EventsComponent,
     children: [
       {

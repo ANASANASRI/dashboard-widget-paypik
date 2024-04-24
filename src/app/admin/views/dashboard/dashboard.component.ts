@@ -1,7 +1,9 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { pageTransition } from 'src/app/shared/utils/animations';
+import { MarchandService } from '../../services/marchand.service';
+import { Marchand } from '../../model/marchand.model';
 Chart.register(...registerables);
 
 @Component({
@@ -14,6 +16,7 @@ export class DashboardComponent implements OnInit {
   eventDate: any = formatDate(new Date(), 'MMM dd, yyyy', 'en');
 
   ngOnInit(): void {
+    this.fetchMarchands();
     var myChart = new Chart("areaWiseSale", {
       type: 'doughnut',
       data: {
@@ -46,5 +49,29 @@ export class DashboardComponent implements OnInit {
         },
       },
     });
+  }
+
+
+////////////////////  services  /////////////////////
+
+  marchands: Marchand[] = [];
+
+  constructor(
+    private marchandService: MarchandService
+  ) {}
+
+  fetchMarchands() {
+    this.marchandService.getMarchands().subscribe(
+      (data: Marchand[]) => {
+        this.marchands = data;
+      },
+      (error) => {
+        console.error('Error fetching marchands:', error);
+      }
+    );
+  }
+
+  get totalMarchands() {
+    return this.marchands.length;
   }
 }

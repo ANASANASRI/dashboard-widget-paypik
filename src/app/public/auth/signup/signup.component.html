@@ -99,7 +99,7 @@
                     <div class="my-5"></div>
                 
                     <div class="relative">
-                        <select id="c_fieldyears" name="c_fieldyears" class="form-select w-full ps-10" [class.text-gray-400]="selectedOption === ''" [class.text-black]="selectedOption !== ''" (change)="handleChange($event)">
+                        <select id="c_fieldyears" name="c_fieldyears" class="form-select w-full ps-10" [class.text-gray-400]="selectedOption1 === ''" [class.text-black]="selectedOption1 !== ''" (change)="handleChange1($event)">
                             <option value="">* Années d'activité</option>
                             <option value="-1">Moins &lt; 1 an</option>
                             <option value="1-5">1 an à 5 ans</option>
@@ -129,7 +129,7 @@
 
             <p class="text-xs pb-1">La manière la plus simple de<br>gérer vos paiements</p>
 
-            <div class="py-3 pt-10">
+            <div class="hover:scale-x-105 duration-700 py-3 pt-10">
                 <img src={{signupbannerImage}} alt="login page image"
                     class="border rounded-lg border-emerald-600 shadow">
             </div>

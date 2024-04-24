@@ -12,6 +12,7 @@ import {httpInterceptorProviders} from './_core/interceptors/interceptors.provid
 import {StrategyProviders} from "./_core/strategies/strategy.providers";
 import {UtilsProviders} from "./shared/utils/utils.providers";
 import { FormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     httpInterceptorProviders,
     StrategyProviders,
     UtilsProviders,
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })

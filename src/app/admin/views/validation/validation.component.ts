@@ -3,9 +3,9 @@ import { Router } from "@angular/router";
 import { pageTransition } from 'src/app/shared/utils/animations';
 
 @Component({
-  selector: 'app-events',
-  templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css'],
+  selector: 'app-validation',
+  templateUrl: './validation.component.html',
+  styleUrls: ['./validation.component.css'],
   animations: [pageTransition]
 })
 export class EventsComponent {
@@ -13,6 +13,6 @@ export class EventsComponent {
   }
 
   loadTest() {
-    this.router.navigate(['admin', 'events', { outlets: { test: ['testing'] } }]);
+    this.router.navigate(['admin', 'validation', { outlets: { test: ['testing'] } }]);
   }
 }

@@ -10,14 +10,16 @@ import { AdminComponent } from './admin.component';
 import { AdminPageNotFoundComponent } from './views/admin-page-not-found/admin-page-not-found.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { TableComponent } from './views/table/table.component';
-import { EventsComponent } from './views/events/events.component';
+import { EventsComponent } from './views/validation/validation.component';
 import { SettingsModule } from './views/settings/settings.module';
 import { ElementsModule } from './views/elements/elements.module';
 import { ScrollToTopComponent } from './views/scroll-to-top/scroll-to-top.component';
-import { ModalModule } from '../shared/components/modal/modal.module';
 import { AddmarchandformComponent } from './views/addmarchandform/addmarchandform.component';
 import { SingletransactionComponent } from './views/singletransaction/singletransaction.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+
+
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { FormsModule } from '@angular/forms';
     ElementsModule,
     TransactionComponent,
     ScrollToTopComponent,
-    CommonModule
+    ReactiveFormsModule,
+    MatPaginatorModule,
+
   ]
 })
 export class AdminModule { }

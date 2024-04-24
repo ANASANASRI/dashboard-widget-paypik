@@ -205,3 +205,6 @@
 .notyf__message {
   font-size: 0.875rem !important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

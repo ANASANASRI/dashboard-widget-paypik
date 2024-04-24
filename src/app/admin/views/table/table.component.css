@@ -1,7 +1,8 @@
 /* sticky table */
 .data-table {
 & .table-container {
-    height: 350px;
+    height: auto;
+    min-height: 412px;
     max-height: 412px;
     overflow: auto;
 }

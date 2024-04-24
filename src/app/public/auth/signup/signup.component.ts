@@ -40,6 +40,11 @@ export class SignupComponent {
     this.selectedOption = event.target.value;
   }
 
+  selectedOption1: string = '';
+
+  handleChange1(event: any) {
+    this.selectedOption1 = event.target.value;
+  }
 
   ///////////////////// 
   //Submit form

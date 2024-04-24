@@ -1,7 +1,10 @@
+import { MarchandService } from './../../services/marchand.service';
 import { Component ,OnInit,ViewChild, ElementRef } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { Chart, registerables } from 'chart.js';
 import { pageTransition } from 'src/app/shared/utils/animations';
+import { ActivatedRoute } from '@angular/router';
+import { Marchand } from '../../model/marchand.model';
 Chart.register(...registerables);
 
 @Component({
@@ -12,40 +15,21 @@ Chart.register(...registerables);
 })
 export class MoreComponent implements OnInit{
   eventDate: any = formatDate(new Date(), 'MMM dd, yyyy', 'en');
+  marchanId!: string;
+
+  constructor(
+    private route: ActivatedRoute,
+    private marchandService: MarchandService
+
+  ) { }
 
   ngOnInit(): void {
-    var myChart = new Chart("areaWiseSale", {
-      type: 'doughnut',
-      data: {
-        labels: ['Token', 'Card', 'Epay', 'Paypal'],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-          ],
-        }]
-      },
-      options: {
-        scales: {
-          x: {
-            display: false
-          },
-          y: {
-            display: false
-          },
-        },
-        plugins: {
-          legend: {
-            position: 'right',
-            align: 'center',
-          },
-        },
-      },
+    this.fetchMarchands();
+    this.route.params.subscribe(params => {
+      this.marchanId = params['marchanId'];
+      // Now you have the marchanId value, you can use it as needed
     });
+
   }
 
   ////////////Scroll to section //////////////
@@ -57,4 +41,33 @@ export class MoreComponent implements OnInit{
       this.detailedDescription.nativeElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  ///////////////////  Services  //////////////////////////
+  get getmarchandId() {
+    return this.marchanId;
+  }
+
+  marchands: Marchand[] = [];
+  marchand: Marchand | undefined;
+
+  fetchMarchands() {
+    this.marchandService.getMarchands().subscribe(
+      (data: Marchand[]) => {
+        this.marchands = data;
+        
+        const Id = this.marchanId; 
+
+        this.marchand = this.marchands.find(marchand => marchand.marchandId === Number(Id));
+        if (!this.marchand) {
+          console.error('Marchand not found with id:', Id);
+        }
+      },
+      (error) => {
+        console.error('Error fetching marchands:', error);
+      }
+    );
+  }
+
+
+  
 }
