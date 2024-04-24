@@ -13,6 +13,7 @@ import {StrategyProviders} from "./_core/strategies/strategy.providers";
 import {UtilsProviders} from "./shared/utils/utils.providers";
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { CommercialModule } from './commercial/commercial.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     AppRoutingModule,
     AdminModule,
     PublicModule,
+    CommercialModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule

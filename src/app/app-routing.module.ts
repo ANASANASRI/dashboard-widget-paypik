@@ -6,17 +6,23 @@ import {AppRoutes} from './app.routes';
 import {PageNotFoundComponent} from './public/page-not-found/page-not-found.component';
 import { PublicComponent } from './public/public.component';
 import { MarchandComponent } from './marchand/marchand.component';
+import { CommercialComponent } from './commercial/commercial.component';
 
 const routes: Routes = [
   {
     path: '',
     component: PublicComponent,
     loadChildren: () => import('./public/public.module').then((m) => m.PublicModule)
-},
+  },
   {
     path: AppRoutes.Admin,
     component: AdminComponent,
     loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
+    path: AppRoutes.Commercial,
+    component: CommercialComponent,
+    loadChildren: () => import('./commercial/commercial.module').then((m) => m.CommercialModule),
   },
   {
     path: AppRoutes.Marchand,
