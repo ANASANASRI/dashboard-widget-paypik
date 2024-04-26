@@ -13,6 +13,8 @@ import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { AppRoutes } from 'src/app/app.routes';
 import { CommercialRoutes, ElementRoutes, SettingRoutes } from '../../commercial.routes';
+import { Demandedto } from '../../model/demandedto.model';
+import { DemandeService } from '../../services/demande.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -34,10 +36,14 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     public readonly commonServices: CommonService,
     private readonly elementRef: ElementRef,
+    private demandeService: DemandeService,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.getAllDemandesNotVerified();
   }
+
+
 
   ngAfterViewInit(): void {
     this.subMenuToggleHandlerOnRouteChange();
@@ -81,5 +87,25 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       }
     })
+  }
+  /////////////////////////////////////////get demandes  (notification)
+  unverifiedDemandes: Demandedto[] = [];
+  demandLength !:number;
+
+  getAllDemandesNotVerified() {
+    this.demandeService.getAllDemandesNotVerified().subscribe(
+      (data) => {
+        this.unverifiedDemandes = data;
+        this.demandLength = this.unverifiedDemandes.length;
+
+      },
+      (error) => {
+        console.error('Error fetching unverified demandes:', error);
+      }
+    );
+  }
+
+  get demandelenght(){
+    return this.unverifiedDemandes.length;
   }
 }

@@ -14,7 +14,7 @@ import { EventsComponent } from './views/validation/validation.component';
 import { SettingsModule } from './views/settings/settings.module';
 import { ElementsModule } from './views/elements/elements.module';
 import { ScrollToTopComponent } from './views/scroll-to-top/scroll-to-top.component';
-import { AddmarchandformComponent } from './views/addmarchandform/addmarchandform.component';
+import { EditmarchandformComponent } from './views/editmarchandform/editmarchandform.component';
 import { SingletransactionComponent } from './views/singletransaction/singletransaction.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
@@ -30,7 +30,7 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
     EventsComponent,
     MoreComponent,
     TableComponent,
-    AddmarchandformComponent,
+    EditmarchandformComponent,
     SingletransactionComponent,
     
   ],

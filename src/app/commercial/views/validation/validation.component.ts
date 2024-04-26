@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { DemandeService } from './../../services/demande.service';
+import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { pageTransition } from 'src/app/shared/utils/animations';
+import { Demandedto } from '../../model/demandedto.model';
 
 @Component({
   selector: 'app-validation',
@@ -8,22 +10,53 @@ import { pageTransition } from 'src/app/shared/utils/animations';
   styleUrls: ['./validation.component.css'],
   animations: [pageTransition]
 })
-export class EventsComponent {
-  constructor(private router: Router) {}
+export class EventsComponent implements OnInit{
 
-  loadTest() {
-    // Get the current route URL
-    const currentRoute = this.router.url;
+  unverifiedDemandes: Demandedto[] = [];
+  currentDemandeId: number | null = null; 
 
-    // Check if the current route contains the test outlet
-    const hasTestOutlet = currentRoute.includes('test');
+  constructor(
+    private demandeService: DemandeService,
+    private router: Router
+  ) { }
 
-    // If the current route already contains the test outlet, navigate to the main validation route
-    if (hasTestOutlet) {
+
+  ngOnInit(): void {
+    this.getAllDemandesNotVerified();
+  }
+
+
+
+  getAllDemandesNotVerified() {
+    this.demandeService.getAllDemandesNotVerified().subscribe(
+      (data) => {
+        this.unverifiedDemandes = data;
+      },
+      (error) => {
+        console.error('Error fetching unverified demandes:', error);
+      }
+    );
+  }
+
+
+
+
+  ////////////////////////////////////////////
+
+
+  loadTest(demande: Demandedto) {
+    // Toggle the currentDemandeId based on whether the demande outlet is already open
+    if (this.currentDemandeId === demande.demandeId) {
+      // If the demande outlet is already open for the selected demande, close it
       this.router.navigate(['commercial', 'validation']);
+      this.currentDemandeId = null; // Reset the selected demande ID
     } else {
-      // Otherwise, navigate to the validation route with the test outlet
-      this.router.navigate(['commercial', 'validation', { outlets: { test: ['testing'] } }]);
+      // If the demande outlet is not open for the selected demande, open it
+      this.currentDemandeId = demande.demandeId;
+      this.router.navigate(['commercial', 'validation', { outlets: { demande: ['marchand', demande.demandeId] } }]);
     }
   }
+  
+
 }
+

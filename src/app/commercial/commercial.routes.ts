@@ -2,6 +2,7 @@ export enum CommercialRoutes {
   Validation = 'validation',
   Settings = 'settings',
   Elements = 'elements',
+  Add = 'add',
 }
 
 export enum ElementRoutes {

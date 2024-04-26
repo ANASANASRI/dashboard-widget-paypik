@@ -52,19 +52,37 @@ export class SignupComponent {
 
   submitMarchandForm(form: NgForm) {
     if (form.valid) {
+      // Check if any input value is empty
+      let hasEmptyFields = false;
+      Object.keys(form.controls).forEach(key => {
+        if (!form.controls[key].value) {
+          form.controls[key].markAsTouched(); // Mark the field as touched to trigger validation styles
+          hasEmptyFields = true;
+          console.log('Empty field detected:', key);
+        }
+      });
+  
+      if (hasEmptyFields) {
+        console.log('Some fields are empty.');
+        return; // Exit the function if there are empty fields
+      }
+  
       // Handle form submission here, e.g., sending data to a server
       // this.isLoading = true;
-
+  
       // setTimeout(() => {
       //   this.isLoading = false;
       //   this.router.navigate([AppRoutes.Admin, AdminRoutes.Dashboard]);
       // }, 3000);
-
+  
       console.log('Form submitted successfully!', form.value);
     } else {
-      // Handle invalid form
       console.log('Form is invalid.');
+      // Log form errors for debugging
+      console.log('Form errors:', form.errors);
     }
   }
+  
+  
 
 }

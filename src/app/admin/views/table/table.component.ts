@@ -114,6 +114,14 @@ onItemsPerPageChange(selectedValue: number) {
     }
 }
 
+////////////////////
+
+rejectOpen: boolean = false;
+
+toggleReject() {
+  this.rejectOpen = !this.rejectOpen;
+}
+
 
 }
 

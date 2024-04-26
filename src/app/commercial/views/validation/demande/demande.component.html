@@ -1,0 +1,137 @@
+
+
+<div class="flex flex-col  bg-white sm:p-6">
+
+            <div class="flex flex-row flex-wrap items-center justify-around">
+
+                    <div class=" relative h-32 w-32   sm:mb-0 mb-3">
+                        <img src="{{demande.demandeMarchandLogoUrl}}"
+                            alt="Marchand Logo" class=" w-32 h-32 object-cover rounded-2xl">
+                    </div>
+
+                    <div class="flex-auto sm:ml-5 ">
+
+                        <div class=" flex flex-col">
+                            <div class="w-full flex-none text-lg text-gray-500 font-bold leading-none">
+                                {{demande.demandeMarchandEmail}}
+                            </div>
+                            <div class="flex-auto text-gray-800 my-1">
+                                <p class="text-sm text-gray-400">
+                                    <i class="bi bi-telephone"></i> &nbsp;     
+                                    Telephone: &nbsp; 
+                                    <span class="text-gray-800">{{demande.demandeMarchandPhone}}</span>
+                                </p>
+                                <p class="text-sm text-gray-400">
+                                    <i class="bi bi-pc-display"></i> &nbsp;
+                                    Adress site web: &nbsp; 
+                                    <span class="text-gray-800">{{demande.demandeMarchandHost}}</span>
+                                </p>
+                                <p class="text-sm text-gray-400">
+                                    <i class="bi bi-geo-alt"></i> &nbsp;
+                                    Adress di siege : &nbsp; 
+                                    <span class="text-gray-800">{{demande.demandeMarchandSiegeAddresse}}</span>
+                                </p>
+                                <p class="text-sm text-gray-400">
+                                    <i class="bi bi-bank2"></i> &nbsp;
+                                    Forme juridique: &nbsp; 
+                                    <span class="text-gray-800">{{demande.demandeMarchandFormejuridique}}</span>
+                                </p>
+                            </div>
+                        </div>     
+                    </div>
+
+                    <div class="flex-auto sm:ml-5 ">
+                        <br>
+                        <p class="text-sm text-gray-400">
+                            <i class="bi bi-pencil-square"></i>  &nbsp;
+                            RC ou IF (A.E.): &nbsp; 
+                            <span class="text-gray-800">{{demande.demandeMarchandRcIf}}</span>
+                        </p>
+                        <p class="text-sm text-gray-400">
+                            <i class="bi bi-person-circle"></i>  &nbsp;
+                            Nom du DG: &nbsp; 
+                            <span class="text-gray-800">{{demande.demandeMarchandDgName}}</span>
+                        </p>
+                        <p class="text-sm text-gray-400">
+                            <i class="bi bi-calendar3"></i> &nbsp;
+                            Années d'activité: &nbsp; 
+                            <span class="text-gray-800">{{demande.demandeMarchandAnneeActivite}}</span>
+                        </p>
+                        <p class="text-sm text-gray-400">
+                            <i class="bi bi-ui-checks-grid"></i> &nbsp;
+                            Type de l'activité: &nbsp; 
+                            <span class="text-gray-800">{{demande.demandeMarchandTypeActivite}}</span>
+                        </p>
+                    </div>
+                </div>
+                
+            <hr class="my-4">
+            <div>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    <i class="bi bi-body-text"></i> &nbsp;
+                    <span class="text-gray-800">{{demande.demandeMarchandDescription}}</span>
+                </p>
+            </div>
+        </div>
+
+    <div class="flex justify-end items-center mt-5">
+
+        <button (click)="toggleAccept()" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border hover:shadow-lg border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"> Accept </button>
+        <button (click)="toggleReject()" type="button" class="w-full  inline-flex justify-center rounded-md border  hover:shadow-lg border-transparent shadow-sm px-4 py-2 bg-red-500 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"> Delete </button>
+        
+</div>
+
+
+
+<!-- Background overlay -->
+<div *ngIf="modalOpen" class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-filter backdrop-blur-sm"></div>
+
+<!-- Main modal -->
+<div *ngIf="modalOpen" class="fixed inset-0 flex items-center justify-center">
+    <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+        <!-- Modal content -->
+        <div class="relative p-4 text-center bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+            <button (click)="toggleAccept()" type="button" class="text-gray-400 absolute top-2.5 right-2.5 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                <span class="sr-only"></span>
+            </button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 dark:text-gray-500 w-11 h-11 mb-3.5 mx-auto" enable-background="new 0 0 32 32" viewBox="0 0 32 32" id="virifiedperson"><path d="M6.97998 6.64001c0 3.37994 2.75 6.12994 6.13 6.12994 3.39001 0 6.14001-2.75 6.14001-6.12994C19.25 3.25 16.5.5 13.10999.5 9.72998.5 6.97998 3.25 6.97998 6.64001zM1.15997 30c0 .82996.68005 1.5 1.5 1.5H23.56c.83002 0 1.5-.67004 1.5-1.5v-3.54999C25.06 19.85999 19.70001 14.5 13.10999 14.5c-6.57996 0-11.95001 5.35999-11.95001 11.95001V30zM30.396 7.56348c-.58594-.58594-1.53613-.58594-2.12109 0l-4.23291 4.2334-1.56348-1.56348c-.58594-.58594-1.53516-.58594-2.12109 0s-.58594 1.53516 0 2.12109l2.62402 2.62402c.28125.28125.6626.43945 1.06055.43945s.7793-.1582 1.06055-.43945L30.396 9.68457C30.98193 9.09863 30.98193 8.14941 30.396 7.56348z" fill="#6b7280" class="color000000 svgShape"></path></svg>
+            <p class="mb-4 text-gray-500 dark:text-gray-300">Êtes-vous sûr de vouloir accepter cette demande?</p>
+            <div class="flex justify-center items-center space-x-4">
+                <button (click)="toggleAccept()" type="button" class="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                    Non, annuler
+                </button>
+                <button (click)="updateDemandeAccepted(demande.demandeId)" type="submit" class="py-2 px-3 text-sm font-medium text-center text-white bg-emerald-600 rounded-lg hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:bg-emerald-500 dark:hover:bg-emerald-600 dark:focus:ring-emerald-900">
+                    Oui, je suis sûr
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Background overlay -->
+<div *ngIf="rejectOpen" class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-filter backdrop-blur-sm"></div>
+
+<!-- Main modal -->
+<div *ngIf="rejectOpen" class="fixed inset-0 flex items-center justify-center">
+    <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+        <!-- Modal content -->
+        <div class="relative p-4 text-center bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+            <button (click)="toggleReject()" type="button" class="text-gray-400 absolute top-2.5 right-2.5 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                <span class="sr-only"></span>
+            </button>
+            <svg class="text-gray-400 dark:text-gray-500 w-11 h-11 mb-3.5 mx-auto" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+            <p class="mb-4 text-gray-500 dark:text-gray-300">Êtes-vous sûr de vouloir supprimer cette demande?</p>
+            <div class="flex justify-center items-center space-x-4">
+                <button (click)="toggleReject()" type="button" class="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                    Non, annuler
+                </button>
+                <button (click)="updateDemandeRejected(demande.demandeId)" type="submit" class="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">
+                    Oui, je suis sûr
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,7 @@ export enum AdminRoutes {
   Dashboard = 'dashboard',
   More = 'more/:marchanId',
   Transaction = 'more/transaction',
-  Add = 'marchand/add',
+  Edit = 'marchand/edit/:marchanId',
   Validation = 'validation',
   Settings = 'settings',
   Elements = 'elements',

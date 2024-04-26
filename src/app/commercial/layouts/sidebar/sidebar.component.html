@@ -13,10 +13,27 @@
         <li>
             <a class="menu-item" [routerLink]="commonServices.prepareRoute(appRoutes.Commercial, commercialRoutes.Validation)"
                 routerLinkActive="active" ariaCurrentWhenActive="page">
-                <i class="bi bi-app-indicator"></i>
-                <span>Validation</span>
+                <div class="absolute">
+                    <i class="bi bi-bell"></i>
+                    <div id="containerDiv" *ngIf="demandLength !== 0">
+                    <div class="px-1 rounded-full text-center text-xs absolute -top-2 -end-2" style="z-index: 9999;">
+                        {{ demandLength }}
+                        <div class="absolute top-0 start-0 rounded-full -z-10 animate-ping bg-emerald-50 w-full h-full"></div>
+                    </div>
+                </div>  
+                </div>
+                <span class="pl-6">Validation</span>
             </a>
         </li>
+
+        <li>
+            <a class="menu-item" [routerLink]="commonServices.prepareRoute(appRoutes.Commercial, commercialRoutes.Add)"
+                routerLinkActive="active" ariaCurrentWhenActive="page">
+                <i class="bi bi-plus-circle"></i>
+                <span>Ajouter un marchand</span>
+            </a>
+        </li>
+
 
         <!-- <li>
             <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="false"
@@ -69,7 +86,6 @@
                 </li>
             </ul>
         </li>  -->
-
 
 
         <li> 

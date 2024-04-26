@@ -7,11 +7,23 @@
                     <i class="bi bi-moon-stars"></i>
                 </button>
             </div> -->
-            <div class="relative inline-block">
+            <div class="relative">
+                <a href="/commercial/validation">
+                <button  type="button" class="text-xl text-light rounded-full w-10 h-10 transition hover:bg-slate-200">
+                    <i class="bi bi-bell"></i>
+                </button>  </a>
+                <div id="containerDiv" *ngIf="demandLength !== 0">
+                    <div class="px-1 rounded-full text-slate-400 text-center text-xs absolute -top-0 -end-0" style="z-index: 9999;">
+                        {{ demandLength }}
+                        <div class="absolute top-0 start-0 rounded-full -z-10 animate-ping bg-slate-200 w-full h-full"></div>
+                    </div>
+                </div>                
+            </div>
+            <!-- <div class="relative inline-block">
                 <button type="button" class="text-xl text-light rounded-full w-10 h-10 transition hover:bg-slate-200">
                     <i class="bi bi-bell"></i>
                 </button>
-            </div>
+            </div> -->
             <div class="relative inline-block profile-dropdown">
                 <div class="flex items-center">
                     <button type="button" (click)="onClickProfile()"
