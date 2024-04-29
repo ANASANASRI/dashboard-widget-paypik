@@ -20,14 +20,14 @@ declarations: [
     DashboardComponent,
     AdminPageNotFoundComponent,
     EventsComponent,
-    MoreComponent
+    MoreComponent,
+    TransactionComponent
 ],
 imports: [
     CommonModule,
     marchandRoutingModule,
     LayoutsModule,
     SettingsModule,
-    TransactionComponent,
     ScrollToTopComponent,
 ]
 })

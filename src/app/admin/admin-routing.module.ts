@@ -51,54 +51,54 @@ const routes: Routes = [
   },
 
 
-  {
-    title: 'Validation',
-    path: AdminRoutes.Validation,
-    component: EventsComponent,
-    children: [
-      {
-        path: 'testing',
-        component: TestComponent,
-        outlet: 'test',
-      },
-    ],
-  },
+  // {
+  //   title: 'Validation',
+  //   path: AdminRoutes.Validation,
+  //   component: EventsComponent,
+  //   children: [
+  //     {
+  //       path: 'testing',
+  //       component: TestComponent,
+  //       outlet: 'test',
+  //     },
+  //   ],
+  // },
 
-  {
-    title: 'Elements',
-    path: AdminRoutes.Elements,
-    children: [
-      {
-        title: 'Alert',
-        path: ElementRoutes.Alert,
-        component: AdminAlertComponent,
-      },
-      {
-        path: 'tabs',
-        component: AdminTabComponent,
-      },
-      {
-        title: 'Modal',
-        path: ElementRoutes.Modal,
-        component: AdminModalComponent,
-      },
-      {
-        title: 'Buttons',
-        path: ElementRoutes.Buttons,
-        component: ButtonsComponent,
-      },
-      {
-        title: 'Data Table',
-        path: ElementRoutes.DataTable,
-        component: AdminDataTableComponent,
-      },
-      {
-        title: 'Forms',
-        path: ElementRoutes.Forms,
-        component: FormsComponent,
-      },
-    ],
-  },
+  // {
+  //   title: 'Elements',
+  //   path: AdminRoutes.Elements,
+  //   children: [
+  //     {
+  //       title: 'Alert',
+  //       path: ElementRoutes.Alert,
+  //       component: AdminAlertComponent,
+  //     },
+  //     {
+  //       path: 'tabs',
+  //       component: AdminTabComponent,
+  //     },
+  //     {
+  //       title: 'Modal',
+  //       path: ElementRoutes.Modal,
+  //       component: AdminModalComponent,
+  //     },
+  //     {
+  //       title: 'Buttons',
+  //       path: ElementRoutes.Buttons,
+  //       component: ButtonsComponent,
+  //     },
+  //     {
+  //       title: 'Data Table',
+  //       path: ElementRoutes.DataTable,
+  //       component: AdminDataTableComponent,
+  //     },
+  //     {
+  //       title: 'Forms',
+  //       path: ElementRoutes.Forms,
+  //       component: FormsComponent,
+  //     },
+  //   ],
+  // },
 
   {
     path: AdminRoutes.Settings,

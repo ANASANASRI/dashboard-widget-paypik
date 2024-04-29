@@ -42,41 +42,41 @@ const routes: Routes = [
     component: AddmarchandformComponent,
   },
 
-  {
-    title: 'Elements',
-    path: CommercialRoutes.Elements,
-    children: [
-      {
-        title: 'Alert',
-        path: ElementRoutes.Alert,
-        component: AdminAlertComponent,
-      },
-      {
-        path: 'tabs',
-        component: AdminTabComponent,
-      },
-      {
-        title: 'Modal',
-        path: ElementRoutes.Modal,
-        component: AdminModalComponent,
-      },
-      {
-        title: 'Buttons',
-        path: ElementRoutes.Buttons,
-        component: ButtonsComponent,
-      },
-      {
-        title: 'Data Table',
-        path: ElementRoutes.DataTable,
-        component: AdminDataTableComponent,
-      },
-      {
-        title: 'Forms',
-        path: ElementRoutes.Forms,
-        component: FormsComponent,
-      },
-    ],
-  },
+  // {
+  //   title: 'Elements',
+  //   path: CommercialRoutes.Elements,
+  //   children: [
+  //     {
+  //       title: 'Alert',
+  //       path: ElementRoutes.Alert,
+  //       component: AdminAlertComponent,
+  //     },
+  //     {
+  //       path: 'tabs',
+  //       component: AdminTabComponent,
+  //     },
+  //     {
+  //       title: 'Modal',
+  //       path: ElementRoutes.Modal,
+  //       component: AdminModalComponent,
+  //     },
+  //     {
+  //       title: 'Buttons',
+  //       path: ElementRoutes.Buttons,
+  //       component: ButtonsComponent,
+  //     },
+  //     {
+  //       title: 'Data Table',
+  //       path: ElementRoutes.DataTable,
+  //       component: AdminDataTableComponent,
+  //     },
+  //     {
+  //       title: 'Forms',
+  //       path: ElementRoutes.Forms,
+  //       component: FormsComponent,
+  //     },
+  //   ],
+  // },
 
   {
     path: CommercialRoutes.Settings,
