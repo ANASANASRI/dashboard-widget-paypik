@@ -9,7 +9,21 @@ export class AddmarchandformComponent {
 
 
 
+  previewImageUrl: string = 'https://lh3.googleusercontent.com/a-/AFdZucpC_6WFBIfaAbPHBwGM9z8SxyM1oV4wB4Ngwp_UyQ=s96-c';
 
+  loadFile(event: any) {
+    const input = event.target;
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      this.previewImageUrl = reader.result as string;
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
 
   //////////////photo 
   uploadOption: boolean = true;

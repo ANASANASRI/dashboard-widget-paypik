@@ -24,7 +24,7 @@
                             <div class="col-span-full">
                                 <label for="about" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
                                 <div class="mt-2">
-                                <textarea id="about" name="about" rows="3" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" placeholder="Description des produits ou serices vendus."></textarea>
+                                <textarea id="about" name="about" rows="3" class="pl-3 block w-full rounded-md  py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 hover:ring-emerald-600 focus-visible:ring-emerald-600 " placeholder="Description des produits ou serices vendus."></textarea>
                                 </div>
                             </div>
 
@@ -35,7 +35,7 @@
                                         <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
                                     </svg>
                                     <div *ngIf="uploadOption">
-                                        <input type="file" (change)="onFileSelected($event)" accept="image/*" style="display:none;">
+                                        <input type="file" (change)="onFileSelected($event)" accept="*" style="display:none;">
                                         <label (click)="openFileInput()" class="w-24 bg-white cursor-pointer hover:scale-110 duration-700">
                                             <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                                 <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
