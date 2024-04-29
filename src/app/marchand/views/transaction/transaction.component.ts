@@ -185,11 +185,11 @@ export class TransactionComponent {
   getStatusStyles(status: string): any {
     switch (status.toLowerCase()) {
       case 'completed':
-        return { color: 'green' };
+        return { color: '#166534 ' };
       case 'pending':
-        return { color: 'yellow' };
+        return { color: '#854d0e ' };
       case 'cancelled':
-        return { color: 'red' };
+        return { color: '#991b1b ' };
       default:
         return {};
     }
@@ -199,11 +199,11 @@ export class TransactionComponent {
   getStatusBadgeStyles(status: string): any {
     switch (status.toLowerCase()) {
       case 'completed':
-        return { backgroundColor: 'rgba(46, 204, 113, 0.6)', };
+        return { backgroundColor: '#dcfce7' };
       case 'pending':
-        return { backgroundColor: 'rgba(241, 196, 15, 0.6)' };
+        return { backgroundColor: '#fef9c3' };
       case 'cancelled':
-        return { backgroundColor: 'rgba(231, 76, 60, 0.6)' };
+        return { backgroundColor: '#fee2e2' };
       default:
         return {};
     }

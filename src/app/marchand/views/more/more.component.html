@@ -1,6 +1,6 @@
 <nav class="flex items-center justify-between pb-4" aria-label="Pagination">
     <a class="relative inline-flex items-center rounded-md border border-emerald-700 bg-transparent px-4 py-2 text-sm font-medium text-emerald-700 hover:bg-emerald-50"
-        rel="prev" href="/admin/dashboard"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
+        rel="prev" href="marchand/dashboard/{{marchandId}}"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
             viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z">
@@ -9,464 +9,327 @@
     </a>
 </nav>
 
-
-
 <div [@pageTransition]>
-    <section class="grid grid-cols-1 my-4 xl:grid-cols-1 2xl:grid-cols-1 gap-5">
-    <!-- component -->
-    <link
-        href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-        rel="stylesheet"
-    />
-    <div
-        class="flex flex-col items-center justify-center min-h-screen bg-slate-100"
-    >
-        <!-- dark theme -->
-        <div class="container m-4">
-        <div class="max-w-3xl w-full mx-auto grid gap-4 grid-cols-1">
-            <!-- alert -->
-
-            <!-- profile card -->
-            <div class="flex flex-col sticky top-20 z-10">
-            <div
-                class="bg-white border border-gray-800 shadow-lg rounded-2xl p-4"
-            >
-                <div class="flex-none sm:flex">
-                <div class="relative h-32 w-32 sm:mb-0 mb-3">
-                    <img
-                    src="{{ marchands[0]?.marchandUrl }}"
-                    alt="aji"
-                    class="w-32 h-32 object-cover rounded-2xl"
-                    />
-                </div>
-                <div class="flex-auto sm:ml-5 justify-evenly">
+    <section class="grid grid-cols-1 mb-4 xl:grid-cols-1 2xl:grid-cols-1 gap-5">
+        <!-- component -->
+        <div class="flex flex-col items-center justify-center bg-slate-100">
+            <!-- dark theme -->
+            <div class="container m-4">
+                <div class="max-w-screen-lg w-full mx-auto grid gap-4 grid-cols-1">
+                    <!-- alert -->
                     <div
-                    class="flex items-center justify-between sm:mt-2"
-                    *ngFor="let marchand of marchands"
-                    >
-                    <div class="flex items-center">
-                        <div class="flex flex-col">
+                    class="flex flex-col justify-center p-4 bg-white   shadow-md hover:shodow-lg rounded-2xl">
+                    <div class=" text-gray-400 flex items-center ">
+                        <img class="w-28 mr-5"
+                            src="assets/images/logo/my-logo.png"
+                            alt="pay pik" />
+                        <p>L'avenir des paiements en ligne.<a href="https://tailwindcomponents.com/u/aji"
+                                class="underline hover:underline-none ml-1 text-green-300"
+                                target="_blank">Pay Pik</a></p><button type="button"
+                            class="ml-auto text-xs  font-medium tracking-wider  text-gray-400 hover:text-green-400 transition ease-in duration-300"><svg
+                                xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg></button>
+                    </div>
+                    </div>
+                    <!-- profile card -->
+                    <div class="flex flex-col sticky top-20 z-10">
+                        <div class="bg-white border  shadow-lg rounded-2xl p-4">
+                            <div class="flex-none sm:flex">
+                                <div class="relative h-32 w-32 sm:mb-0 mb-3">
+                                    <img src="{{ marchands[0]?.marchandLogoUrl }}" alt="aji"
+                                        class="w-32 h-32 object-cover rounded-2xl" />
+                                </div>
+                                <div class="flex-auto sm:ml-5 justify-evenly">
+                                    <div class="flex items-center justify-between sm:mt-2"
+                                        *ngFor="let marchand of marchands">
+                                        <div class="flex items-center">
+                                            <div class="flex flex-col">
+                                                <div
+                                                    class="w-full flex-none text-lg text-gray-200 font-bold leading-none">
+                                                    {{ marchand.marchandName }}
+                                                </div>
+                                                <div class="flex-auto text-gray-400 my-1">
+                                                    <span class="mr-3"> {{ marchand.marchandHost }}</span>
+                                                </div>
+                                                <div class="flex-auto text-gray-400 my-1">
+                                                    <span class="mr-3">
+                                                        {{ marchand.marchandDescription }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-row items-center">
+                                        <div class="flex-1 inline-flex items-center ml-2 space-x-2">
+                                            <a hre="https://www.behance.net/ajeeshmon" target="_blank"><svg
+                                                    class="cursor-pointer w-5 h-5 p-1 rounded-2xl hover:bg-blue-500 hover:text-white transition ease-in duration-300"
+                                                    xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48"
+                                                    height="48" viewBox="0 0 172 172" style="fill: #4a90e2">
+                                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                                        stroke-linecap="butt" stroke-linejoin="miter"
+                                                        stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                                        font-family="none" font-weight="none" font-size="none"
+                                                        text-anchor="none" style="mix-blend-mode: normal">
+                                                        <path d="M0,172v-172h172v172z" fill="none"></path>
+                                                        <g fill="#ffffff">
+                                                            <path
+                                                                d="M71.66667,82.41667c3.58333,0 14.33333,-5.79783 14.33333,-20.13117c0,-22.28475 -19.72983,-26.45217 -41.95367,-26.45217c-4.19967,0 -17.00292,0.00717 -26.12967,0.00358c-5.93758,-0.00358 -10.75,4.81242 -10.75,10.75v78.82975c0,5.93758 4.81242,10.75 10.75,10.75h42.28333c15.83475,0 29.25792,-12.52733 29.38333,-28.36208c0.16842,-21.77233 -17.91667,-25.38792 -17.91667,-25.38792zM28.66667,53.75h25.08333c5.93758,0 10.75,4.81242 10.75,10.75c0,5.93758 -4.81242,10.75 -10.75,10.75h-25.08333zM55.54167,118.25h-26.875v-25.08333h26.875c6.92658,0 12.54167,5.61508 12.54167,12.54167c0,6.92658 -5.61508,12.54167 -12.54167,12.54167zM163.0775,103.91667c2.97058,0 5.375,-2.40442 5.37858,-5.375v0c0,-20.77975 -14.37275,-37.625 -35.83333,-37.625c-19.79075,0 -35.83333,16.84525 -35.83333,37.625c0,20.77975 16.04258,37.625 35.83333,37.625c17.51175,0 27.2405,-8.1915 31.992,-20.22075c0.91733,-2.31842 -0.8815,-4.83033 -3.3755,-4.83033h-8.60358c-1.30792,0 -2.46533,0.74175 -3.14258,1.86333c-3.27517,5.41083 -8.27392,8.85442 -15.00342,8.85442c-10.07633,0 -17.415,-7.65042 -19.2855,-17.91667h38.4205zM132.62275,75.25c7.44258,0 14.65583,5.934 16.69117,14.33333h-33.22825c2.69825,-8.41725 9.08375,-14.33333 16.53708,-14.33333zM148.70833,53.75h-28.66667c-2.967,0 -5.375,-2.408 -5.375,-5.375v0c0,-2.967 2.408,-5.375 5.375,-5.375h28.66667c2.967,0 5.375,2.408 5.375,5.375v0c0,2.967 -2.408,5.375 -5.375,5.375z">
+                                                            </path>
+                                                        </g>
+                                                    </g>
+                                                </svg></a>
+
+                                            <a hre="https://www.linkedin.com/in/ajeeshmon" target="_blank"><svg
+                                                    class="cursor-pointer w-5 h-5 p-1 rounded-2xl hover:bg-blue-500 hover:text-white transition ease-in duration-300"
+                                                    xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30"
+                                                    height="30" viewBox="0 0 172 172" style="fill: #ffffff">
+                                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                                        stroke-linecap="butt" stroke-linejoin="miter"
+                                                        stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                                        font-family="none" font-weight="none" font-size="none"
+                                                        text-anchor="none" style="mix-blend-mode: normal">
+                                                        <path d="M0,172v-172h172v172z" fill="none"></path>
+                                                        <g fill="#ffffff">
+                                                            <path
+                                                                d="M51.6,143.33333h-28.66667v-86h28.66667zM37.2724,45.86667c-7.9292,0 -14.33907,-6.42707 -14.33907,-14.33907c0,-7.912 6.42133,-14.3276 14.33907,-14.3276c7.90053,0 14.3276,6.42707 14.3276,14.3276c0,7.912 -6.42707,14.33907 -14.3276,14.33907zM154.8,143.33333h-27.56013v-41.85333c0,-9.98173 -0.1892,-22.81867 -14.3276,-22.81867c-14.35053,0 -16.55787,10.8704 -16.55787,22.09627v42.57573h-27.5544v-86.06307h26.4536v11.75907h0.37267c3.6808,-6.76533 12.6764,-13.8976 26.0924,-13.8976c27.92133,0 33.08133,17.82493 33.08133,40.99907z">
+                                                            </path>
+                                                        </g>
+                                                    </g>
+                                                </svg></a>
+                                            <a hre="https://twitter.com/ajeemon?lang=en" target="_blank"><svg
+                                                    class="cursor-pointer w-5 h-5 p-1 rounded-2xl hover:bg-blue-400 hover:text-white transition ease-in duration-300"
+                                                    xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24"
+                                                    height="24" viewBox="0 0 172 172" style="fill: #ffffff">
+                                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                                        stroke-linecap="butt" stroke-linejoin="miter"
+                                                        stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                                        font-family="none" font-weight="none" font-size="none"
+                                                        text-anchor="none" style="mix-blend-mode: normal">
+                                                        <path d="M0,172v-172h172v172z" fill="none"></path>
+                                                        <g fill="#ffffff">
+                                                            <path
+                                                                d="M155.04367,28.88883c-5.84083,2.75917 -15.781,7.9335 -20.77617,8.9225c-0.1935,0.05017 -0.35117,0.11467 -0.5375,0.16483c-5.8265,-5.74767 -13.81017,-9.3095 -22.64667,-9.3095c-17.80917,0 -32.25,14.44083 -32.25,32.25c0,0.93883 -0.07883,2.666 0,3.58333c-23.06233,0 -39.904,-12.03283 -52.51017,-27.4985c-1.68417,-2.07833 -3.47583,-0.99617 -3.8485,0.48017c-0.8385,3.33967 -1.12517,8.9225 -1.12517,12.90717c0,10.0405 7.8475,19.90183 20.06667,26.015c-2.25033,0.5805 -4.73,0.99617 -7.31,0.99617c-3.03867,0 -6.536,-0.7955 -9.59617,-2.40083c-1.13233,-0.59483 -3.57617,-0.43 -2.85233,2.46533c2.9025,11.60283 16.1465,19.75133 27.97867,22.1235c-2.6875,1.58383 -8.42083,1.26133 -11.05817,1.26133c-0.97467,0 -4.3645,-0.22933 -6.5575,-0.50167c-1.9995,-0.24367 -5.074,0.27233 -2.50117,4.171c5.5255,8.3635 18.02417,13.61667 28.78133,13.81733c-9.90433,7.76867 -26.101,10.60667 -41.61683,10.60667c-3.139,-0.07167 -2.98133,3.5045 -0.4515,4.83033c11.44517,6.00567 30.19317,9.56033 43.58767,9.56033c53.24833,0 83.51317,-40.58483 83.51317,-78.8405c0,-0.61633 -0.01433,-1.90633 -0.03583,-3.2035c0,-0.129 0.03583,-0.25083 0.03583,-0.37983c0,-0.1935 -0.05733,-0.37983 -0.05733,-0.57333c-0.0215,-0.97467 -0.043,-1.88483 -0.0645,-2.35783c4.22117,-3.04583 10.6855,-8.33483 13.9535,-12.384c1.11083,-1.376 0.215,-3.04583 -1.29717,-2.52267c-3.8915,1.3545 -10.621,3.9775 -14.835,4.47917c8.43517,-5.58283 12.60617,-10.44183 16.1895,-15.83833c1.2255,-1.84183 -0.30817,-3.71233 -2.17867,-2.82367z">
+                                                            </path>
+                                                        </g>
+                                                    </g>
+                                                </svg></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---stats-->
+                    <div class="grid grid-cols-12 gap-4">
+                        <div class="hover:scale-105 duration-700 col-span-12 sm:col-span-4">
+                            <div class="p-4 relative bg-white border  shadow-lg rounded-2xl">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-14 w-14 absolute bottom-4 right-3 text-green-400" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
+                                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
+                                </svg>
+                                <div class="flex justify-between items-center">
+                                    <i class="fab fa-behance text-xl text-gray-400"></i>
+                                </div>
+                                <div class="text-2xl text-gray-100 font-medium leading-8 mt-5">
+                                    {{ transactions.length }}
+                                </div>
+                                <div class="text-sm text-gray-500">N°Transaction-client</div>
+                            </div>
+                        </div>
+                        <div class="hover:scale-105 duration-700 col-span-12 sm:col-span-4">
+                            <div class="p-4 relative bg-white border  shadow-lg rounded-2xl">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-14 w-14 absolute bottom-4 right-3 text-blue-500" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path
+                                        d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                                </svg>
+                                <div class="flex justify-between items-center">
+                                    <i class="fab fa-behance text-xl text-gray-400"></i>
+                                </div>
+                                <div class="text-2xl text-gray-100 font-medium leading-8 mt-5">
+                                    99
+                                </div>
+                                <div class="text-sm text-gray-500">Projects</div>
+                            </div>
+                        </div>
+                        <div class="hover:scale-105 duration-700 col-span-12 sm:col-span-4">
+                            <div class="p-4 relative bg-white border  shadow-lg rounded-2xl">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-14 w-14 absolute bottom-4 right-3 text-yellow-300" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <div class="flex justify-between items-center">
+                                    <i class="fab fa-codepen text-xl text-gray-400"></i>
+                                </div>
+                                <div class="text-2xl text-gray-100 font-medium leading-8 mt-5">
+                                    50
+                                </div>
+                                <div class="text-sm text-gray-500">Pen Items</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--confirm modal-->
+
+                    <!--elements-->
+                    <div class="grid gap-4 grid-cols-1 md:grid-cols-2" *ngFor="let transaction of transactions">
+                        <!-- elements 1 -->
                         <div
-                            class="w-full flex-none text-lg text-gray-200 font-bold leading-none"
-                        >
-                            {{ marchand.marchandName }}
+                            class="flex flex-col p-4 bg-white border  shadow-md hover:text-green-500 text-gray-400 hover:shodow-lg rounded-2xl transition ease-in duration-500 transform hover:scale-105 cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center mr-auto">
+                                    <div class="inline-flex w-12 h-12">
+                                        <img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg"
+                                            alt="aji" class="relative w-12 h-12 object-cover rounded-2xl" /><span
+                                            class="animate-ping absolute w-12 h-12 inline-flex border-2 rounded-2xl border-green-400 opacity-75"></span>
+                                        <span></span>
+                                    </div>
+
+                                    <div class="flex flex-col ml-3">
+                                        <p class="underline">Client info</p>
+                                        <div class="font-medium leading-none text-gras-100">
+                                            Nom Clien :{{ transaction.clientName }}
+                                        </div>
+                                        <p class="text-sm text-gray-500 leading-none mt-1">
+                                            {{ transaction.clientEmail }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex-auto text-gray-400 my-1">
-                            <span class="mr-3"> {{ marchand.marchandHost }}</span>
-                        </div>
-                        <div class="flex-auto text-gray-400 my-1">
-                            <span class="mr-3">
-                            {{ marchand.marchandDescrip }}</span
-                            >
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="flex flex-row items-center">
-                    <div class="flex-1 inline-flex items-center ml-2 space-x-2">
-                        <a hre="https://www.behance.net/ajeeshmon" target="_blank"
-                        ><svg
-                            class="cursor-pointer w-5 h-5 p-1 rounded-2xl hover:bg-blue-500 hover:text-white transition ease-in duration-300"
-                            xmlns="http://www.w3.org/2000/svg"
-                            x="0px"
-                            y="0px"
-                            width="48"
-                            height="48"
-                            viewBox="0 0 172 172"
-                            style="fill: #4a90e2"
-                        >
-                            <g
-                            fill="none"
-                            fill-rule="nonzero"
-                            stroke="none"
-                            stroke-width="1"
-                            stroke-linecap="butt"
-                            stroke-linejoin="miter"
-                            stroke-miterlimit="10"
-                            stroke-dasharray=""
-                            stroke-dashoffset="0"
-                            font-family="none"
-                            font-weight="none"
-                            font-size="none"
-                            text-anchor="none"
-                            style="mix-blend-mode: normal"
-                            >
-                            <path d="M0,172v-172h172v172z" fill="none"></path>
-                            <g fill="#ffffff">
-                                <path
-                                d="M71.66667,82.41667c3.58333,0 14.33333,-5.79783 14.33333,-20.13117c0,-22.28475 -19.72983,-26.45217 -41.95367,-26.45217c-4.19967,0 -17.00292,0.00717 -26.12967,0.00358c-5.93758,-0.00358 -10.75,4.81242 -10.75,10.75v78.82975c0,5.93758 4.81242,10.75 10.75,10.75h42.28333c15.83475,0 29.25792,-12.52733 29.38333,-28.36208c0.16842,-21.77233 -17.91667,-25.38792 -17.91667,-25.38792zM28.66667,53.75h25.08333c5.93758,0 10.75,4.81242 10.75,10.75c0,5.93758 -4.81242,10.75 -10.75,10.75h-25.08333zM55.54167,118.25h-26.875v-25.08333h26.875c6.92658,0 12.54167,5.61508 12.54167,12.54167c0,6.92658 -5.61508,12.54167 -12.54167,12.54167zM163.0775,103.91667c2.97058,0 5.375,-2.40442 5.37858,-5.375v0c0,-20.77975 -14.37275,-37.625 -35.83333,-37.625c-19.79075,0 -35.83333,16.84525 -35.83333,37.625c0,20.77975 16.04258,37.625 35.83333,37.625c17.51175,0 27.2405,-8.1915 31.992,-20.22075c0.91733,-2.31842 -0.8815,-4.83033 -3.3755,-4.83033h-8.60358c-1.30792,0 -2.46533,0.74175 -3.14258,1.86333c-3.27517,5.41083 -8.27392,8.85442 -15.00342,8.85442c-10.07633,0 -17.415,-7.65042 -19.2855,-17.91667h38.4205zM132.62275,75.25c7.44258,0 14.65583,5.934 16.69117,14.33333h-33.22825c2.69825,-8.41725 9.08375,-14.33333 16.53708,-14.33333zM148.70833,53.75h-28.66667c-2.967,0 -5.375,-2.408 -5.375,-5.375v0c0,-2.967 2.408,-5.375 5.375,-5.375h28.66667c2.967,0 5.375,2.408 5.375,5.375v0c0,2.967 -2.408,5.375 -5.375,5.375z"
-                                ></path>
-                            </g>
-                            </g></svg
-                        ></a>
-
-                        <a
-                        hre="https://www.linkedin.com/in/ajeeshmon"
-                        target="_blank"
-                        ><svg
-                            class="cursor-pointer w-5 h-5 p-1 rounded-2xl hover:bg-blue-500 hover:text-white transition ease-in duration-300"
-                            xmlns="http://www.w3.org/2000/svg"
-                            x="0px"
-                            y="0px"
-                            width="30"
-                            height="30"
-                            viewBox="0 0 172 172"
-                            style="fill: #ffffff"
-                        >
-                            <g
-                            fill="none"
-                            fill-rule="nonzero"
-                            stroke="none"
-                            stroke-width="1"
-                            stroke-linecap="butt"
-                            stroke-linejoin="miter"
-                            stroke-miterlimit="10"
-                            stroke-dasharray=""
-                            stroke-dashoffset="0"
-                            font-family="none"
-                            font-weight="none"
-                            font-size="none"
-                            text-anchor="none"
-                            style="mix-blend-mode: normal"
-                            >
-                            <path d="M0,172v-172h172v172z" fill="none"></path>
-                            <g fill="#ffffff">
-                                <path
-                                d="M51.6,143.33333h-28.66667v-86h28.66667zM37.2724,45.86667c-7.9292,0 -14.33907,-6.42707 -14.33907,-14.33907c0,-7.912 6.42133,-14.3276 14.33907,-14.3276c7.90053,0 14.3276,6.42707 14.3276,14.3276c0,7.912 -6.42707,14.33907 -14.3276,14.33907zM154.8,143.33333h-27.56013v-41.85333c0,-9.98173 -0.1892,-22.81867 -14.3276,-22.81867c-14.35053,0 -16.55787,10.8704 -16.55787,22.09627v42.57573h-27.5544v-86.06307h26.4536v11.75907h0.37267c3.6808,-6.76533 12.6764,-13.8976 26.0924,-13.8976c27.92133,0 33.08133,17.82493 33.08133,40.99907z"
-                                ></path>
-                            </g>
-                            </g></svg
-                        ></a>
-                        <a
-                        hre="https://twitter.com/ajeemon?lang=en"
-                        target="_blank"
-                        ><svg
-                            class="cursor-pointer w-5 h-5 p-1 rounded-2xl hover:bg-blue-400 hover:text-white transition ease-in duration-300"
-                            xmlns="http://www.w3.org/2000/svg"
-                            x="0px"
-                            y="0px"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 172 172"
-                            style="fill: #ffffff"
-                        >
-                            <g
-                            fill="none"
-                            fill-rule="nonzero"
-                            stroke="none"
-                            stroke-width="1"
-                            stroke-linecap="butt"
-                            stroke-linejoin="miter"
-                            stroke-miterlimit="10"
-                            stroke-dasharray=""
-                            stroke-dashoffset="0"
-                            font-family="none"
-                            font-weight="none"
-                            font-size="none"
-                            text-anchor="none"
-                            style="mix-blend-mode: normal"
-                            >
-                            <path d="M0,172v-172h172v172z" fill="none"></path>
-                            <g fill="#ffffff">
-                                <path
-                                d="M155.04367,28.88883c-5.84083,2.75917 -15.781,7.9335 -20.77617,8.9225c-0.1935,0.05017 -0.35117,0.11467 -0.5375,0.16483c-5.8265,-5.74767 -13.81017,-9.3095 -22.64667,-9.3095c-17.80917,0 -32.25,14.44083 -32.25,32.25c0,0.93883 -0.07883,2.666 0,3.58333c-23.06233,0 -39.904,-12.03283 -52.51017,-27.4985c-1.68417,-2.07833 -3.47583,-0.99617 -3.8485,0.48017c-0.8385,3.33967 -1.12517,8.9225 -1.12517,12.90717c0,10.0405 7.8475,19.90183 20.06667,26.015c-2.25033,0.5805 -4.73,0.99617 -7.31,0.99617c-3.03867,0 -6.536,-0.7955 -9.59617,-2.40083c-1.13233,-0.59483 -3.57617,-0.43 -2.85233,2.46533c2.9025,11.60283 16.1465,19.75133 27.97867,22.1235c-2.6875,1.58383 -8.42083,1.26133 -11.05817,1.26133c-0.97467,0 -4.3645,-0.22933 -6.5575,-0.50167c-1.9995,-0.24367 -5.074,0.27233 -2.50117,4.171c5.5255,8.3635 18.02417,13.61667 28.78133,13.81733c-9.90433,7.76867 -26.101,10.60667 -41.61683,10.60667c-3.139,-0.07167 -2.98133,3.5045 -0.4515,4.83033c11.44517,6.00567 30.19317,9.56033 43.58767,9.56033c53.24833,0 83.51317,-40.58483 83.51317,-78.8405c0,-0.61633 -0.01433,-1.90633 -0.03583,-3.2035c0,-0.129 0.03583,-0.25083 0.03583,-0.37983c0,-0.1935 -0.05733,-0.37983 -0.05733,-0.57333c-0.0215,-0.97467 -0.043,-1.88483 -0.0645,-2.35783c4.22117,-3.04583 10.6855,-8.33483 13.9535,-12.384c1.11083,-1.376 0.215,-3.04583 -1.29717,-2.52267c-3.8915,1.3545 -10.621,3.9775 -14.835,4.47917c8.43517,-5.58283 12.60617,-10.44183 16.1895,-15.83833c1.2255,-1.84183 -0.30817,-3.71233 -2.17867,-2.82367z"
-                                ></path>
-                            </g>
-                            </g></svg
-                        ></a>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-            <!---stats-->
-            <div class="grid grid-cols-12 gap-4">
-            <div class="hover:scale-105 duration-700 col-span-12 sm:col-span-4">
-                <div
-                class="p-4 relative bg-white border border-gray-800 shadow-lg rounded-2xl"
-                >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-14 w-14 absolute bottom-4 right-3 text-green-400"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                >
-                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-                </svg>
-                <div class="flex justify-between items-center">
-                    <i class="fab fa-behance text-xl text-gray-400"></i>
-                </div>
-                <div class="text-2xl text-gray-100 font-medium leading-8 mt-5">
-                    {{ transactions.length }}
-                </div>
-                <div class="text-sm text-gray-500">N°Transaction-client</div>
-                </div>
-            </div>
-            <div class="hover:scale-105 duration-700 col-span-12 sm:col-span-4">
-                <div
-                class="p-4 relative bg-white border border-gray-800 shadow-lg rounded-2xl"
-                >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-14 w-14 absolute bottom-4 right-3 text-blue-500"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                >
-                    <path
-                    d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"
-                    />
-                </svg>
-                <div class="flex justify-between items-center">
-                    <i class="fab fa-behance text-xl text-gray-400"></i>
-                </div>
-                <div class="text-2xl text-gray-100 font-medium leading-8 mt-5">
-                    99
-                </div>
-                <div class="text-sm text-gray-500">Projects</div>
-                </div>
-            </div>
-            <div class="hover:scale-105 duration-700 col-span-12 sm:col-span-4">
-                <div
-                class="p-4 relative bg-white border border-gray-800 shadow-lg rounded-2xl"
-                >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-14 w-14 absolute bottom-4 right-3 text-yellow-300"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                >
-                    <path
-                    fill-rule="evenodd"
-                    d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
-                    clip-rule="evenodd"
-                    />
-                </svg>
-                <div class="flex justify-between items-center">
-                    <i class="fab fa-codepen text-xl text-gray-400"></i>
-                </div>
-                <div class="text-2xl text-gray-100 font-medium leading-8 mt-5">
-                    50
-                </div>
-                <div class="text-sm text-gray-500">Pen Items</div>
-                </div>
-            </div>
-            </div>
-
-            <!--confirm modal-->
-
-            <!--elements-->
-            <div
-            class="grid gap-4 grid-cols-1 md:grid-cols-2"
-            *ngFor="let transaction of transactions"
-            >
-            <!-- elements 1 -->
-            <div
-                class="flex flex-col p-4 bg-white border border-gray-800 shadow-md hover:text-green-500 text-gray-400 hover:shodow-lg rounded-2xl transition ease-in duration-500 transform hover:scale-105 cursor-pointer"
-            >
-                <div class="flex items-center justify-between">
-                <div class="flex items-center mr-auto">
-                    <div class="inline-flex w-12 h-12">
-                    <img
-                        src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg"
-                        alt="aji"
-                        class="relative w-12 h-12 object-cover rounded-2xl"
-                    /><span
-                        class="animate-ping absolute w-12 h-12 inline-flex border-2 rounded-2xl border-green-400 opacity-75"
-                    ></span>
-                    <span></span>
-                    </div>
-
-                    <div class="flex flex-col ml-3">
-                    <p class="underline">Client info</p>
-                    <div class="font-medium leading-none text-gras-100">
-                        Nom Clien :{{ transaction.clientName }}
-                    </div>
-                    <p class="text-sm text-gray-500 leading-none mt-1">
-                        {{ transaction.clientEmail }}
-                    </p>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <!--elements 2-->
-            <div
-                class="flex flex-col p-4 bg-white border border-gray-800 shadow-md hover:text-green-500 text-gray-400 hover:shodow-lg rounded-2xl transition ease-in duration-500 transform hover:scale-105 cursor-pointer"
-            >
-                <div class="flex items-center justify-between">
-                <div class="flex items-center mr-auto">
-                    <div class="inline-flex w-12 h-12">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="{1.5}"
-                        stroke="currentColor"
-                        className="w-6 h-6"
-                    >
-                        <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-                        />
-                    </svg>
-
-                    <span></span>
-                    </div>
-
-                    <div class="flex flex-col ml-3 min-w-0">
-                    <p class="underline">Commande details</p>
-
-                    <div class="font-medium leading-none text-gras-100">
-                        N°: {{ transactions[0]?.orderId }}
-                    </div>
-                    <p class="text-sm text-gray-500 leading-none mt-1 truncate">
-                        Montant:{{ transactions[0]?.amount }}
-                        {{ transactions[0]?.currency }}
-                    </p>
-                    <p class="text-sm leading-none mt-1 truncate text-gray-500">
-                        {{ transactions[0]?.timestamp }}
-                    </p>
-                    </div>
-                </div>
-                <div class="flex flex-col ml-3 min-w-0">
-                    <!--vous pouvais ajouter ici -->
-                </div>
-                </div>
-            </div>
-            <!--elements 2-->
-            <div
-                class="flex flex-col p-4 bg-white border border-gray-800 shadow-md hover:text-green-500 text-gray-400 hover:shodow-lg rounded-2xl transition ease-in duration-500 transform hover:scale-105 cursor-pointer"
-            >
-                <div class="flex items-center justify-between">
-                <div class="flex items-center mr-auto">
-                    <div class="flex flex-col ml-3 min-w-0">
-                    <p class="underline">Etat De transaction</p>
-                    <div class="flex items-center">
-                        <ng-container *ngIf="transaction.status === 'completed'">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="h-8 w-8 text-green-400 ml-2"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                        >
-                            <path
-                            fill-rule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clip-rule="evenodd"
-                            />
-                        </svg>
-                        </ng-container>
-                        <ng-container *ngIf="transaction.status === 'Cancelled'">
-                        <svg
-                            class="animate-ping h-10 w-10 text-red-500"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                        >
-                            <path
-                            fill-rule="evenodd"
-                            d="M14.293 5.293l-9 9a1 1 0 0 0 1.414 1.414l9-9a1 1 0 0 0-1.414-1.414zM5.293 5.293l9 9a1 1 0 1 0 1.414-1.414l-9-9a1 1 0 0 0-1.414 1.414z"
-                            clip-rule="evenodd"
-                            />
-                        </svg>
-                        </ng-container>
-                        <ng-container
-                        *ngIf="transactions[0]?.status === 'Pending'"
-                        >
-                        <svg
-                            class="animate-spin h-8 w-8 text-orange-500"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 20 20"
-                        >
-                            <circle
-                            class="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            ></circle>
-                            <path
-                            class="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A8.001 8.001 0 0112 4v8h8c0 4.418-3.582 8-8 8v-4.586L6 17.291z"
-                            ></path>
-                        </svg>
-                        </ng-container>
-
+                        <!--elements 2-->
                         <div
-                        class="font-medium leading-none ml-1"
-                        [ngClass]="{
+                            class="flex flex-col p-4 bg-white border  shadow-md hover:text-green-500 text-gray-400 hover:shodow-lg rounded-2xl transition ease-in duration-500 transform hover:scale-105 cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center mr-auto">
+                                    <div class="inline-flex w-12 h-12">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            strokeWidth="{1.5}" stroke="currentColor" className="w-6 h-6">
+                                            <path strokeLinecap="round" strokeLinejoin="round"
+                                                d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                                        </svg>
+
+                                        <span></span>
+                                    </div>
+
+                                    <div class="flex flex-col ml-3 min-w-0">
+                                        <p class="underline">Commande details</p>
+
+                                        <div class="font-medium leading-none text-gras-100">
+                                            N°: {{ transactions[0]?.orderId }}
+                                        </div>
+                                        <p class="text-sm text-gray-500 leading-none mt-1 truncate">
+                                            Montant:{{ transactions[0]?.amount }}
+                                            {{ transactions[0]?.currency }}
+                                        </p>
+                                        <p class="text-sm leading-none mt-1 truncate text-gray-500">
+                                            {{ transactions[0]?.timestamp }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col ml-3 min-w-0">
+                                    <!--vous pouvais ajouter ici -->
+                                </div>
+                            </div>
+                        </div>
+                        <!--elements 2-->
+                        <div
+                            class="flex flex-col p-4 bg-white border  shadow-md hover:text-green-500 text-gray-400 hover:shodow-lg rounded-2xl transition ease-in duration-500 transform hover:scale-105 cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center mr-auto">
+                                    <div class="flex flex-col ml-3 min-w-0">
+                                        <p class="underline">Etat De transaction</p>
+                                        <div class="flex items-center">
+                                            <ng-container *ngIf="transaction.status === 'completed'">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="h-8 w-8 text-green-400 ml-2" viewBox="0 0 20 20"
+                                                    fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </ng-container>
+                                            <ng-container *ngIf="transaction.status === 'Cancelled'">
+                                                <svg class="animate-ping h-10 w-10 text-red-500"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                    fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14.293 5.293l-9 9a1 1 0 0 0 1.414 1.414l9-9a1 1 0 0 0-1.414-1.414zM5.293 5.293l9 9a1 1 0 1 0 1.414-1.414l-9-9a1 1 0 0 0-1.414 1.414z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                            </ng-container>
+                                            <ng-container *ngIf="transactions[0]?.status === 'Pending'">
+                                                <svg class="animate-spin h-8 w-8 text-orange-500"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                    <circle class="opacity-25" cx="12" cy="12" r="10"
+                                                        stroke="currentColor" stroke-width="2"></circle>
+                                                    <path class="opacity-75" fill="currentColor"
+                                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A8.001 8.001 0 0112 4v8h8c0 4.418-3.582 8-8 8v-4.586L6 17.291z">
+                                                    </path>
+                                                </svg>
+                                            </ng-container>
+
+                                            <div class="font-medium leading-none ml-1" [ngClass]="{
                 'text-green-500': transactions[0]?.status === 'completed',
                 'text-red-500': transactions[0]?.status === 'Cancelled',
                 'text-yellow-400': transactions[0]?.status === 'Pending' ,
-            }"
-                        >
-                        {{ transaction.status }}
+            }">
+                                                {{ transaction.status }}
+                                            </div>
+                                        </div>
+
+                                        <p class="text-sm leading-none mt-1 truncate text-gray-500">
+                                            <!--Ajouter -->
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col p-4 bg-white border  shadow-md hover:text-green-500 text-gray-400 hover:shodow-lg rounded-2xl transition ease-in duration-500 transform hover:scale-105 cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center mr-auto" *ngFor="let method of paymentMethods">
+                                    <div class="-space-x-5 flex">
+                                        <img src="{{ method.methodIconUrl }}" alt="aji"
+                                            class="relative p-1 w-14 h-14 object-cover rou" />
+                                    </div>
+
+                                    <div class="flex flex-col ml-3 min-w-0">
+                                        <p class="underline">Payment Methode</p>
+                                        <div class="font-medium leading-none text-gras-100">
+                                            {{ method.methodName }}
+                                        </div>
+                                        <p class="text-sm text-gray-500 leading-none mt-1 truncate">
+                                            Jul 066, 2021, 8.25 PM
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col ml-3 min-w-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <p class="text-sm leading-none mt-1 truncate text-gray-500">
-                        <!--Ajouter -->
-                    </p>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div
-                class="flex flex-col p-4 bg-white border border-gray-800 shadow-md hover:text-green-500 text-gray-400 hover:shodow-lg rounded-2xl transition ease-in duration-500 transform hover:scale-105 cursor-pointer"
-            >
-                <div class="flex items-center justify-between">
-                <div
-                    class="flex items-center mr-auto"
-                    *ngFor="let method of paymentMethods"
-                >
-                    <div class="-space-x-5 flex">
-                    <img
-                        src="{{ method.iconUrl }}"
-                        alt="aji"
-                        class="relative p-1 w-12 h-12 object-cover rounded-2xl border-2 border-gray-600 bg-white shadow"
-                    />
-                    </div>
-
-                    <div class="flex flex-col ml-3 min-w-0">
-                    <p class="underline">Payment Methode</p>
-                    <div class="font-medium leading-none text-gras-100">
-                        {{ method.name }}
-                    </div>
-                    <p class="text-sm text-gray-500 leading-none mt-1 truncate">
-                        Jul 066, 2021, 8.25 PM
-                    </p>
-                    </div>
-                </div>
-                <div class="flex flex-col ml-3 min-w-0">
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 ml-2"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 5l7 7-7 7"
-                    ></path>
-                    </svg>
-                </div>
-                </div>
-            </div>
-            </div>
         </div>
-        </div>
-    </div>
     </section>
-</div>
 
 
 
-<app-scroll-to-top></app-scroll-to-top>
+
+    <app-scroll-to-top></app-scroll-to-top>
