@@ -253,16 +253,18 @@ export class TransactionComponent {
   // Navigate to previous page
   goToPreviousPage(): void {
     if (this.currentPage > 1) {
-      this.goToPage(this.currentPage - 1);
+      this.currentPage--;
+      this.paginateTransactions();
     }
   }
 
   // Navigate to next page
   goToNextPage(): void {
     if (this.currentPage < this.totalPages) {
-      this.goToPage(this.currentPage + 1);
-    }
-  }
+      this.currentPage++;
+      this.paginateTransactions();
+      }
+    }
 
   // Paginate transactions based on current page
   paginateTransactions(): void {

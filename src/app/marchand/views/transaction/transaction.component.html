@@ -14,7 +14,8 @@
                     class="mt-2 block w-full rounded-md border px-2 py-2 shadow-sm outline-none focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50"
                     #paymentMethodInput>
                     <option value="" disabled selected hidden class="text-gray-300">Select Payment Method</option>
-                    <option *ngFor="let method of paymentMethods" [value]="method.methodName">{{ method.methodName }}</option>
+                    <option *ngFor="let method of paymentMethods" [value]="method.methodName">{{ method.methodName }}
+                    </option>
                 </select>
             </div>
 
@@ -40,14 +41,14 @@
                 <button type="button"
                     class="mb-6 inline-block w-auto rounded-xl bg-gray-200 px-6 py-2.5 font-medium text-gray-700 outline-none hover:opacity-80 focus:ring hover:shadow-md hover:bg-emerald-450"
                     (click)="resetFilters()">Reset</button>
-    
+
                 <button type="button"
                     class="mb-6 inline-block w-auto rounded-xl bg-emerald-600 px-6 py-2.5 font-medium uppercase leading-normal text-white hover:shadow-md hover:bg-emerald-500"
                     (click)="applyFilters()">Search</button>
             </div>
         </div>
 
-        
+
     </form>
 
 
@@ -98,14 +99,23 @@
                                         transaction.timestamp }}</td>
                                     <td class="px-4 py-4 text-sm font-medium whitespace-nowrap"
                                         [ngStyle]="getStatusStyles(transaction.status)">
-                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2" [ngStyle]="getStatusBadgeStyles(transaction.status)">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <!-- Affiche l'icône pour 'completed' -->
-                                            <path *ngIf="transaction.status === 'completed'" d="M10 3L4.5 8.5L2 6" [ngStyle]="getStatusIconStyles(transaction.status)" />
-                                            <!-- Affiche l'icône pour 'cancelled' -->
-                                            <path *ngIf="transaction.status === 'cancelled'" d="M4.5 7L2 4.5M2 4.5L4.5 2M2 4.5H8C8.53043 4.5 9.03914 4.71071 9.41421 5.08579C9.78929 5.46086 10 5.96957 10 6.5V10" stroke="#991b1b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <!-- Affiche l'icône par défaut -->
-                                            <path *ngIf="transaction.status === 'pending'" d="M4.5 7L2 4.5M2 4.5L4.5 2M2 4.5H8C8.53043 4.5 9.03914 4.71071 9.41421 5.08579C9.78929 5.46086 10 5.96957 10 6.5V10" stroke="#854d0e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2"
+                                            [ngStyle]="getStatusBadgeStyles(transaction.status)">
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <!-- Affiche l'icône pour 'completed' -->
+                                                <path *ngIf="transaction.status === 'completed'" d="M10 3L4.5 8.5L2 6"
+                                                    [ngStyle]="getStatusIconStyles(transaction.status)" />
+                                                <!-- Affiche l'icône pour 'cancelled' -->
+                                                <path *ngIf="transaction.status === 'cancelled'"
+                                                    d="M4.5 7L2 4.5M2 4.5L4.5 2M2 4.5H8C8.53043 4.5 9.03914 4.71071 9.41421 5.08579C9.78929 5.46086 10 5.96957 10 6.5V10"
+                                                    stroke="#991b1b" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <!-- Affiche l'icône par défaut -->
+                                                <path *ngIf="transaction.status === 'pending'"
+                                                    d="M4.5 7L2 4.5M2 4.5L4.5 2M2 4.5H8C8.53043 4.5 9.03914 4.71071 9.41421 5.08579C9.78929 5.46086 10 5.96957 10 6.5V10"
+                                                    stroke="#854d0e" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
                                             </svg>
                                             <h2 class="text-sm font-normal">{{ transaction.status }}</h2>
                                         </div>
@@ -148,7 +158,7 @@
 
     <div class="flex items-center justify-between mt-6">
         <a class="flex items-center px-5 py-2 text-sm text-green-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-green-900 dark:text-green-200 dark:border-green-700 dark:hover:bg-green-800"
-            (click)="onPageChange(currentPage - 1)">
+            (click)="goToPreviousPage()" [class.disabled]="currentPage === 1">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
@@ -162,7 +172,7 @@
             </ng-container>
         </div>
         <a class="flex items-center px-5 py-2 text-sm text-green-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-green-900 dark:text-green-200 dark:border-green-700 dark:hover:bg-green-800"
-            (click)="onPageChange(currentPage + 1)">
+            (click)="goToNextPage()" [class.disabled]="currentPage === totalPages">
             <span>Next</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
