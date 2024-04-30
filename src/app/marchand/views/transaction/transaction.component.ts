@@ -287,4 +287,20 @@ export class TransactionComponent {
       this.detailedDescription.nativeElement.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+
+  //select input color text
+
+  selectedOption: string = '';
+
+  handleChange(event: any) {
+  this.selectedOption = event.target.value;
+  }
+
+  selectedOption1: string = '';
+
+  handleChange1(event: any) {
+  this.selectedOption1 = event.target.value;
+}
+
 }
