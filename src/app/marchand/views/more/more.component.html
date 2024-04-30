@@ -169,10 +169,8 @@
                             </div>
                         </div>
                         <div class="hover:scale-105 duration-700 col-span-12 sm:col-span-4" >
-                            <div class="p-4 relative bg-white border  shadow-lg rounded-2xl" *ngFor="let transaction of transactions">
+                            <div class="p-3.5 relative bg-white border  shadow-lg rounded-2xl" *ngFor="let transaction of transactions">
                                 
-                                
-
                                 <ng-container *ngIf="transaction.status === 'completed'">
                                     <svg class="h-14 w-14 absolute bottom-4 right-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="complete">
                                         <path d="M28.46 42.29a2 2 0 0 1-1.46-.58l-9.5-9.5a2 2 0 0 1 2.83-2.83l8.09 8.09 15.21-15.18a2 2 0 1 1 2.83 2.83L29.87 41.71a2 2 0 0 1-1.41.58Z" fill="#52cc99" class="color000000 svgShape"></path><path d="M32 60a28 28 0 1 1 28-29.53 2 2 0 0 1-1.88 2.11A2 2 0 0 1 56 30.69a24 24 0 1 0-16.36 24.06 23.86 23.86 0 0 0 13.94-12.24 2 2 0 1 1 3.59 1.75 27.78 27.78 0 0 1-16.26 14.29A28.14 28.14 0 0 1 32 60Z" fill="#52cc99" class="color000000 svgShape"></path></svg>                                            </ng-container>
@@ -184,20 +182,18 @@
                                     <svg class="h-14 w-14 absolute bottom-4 right-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Pending">
                                         <g fill="#f2cd00" class="color000000 svgShape"><path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" fill="#f2cd00" class="color000000 svgShape"></path><path d="M12,6a1,1,0,0,0-1,1v4.59L8.29,14.29a1,1,0,1,0,1.41,1.41l3-3A1,1,0,0,0,13,12V7A1,1,0,0,0,12,6Z" fill="#f2cd00" class="color000000 svgShape"></path></g></svg>                                            </ng-container>
 
+                                <div class="px-2.5 pb-4">
+                                    <div class="underline pb-3 font-medium leading-none  text-gray-400">
+                                        Etat de transaction : 
+                                    </div>
+                                    
+                                    <div class="text-lg  text-gray-500" [ngClass]="{
+                                        'text-green-500': transactions[0]?.status === 'completed',
+                                        'text-red-500': transactions[0]?.status === 'cancelled',
+                                        'text-yellow-400': transactions[0]?.status === 'pending' ,
+                                    }">{{ transaction.status }}</div>
+                                </div>
 
-
-                                <div class="flex justify-between items-center">
-                                    <i class="fab fa-codepen text-xl text-gray-400"></i>
-                                </div>
-                                <div class="text-lg underline text-gray-400 font-medium leading-8 mt-5">
-                                    Etat de transaction :
-                                </div>
-                                <div class="text-sm text-gray-500" [ngClass]="{
-                                    'text-green-500': transactions[0]?.status === 'completed',
-                                    'text-red-500': transactions[0]?.status === 'Cancelled',
-                                    'text-yellow-400': transactions[0]?.status === 'Pending' ,
-                                }">{{ transaction.status }}
-                                </div>
                                 <!-- <div class="flex items-center justify-between">
                                     <div class="flex items-center mr-auto" *ngFor="let transaction of transactions">
                                         <div class="flex flex-col ml-3 min-w-0">
