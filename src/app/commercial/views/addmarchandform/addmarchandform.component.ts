@@ -9,21 +9,7 @@ export class AddmarchandformComponent {
 
 
 
-  previewImageUrl: string = 'https://lh3.googleusercontent.com/a-/AFdZucpC_6WFBIfaAbPHBwGM9z8SxyM1oV4wB4Ngwp_UyQ=s96-c';
 
-  loadFile(event: any) {
-    const input = event.target;
-    const file = input.files[0];
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      this.previewImageUrl = reader.result as string;
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  }
 
   //////////////photo 
   uploadOption: boolean = true;
@@ -45,6 +31,22 @@ export class AddmarchandformComponent {
   onFileSelected(event: any) {
     const file = event.target.files[0];
     // Do something with the selected file
+  }
+
+  previewImageUrl: string = 'https://www.pngkey.com/png/full/115-1150152_default-profile-picture-avatar-png-green.png';
+
+  loadFile(event: any) {
+    const input = event.target;
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      this.previewImageUrl = reader.result as string;
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
 
 }

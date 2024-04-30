@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^17.0.7",
     "@angular/router": "^17.0.7",
     "chart.js": "^4.4.2",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "ngx-pagination": "^6.0.3",
     "notyf": "^3.10.0",
     "rxjs": "~7.8.0",

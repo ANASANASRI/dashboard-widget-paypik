@@ -9,12 +9,12 @@
     </a>
 </nav>
 
-<div [@pageTransition]>
+
     <section class="grid grid-cols-1 mb-4 xl:grid-cols-1 2xl:grid-cols-1 gap-5">
         <!-- component -->
-        <div class="flex flex-col items-center justify-center bg-slate-100">
+        <div  class="flex flex-col items-center justify-center bg-slate-100">
             <!-- dark theme -->
-            <div class="container m-4">
+            <div #content  class="container m-4">
                 <div class="max-w-screen-lg w-full mx-auto grid gap-4 grid-cols-1">
                     <!-- alert -->
                     <div
@@ -23,7 +23,7 @@
                         <img class="w-28 mr-5"
                             src="assets/images/logo/my-logo.png"
                             alt="pay pik" />
-                        <p>L'avenir des paiements en ligne.<a href="https://tailwindcomponents.com/u/aji"
+                        <p>L'avenir des paiements en ligne.<a href="https://www.amanpay.net/index.html"
                                 class="underline hover:underline-none ml-1 text-green-300"
                                 target="_blank">Pay Pik</a></p><button type="button"
                             class="ml-auto text-xs  font-medium tracking-wider  text-gray-400 hover:text-green-400 transition ease-in duration-300"><svg
@@ -135,7 +135,7 @@
                                 <div class="flex justify-between items-center">
                                     <i class="fab fa-behance text-xl text-gray-400"></i>
                                 </div>
-                                <div class="text-2xl text-gray-100 font-medium leading-8 mt-5">
+                                <div class="text-2xl text-gray-200 font-medium leading-8 mt-5">
                                     {{ transactions.length }}
                                 </div>
                                 <div class="text-sm text-gray-500">N°Transaction-client</div>
@@ -152,7 +152,7 @@
                                 <div class="flex justify-between items-center">
                                     <i class="fab fa-behance text-xl text-gray-400"></i>
                                 </div>
-                                <div class="text-2xl text-gray-100 font-medium leading-8 mt-5">
+                                <div class="text-2xl text-gray-200 font-medium leading-8 mt-5">
                                     99
                                 </div>
                                 <div class="text-sm text-gray-500">Projects</div>
@@ -170,7 +170,7 @@
                                 <div class="flex justify-between items-center">
                                     <i class="fab fa-codepen text-xl text-gray-400"></i>
                                 </div>
-                                <div class="text-2xl text-gray-100 font-medium leading-8 mt-5">
+                                <div class="text-2xl text-gray-200 font-medium leading-8 mt-5">
                                     50
                                 </div>
                                 <div class="text-sm text-gray-500">Pen Items</div>
@@ -188,9 +188,8 @@
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center mr-auto">
                                     <div class="inline-flex w-12 h-12">
-                                        <img src="https://www.pngkey.com/png/full/115-1150152_default-profile-picture-avatar-png-green.png"
-                                            alt="aji" class="relative w-12 h-12 object-cover rounded-2xl" /><span
-                                            class="animate-ping absolute w-12 h-12 inline-flex border-2 rounded-full border-green-400 opacity-75"></span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="Profile"><circle cx="16" cy="8.5" r="5.5" fill="#48ca69" class="color5f7cf9 svgShape"></circle><path fill="#8cffa9" d="M16 15a9 9 0 0 0-9 9v4a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-4a9 9 0 0 0-9-9Z" class="color8c9eff svgShape"></path><path fill="#40ed6c" d="M16 3v11a5.5 5.5 0 0 0 0-11Z" class="color4062ed svgShape"></path><path fill="#48ca69" d="M16 15v14h8a1 1 0 0 0 1-1v-4a9 9 0 0 0-9-9Z" class="color5f7cf9 svgShaperelative w-12 h-12 object-cover rounded-2xl"></path></svg>
+                                            <span class="animate-ping absolute w-12 h-12 inline-flex border-2 rounded-full border-green-400 opacity-75"></span>
                                         <span></span>
                                     </div>
 
@@ -222,23 +221,21 @@
                                         <span></span>
                                     </div>
 
-                                    <div class="flex flex-col ml-3 min-w-0">
+                                    <div class="flex flex-col ml-3">
                                         <p class="underline">Commande details</p>
 
                                         <div class="font-medium leading-none text-gras-100">
                                             N°: {{ transactions[0]?.orderId }}
                                         </div>
-                                        <p class="text-sm text-gray-500 leading-none mt-1 truncate">
+                                        <span class="p-1"></span>
+                                        <p class="text-sm h-10 text-gray-500 leading-none truncate mb-1">
                                             Montant:{{ transactions[0]?.amount }}
                                             {{ transactions[0]?.currency }}
                                         </p>
-                                        <p class="text-sm leading-none mt-1 truncate text-gray-500">
+                                        <p class="text-sm h-10 leading-none truncate text-gray-500">
                                             {{ transactions[0]?.timestamp }}
                                         </p>
                                     </div>
-                                </div>
-                                <div class="flex flex-col ml-3 min-w-0">
-                                    <!--vous pouvais ajouter ici -->
                                 </div>
                             </div>
                         </div>
@@ -256,15 +253,13 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" id="Cancel"><path fill="url(#paint0_linear_22_2479)" d="M8 14C8 10.6863 10.6863 8 14 8H50C53.3137 8 56 10.6863 56 14V50C56 53.3137 53.3137 56 50 56H14C10.6863 56 8 53.3137 8 50V14Z"></path><path fill="url(#paint1_linear_22_2479)" d="M12 16C12 13.7909 13.7909 12 16 12H48C50.2091 12 52 13.7909 52 16V48C52 50.2091 50.2091 52 48 52H16C13.7909 52 12 50.2091 12 48V16Z"></path><path fill="url(#paint2_linear_22_2479)" d="M25.364 21.1213C24.1924 19.9497 22.2929 19.9497 21.1214 21.1213V21.1213C19.9498 22.2929 19.9498 24.1924 21.1214 25.364L39.5061 43.7487C40.6777 44.9203 42.5772 44.9203 43.7488 43.7487V43.7487C44.9203 42.5772 44.9203 40.6777 43.7488 39.5061L25.364 21.1213Z"></path><path fill="url(#paint3_linear_22_2479)" d="M39.5061 21.1213C40.6777 19.9497 42.5772 19.9497 43.7488 21.1213V21.1213C44.9203 22.2929 44.9203 24.1924 43.7488 25.364L25.364 43.7487C24.1924 44.9203 22.2929 44.9203 21.1213 43.7487V43.7487C19.9498 42.5772 19.9498 40.6777 21.1213 39.5061L39.5061 21.1213Z"></path><defs><linearGradient id="paint0_linear_22_2479" x1="32" x2="32" y1="8" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#e30c0c" stop-opacity=".5" class="stopColor0047ff svgShape"></stop><stop offset="1" stop-color="#e30c0c" stop-opacity="0" class="stopColor0047ff svgShape"></stop></linearGradient><linearGradient id="paint1_linear_22_2479" x1="32" x2="32" y1="12" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#e30c0c" stop-opacity=".5" class="stopColor0047ff svgShape"></stop><stop offset="1" stop-color="#e30c0c" stop-opacity="0" class="stopColor0047ff svgShape"></stop></linearGradient><linearGradient id="paint2_linear_22_2479" x1="21.371" x2="43.998" y1="20.872" y2="43.499" gradientUnits="userSpaceOnUse"><stop stop-color="#e30c0c" stop-opacity=".8" class="stopColor0047ff svgShape"></stop><stop offset="1" stop-color="#e30c0c" stop-opacity="0" class="stopColor0047ff svgShape"></stop></linearGradient><linearGradient id="paint3_linear_22_2479" x1="43.499" x2="20.872" y1="20.872" y2="43.499" gradientUnits="userSpaceOnUse"><stop stop-color="#e30c0c" stop-opacity=".8" class="stopColor0047ff svgShape"></stop><stop offset="1" stop-color="#e30c0c" stop-opacity="0" class="stopColor0047ff svgShape"></stop></linearGradient></defs></svg>
                                             </ng-container>
                                             <ng-container *ngIf="transactions[0]?.status === 'pending'">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" id="pending"><path fill="#f5eb2f" fill-rule="evenodd" d="M1.25 7C1.25 3.82436 3.82436 1.25 7 1.25H17C20.1756 1.25 22.75 3.82436 22.75 7V17C22.75 20.1756 20.1756 22.75 17 22.75H11.5C11.0858 22.75 10.75 22.4142 10.75 22C10.75 21.5858 11.0858 21.25 11.5 21.25H17C19.3472 21.25 21.25 19.3472 21.25 17V7C21.25 4.65279 19.3472 2.75 17 2.75H7C4.65279 2.75 2.75 4.65279 2.75 7V17C2.75 19.3472 4.65279 21.25 7 21.25H7.5C7.91421 21.25 8.25 21.5858 8.25 22C8.25 22.4142 7.91421 22.75 7.5 22.75H7C3.82436 22.75 1.25 20.1756 1.25 17V7Z" clip-rule="evenodd" class="color000000 svgShape"></path><path fill="#f5eb2f" fill-rule="evenodd" d="M12 4.25C12.4142 4.25 12.75 4.58579 12.75 5V11.25H19C19.4142 11.25 19.75 11.5858 19.75 12C19.75 12.4142 19.4142 12.75 19 12.75H12C11.5858 12.75 11.25 12.4142 11.25 12V5C11.25 4.58579 11.5858 4.25 12 4.25Z" clip-rule="evenodd" class="color000000 svgShape"></path></svg>
-                                            </ng-container>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Pending"><g fill="#f2cd00" class="color000000 svgShape"><path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" fill="#f2cd00" class="color000000 svgShape"></path><path d="M12,6a1,1,0,0,0-1,1v4.59L8.29,14.29a1,1,0,1,0,1.41,1.41l3-3A1,1,0,0,0,13,12V7A1,1,0,0,0,12,6Z" fill="#f2cd00" class="color000000 svgShape"></path></g></svg>                                            </ng-container>
 
                                             <div class="font-medium leading-none ml-1" [ngClass]="{
                                     'text-green-500': transactions[0]?.status === 'completed',
                                     'text-red-500': transactions[0]?.status === 'Cancelled',
                                     'text-yellow-400': transactions[0]?.status === 'Pending' ,
-                                }">
-                                                                    {{ transaction.status }}
+                                }">{{ transaction.status }}
                                             </div>
                                         </div>
 
@@ -289,7 +284,7 @@
                                         <div class="font-medium leading-none text-gras-100">
                                             {{ method.methodName }}
                                         </div>
-                                        <p class="text-sm text-gray-500 leading-none mt-1 truncate">
+                                        <p class="text-sm h-10 text-gray-500 leading-none mt-1 truncate">
                                             Jul 066, 2021, 8.25 PM
                                         </p>
                                     </div>
@@ -308,9 +303,36 @@
             </div>
 
         </div>
+
     </section>
 
+    <div class="flex justify-end">
+            <span *ngIf="loading; else notLoading">
+                <button 
+                        type="button" 
+                        class="px-4 py-3 bg-emerald-500 rounded-md text-white outline-none  shadow-lg transform active:scale-x-75 transition-transform mx-5 flex"
+                    >
+                    <svg width="20" height="20" fill="currentColor" class="mr-2 animate-spin" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z">
+                        </path>
+                    </svg>
+                    <span class="ml-2">Télécharger PDF</span>
+                </button>
+            </span>
+            <ng-template #notLoading>
+                <button 
+                    (click)="startLoading()"
+                    type="button" 
+                    class="px-4 py-3 bg-emerald-500 rounded-md text-white outline-none  shadow-lg transform active:scale-x-75 transition-transform mx-5 flex"
+                >
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
 
+                    <span class="ml-2">Télécharger PDF</span>
+                </button>
+            </ng-template>
+    </div>
+    
 
-
-    <app-scroll-to-top></app-scroll-to-top>
+<app-scroll-to-top></app-scroll-to-top>
