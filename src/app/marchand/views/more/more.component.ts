@@ -119,7 +119,7 @@ export class MoreComponent implements OnInit {
       const imgHeight = canvas.height * imgWidth / canvas.width;
   
       // Define padding
-      const paddingTop = 70; // Adjust as needed
+      const paddingTop = 80; // Adjust as needed
   
       // Add header image
       const headerImg = new Image();
