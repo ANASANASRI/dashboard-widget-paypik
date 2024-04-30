@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-addmarchandform',
@@ -33,7 +34,7 @@ export class AddmarchandformComponent {
     // Do something with the selected file
   }
 
-  previewImageUrl: string = 'https://www.pngkey.com/png/full/115-1150152_default-profile-picture-avatar-png-green.png';
+  previewImageUrl: string = 'https://i.ibb.co/16Kjq1h/sondage-icons-4.png';
 
   loadFile(event: any) {
     const input = event.target;
@@ -49,4 +50,28 @@ export class AddmarchandformComponent {
     }
   }
 
+  /////////// cancel form
+  @ViewChild('myForm') myForm!: NgForm;
+
+  constructor() {
+    console.log('Constructor - myForm:', this.myForm);
+  }
+
+  ngAfterViewInit() {
+    console.log('ngAfterViewInit - myForm:', this.myForm);
+  }
+
+  cancelForm() {
+    console.log('cancelForm called');
+    if (this.myForm) {
+      console.log('Resetting form');
+      this.myForm.resetForm();
+    } else {
+      console.log('myForm is undefined');
+    }
+  }
+
+  ///////////////// error 
+
+  
 }

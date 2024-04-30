@@ -32,8 +32,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SettingsModule,
     ElementsModule,
     ScrollToTopComponent,
-    ReactiveFormsModule,
-
-  ]
+    ReactiveFormsModule
+    ],
+  
 })
 export class CommercialModule { }

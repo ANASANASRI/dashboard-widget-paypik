@@ -5,31 +5,23 @@
                 <div class="card-title">
                     <h3 class="text-xl font-bold leading-none">Marchand form</h3>
                 </div>
+                
 
-
-                <form>
+                <form #myForm="ngForm">
                     <div class="space-y-12">
                         <div class="">
 
                             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                            <div class="sm:col-span-4">
+
+                            <div class="sm:col-span-3">
                                 <label for="username" class="block text-sm font-medium leading-6 text-gray-700">Nom entité </label>
-                                <div class="mt-2">
-                                <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-emerald-600 sm:max-w-md">
-                                    <input type="text" name="username" id="username" autocomplete="username" class="pl-3 block flex-1 border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="(entreprise ou auto-entrepreneur)">
-                                </div>
+                                <div class="mt-2 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300  sm:max-w-md">
+                                    <input type="text" name="username" id="username" autocomplete="username" class="rounded-md pl-3 block flex-1 border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-1 focus:ring-emerald-600 focus:outline-none  sm:text-sm sm:leading-6" placeholder="(entreprise ou auto-entrepreneur)" required />
                                 </div>
                             </div>
 
-                            <div class="col-span-full">
-                                <label for="about" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
-                                <div class="mt-2">
-                                <textarea id="about" name="about" rows="3" class="pl-3 block w-full rounded-md  py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 hover:ring-emerald-600 focus-visible:ring-emerald-600 " placeholder="Description des produits ou serices vendus."></textarea>
-                                </div>
-                            </div>
-
-                            <div class="col-span-full">
-                                <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Photo</label>
+                            <div class="sm:col-span-3">
+                                <label for="photo" class="block text-sm font-medium leading-6 text-gray-700">Photo</label>
                                 <div class="mt-2 flex items-center gap-x-3">
                                     <input type="file" (change)="onFileSelected($event)" accept="*" style="display:none;">
                                     <div class="shrink-0">
@@ -37,7 +29,7 @@
                                     </div>
                                     <div *ngIf="uploadOption">
                                         <label class="block">
-                                            <span class="sr-only">Choose profile photo</span>
+                                            <span class="sr-only"></span>
                                             <input type="file" (change)="loadFile($event)" class="block w-full text-sm text-slate-500
                                                 file:mr-4 file:py-2 file:px-4
                                                 file:rounded-full file:border-0
@@ -48,11 +40,21 @@
                                         </label>
                                     </div>
                                     <div *ngIf="!uploadOption">
-                                        <input type="url" placeholder="Entrer L'URL d'image" [(ngModel)]="imageUrl" class="rounded-md px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                        <input type="url" placeholder="Entrer L'URL d'image" [(ngModel)]="imageUrl" class="rounded-md px-2.5 py-1.5 text-sm focus:ring-emerald-600 font-semibold text-gray-900 shadow-sm ring-1  focus:outline-none ring-inset ring-gray-300 hover:bg-gray-50">
                                     </div>
-                                    <button type="button" (click)="toggleOption()" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Autre moyen</button>
+                                    <button type="button" (click)="toggleOption()" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none hover:bg-gray-50">Autre moyen</button>
                                 </div>
                             </div>
+                            
+
+                            <div class="col-span-full">
+                                <label for="about" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+                                <div class="mt-2">
+                                <textarea id="about" name="about" rows="3" class="rounded-md pl-3 block w-full  py-1.5  shadow-sm  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-emerald-600 focus:outline-none " placeholder="Description des produits ou serices vendus."></textarea>
+                                </div>
+                            </div>
+
+                            
                             
                             
                             </div>
@@ -62,84 +64,88 @@
 
 
                             <div class=" grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                            <div class="sm:col-span-3">
-                                <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
+                            <div class="sm:col-span-3 ">
+                                <label for="rc" class="block text-sm font-medium leading-6 text-gray-900">RC ou IF (Α.Ε.)</label>
                                 <div class="mt-2">
-                                <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="rc" id="rc" autocomplete="given-rc" class="focus:outline-none block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
                             <div class="sm:col-span-3">
-                                <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
+                                <label for="addressesiege" class="block text-sm font-medium leading-6 text-gray-900">Addresse du siège social</label>
                                 <div class="mt-2">
-                                <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="addressesiege" id="addressesiege" autocomplete="addressesiege" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
                             <div class="sm:col-span-3">
-                                <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+                                <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Addresse e-mail</label>
                                 <div class="mt-2">
-                                <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                                <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
                             <div class="sm:col-span-3">
-                                <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
+                                <label for="telephone" class="block text-sm font-medium leading-6 text-gray-900">Téléphone</label>
                                 <div class="mt-2">
-                                <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                                <input type="tel" name="telephone" id="telephone" autocomplete="telephone" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
                             <div class="sm:col-span-3">
-                                <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
+                                <label for="dg-name" class="block text-sm font-medium leading-6 text-gray-900">Nom du DG ou gérant</label>
                                 <div class="mt-2">
-                                <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="dg-name" id="dg-name" autocomplete="dg-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
-                            
-
-                            <div class="col-span-full">
-                                <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">Street address</label>
+                            <div class="sm:col-span-3">
+                                <label for="web-host" class="block text-sm font-medium leading-6 text-gray-900">Adresse site web</label>
                                 <div class="mt-2">
-                                <input type="text" name="street-address" id="street-address" autocomplete="street-address" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="web-host" id="web-host" autocomplete="web-host" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
                             <div class="sm:col-span-2 sm:col-start-1">
-                                <label for="city" class="block text-sm font-medium leading-6 text-gray-900">City</label>
+                                <label for="activite" class="block text-sm font-medium leading-6 text-gray-900">Type de l'activité</label>
                                 <div class="mt-2">
-                                <input type="text" name="city" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="activite" id="activite" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
 
                             <div class="sm:col-span-2">
-                                <label for="region" class="block text-sm font-medium leading-6 text-gray-900">State / Province</label>
+                                <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Années d'activité</label>
                                 <div class="mt-2">
-                                <input type="text" name="region" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                                <select id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                    <option value="">* Années d'activité</option>
+                                    <option value="-1">Moins &lt; 1 an</option>
+                                    <option value="1-5">1 an à 5 ans</option>
+                                    <option value="+5">Plus &gt; 5 ans</option>
+                                </select>
                                 </div>
                             </div>
 
                             <div class="sm:col-span-2">
-                                <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Country</label>
+                                <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Forme juridique</label>
                                 <div class="mt-2">
-                                <select id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                    <option>United States</option>
-                                    <option>Canada</option>
-                                    <option>Mexico</option>
+                                <select id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                    <option value="">* Forme juridique</option>
+                                    <option value="entreprise">Entreprise</option>
+                                    <option value="auto-entrepreneur">Auto-Entrepreneur</option>
+                                    <option value="association">Association</option>
                                 </select>
                                 </div>
                             </div>
                             </div>
                         </div>
                     </div>
-                
-                    <div class="mt-6 flex items-center justify-end gap-x-6">
-                    <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
-                    <button type="submit" class="rounded-md bg-emerald-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600">Save</button>
-                    </div>
-                </form>
+                    
+    <!-- Cancel button -->
+    <button type="button" (click)="cancelForm()" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
 
+    <!-- Save button -->
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+</form>
             </div>
     </section>
 
