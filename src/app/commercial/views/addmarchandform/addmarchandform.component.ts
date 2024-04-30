@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-addmarchandform',
@@ -8,7 +8,13 @@ import { NgForm } from '@angular/forms';
 })
 export class AddmarchandformComponent {
 
+  constructor(private formBuilder: FormBuilder) {
+    console.log('Constructor - myForm:', this.myForm);
+  }
 
+  ngAfterViewInit() {
+    console.log('ngAfterViewInit - myForm:', this.myForm);
+  }
 
 
 
@@ -51,27 +57,34 @@ export class AddmarchandformComponent {
   }
 
   /////////// cancel form
-  @ViewChild('myForm') myForm!: NgForm;
 
-  constructor() {
-    console.log('Constructor - myForm:', this.myForm);
-  }
-
-  ngAfterViewInit() {
-    console.log('ngAfterViewInit - myForm:', this.myForm);
-  }
-
-  cancelForm() {
-    console.log('cancelForm called');
-    if (this.myForm) {
-      console.log('Resetting form');
-      this.myForm.resetForm();
-    } else {
-      console.log('myForm is undefined');
-    }
-  }
 
   ///////////////// error 
 
-  
+  myForm!: FormGroup;
+
+
+    ngOnInit(): void {
+        this.myForm = this.formBuilder.group({
+            username: ['', Validators.required],
+            // Define other form controls here with their validators
+        });
+    }
+
+    submitForm(): void {
+        if (this.myForm.valid) {
+            // Handle form submission here
+        }
+    }
+
+    cancelForm(): void {
+        // Handle cancel action here
+        console.log('cancelForm called');
+        if (this.myForm) {
+          console.log('Resetting form');
+          
+        } else {
+          console.log('myForm is undefined');
+        }
+    }
 }
