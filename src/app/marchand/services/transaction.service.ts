@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { Transaction } from '../model/transaction.model';
 import { environment } from 'src/environments/environment.development';
 
@@ -33,6 +33,13 @@ export class TransactionService {
 
   findByName(name: string): Observable< Array<Transaction>> {
     return this.http.get< Array<Transaction>>(environment.apiUrl + "/transaction/findByName/"+ name)
+  }
+
+  //////////////
+
+  //le nombre de transaction a fait le client dans un merchand
+  getNumberOfTransactionsByClientAndMarchand(marchandId: number, clientName: string): Observable<number> {
+    return this.http.get<number>(environment.apiUrl+'/transaction/NumberOfTransactionsByClientAndMarchantd/'+marchandId+'/'+clientName)
   }
 
 }

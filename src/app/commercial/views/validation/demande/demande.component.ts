@@ -31,7 +31,6 @@ export class DemandeComponent implements OnInit {
       this.demandeId = params['demandeId'];
       this.getDemande(this.demandeId);
     });
-    
   }
 
   getDemande(demandeId: number) {
@@ -79,14 +78,14 @@ export class DemandeComponent implements OnInit {
     
 ////////////////////
 
-modalOpen: boolean = false;
-rejectOpen: boolean = false;
+  modalOpen: boolean = false;
+  rejectOpen: boolean = false;
 
-toggleAccept() {
-    this.modalOpen = !this.modalOpen;
-}
-toggleReject() {
-  this.rejectOpen = !this.rejectOpen;
-}
+  toggleAccept() {
+      this.modalOpen = !this.modalOpen;
+  }
+  toggleReject() {
+    this.rejectOpen = !this.rejectOpen;
+  }
   
 }

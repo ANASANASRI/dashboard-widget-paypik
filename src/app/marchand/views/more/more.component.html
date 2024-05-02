@@ -15,7 +15,7 @@
         <div  class="flex flex-col items-center justify-center bg-slate-100">
             <!-- dark theme -->
             <div #content  class="container m-4">
-                <div class="max-w-screen-lg w-full mx-auto grid gap-4 grid-cols-1">
+                <div class="max-w-screen-lg w-full mx-auto grid gap-4 grid-cols-1"  *ngFor="let marchand of marchands">
                     <!-- alert -->
                     <div
                     class="flex flex-col justify-center p-4 bg-white   shadow-md hover:shodow-lg rounded-2xl">
@@ -40,7 +40,7 @@
                         <div class="bg-white border  shadow-lg rounded-2xl p-4">
                             <div class="flex-none sm:flex">
                                 <div class="relative h-32 w-32 sm:mb-0 mb-3">
-                                    <img src="{{ marchands[0]?.marchandLogoUrl }}" alt="aji"
+                                    <img src="{{ marchand.marchandLogoUrl }}" alt="aji"
                                         class="w-32 h-32 object-cover rounded-2xl" />
                                 </div>
                                 <div class="flex-auto sm:ml-5 justify-evenly">
@@ -136,24 +136,24 @@
                                     <i class="fab fa-behance text-xl text-gray-400"></i>
                                 </div>
                                 <div class="text-2xl text-gray-200 font-medium leading-8 mt-5">
-                                    {{ transactions.length }}
+                                    {{numberOfTransactions}}
                                 </div>
-                                <div class="text-sm text-gray-500">N°Transaction-client</div>
+                                <div class="text-sm text-gray-500">Transactions réalisées par ce client</div>
                             </div>
                         </div>
                         <div class="hover:scale-105 duration-700 col-span-12 sm:col-span-4">
                             <div class="p-4 flex flex-row justify-between relative bg-white border  shadow-lg rounded-2xl">
-                                <div>
+                                <div *ngFor="let transaction of transactions">
                                     <div class="underline pb-3 font-medium leading-none  text-gray-400">
-                                        N° Commande:&ensp;{{ transactions[0]?.orderId }}
+                                        N° Commande:&ensp;{{ transaction.orderId }}
                                     </div>
                                     <span class=""></span>
                                     <p class="text-sm  text-gray-500">
-                                        Montant:&ensp;{{ transactions[0]?.amount }}
-                                        {{ transactions[0]?.currency }}
+                                        Montant:&ensp;{{ transaction.amount }}
+                                        {{ transaction.currency }}
                                     </p>
                                     <p class="text-sm  text-gray-500">
-                                        {{ transactions[0]?.timestamp }}
+                                        {{ transaction.timestamp }}
                                     </p>
                                 </div>
                                 <div class="mt-5 w-12 h-12">
@@ -175,10 +175,8 @@
                                     <svg class="h-14 w-14 absolute bottom-4 right-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="complete">
                                         <path d="M28.46 42.29a2 2 0 0 1-1.46-.58l-9.5-9.5a2 2 0 0 1 2.83-2.83l8.09 8.09 15.21-15.18a2 2 0 1 1 2.83 2.83L29.87 41.71a2 2 0 0 1-1.41.58Z" fill="#52cc99" class="color000000 svgShape"></path><path d="M32 60a28 28 0 1 1 28-29.53 2 2 0 0 1-1.88 2.11A2 2 0 0 1 56 30.69a24 24 0 1 0-16.36 24.06 23.86 23.86 0 0 0 13.94-12.24 2 2 0 1 1 3.59 1.75 27.78 27.78 0 0 1-16.26 14.29A28.14 28.14 0 0 1 32 60Z" fill="#52cc99" class="color000000 svgShape"></path></svg>                                            </ng-container>
                                 <ng-container *ngIf="transaction.status === 'cancelled'">
-                                    <svg class="h-14 w-14 absolute bottom-4 right-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" id="Cancel">
-                                        <path fill="url(#paint0_linear_22_2479)" d="M8 14C8 10.6863 10.6863 8 14 8H50C53.3137 8 56 10.6863 56 14V50C56 53.3137 53.3137 56 50 56H14C10.6863 56 8 53.3137 8 50V14Z"></path><path fill="url(#paint1_linear_22_2479)" d="M12 16C12 13.7909 13.7909 12 16 12H48C50.2091 12 52 13.7909 52 16V48C52 50.2091 50.2091 52 48 52H16C13.7909 52 12 50.2091 12 48V16Z"></path><path fill="url(#paint2_linear_22_2479)" d="M25.364 21.1213C24.1924 19.9497 22.2929 19.9497 21.1214 21.1213V21.1213C19.9498 22.2929 19.9498 24.1924 21.1214 25.364L39.5061 43.7487C40.6777 44.9203 42.5772 44.9203 43.7488 43.7487V43.7487C44.9203 42.5772 44.9203 40.6777 43.7488 39.5061L25.364 21.1213Z"></path><path fill="url(#paint3_linear_22_2479)" d="M39.5061 21.1213C40.6777 19.9497 42.5772 19.9497 43.7488 21.1213V21.1213C44.9203 22.2929 44.9203 24.1924 43.7488 25.364L25.364 43.7487C24.1924 44.9203 22.2929 44.9203 21.1213 43.7487V43.7487C19.9498 42.5772 19.9498 40.6777 21.1213 39.5061L39.5061 21.1213Z"></path><defs><linearGradient id="paint0_linear_22_2479" x1="32" x2="32" y1="8" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#e30c0c" stop-opacity=".5" class="stopColor0047ff svgShape"></stop><stop offset="1" stop-color="#e30c0c" stop-opacity="0" class="stopColor0047ff svgShape"></stop></linearGradient><linearGradient id="paint1_linear_22_2479" x1="32" x2="32" y1="12" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#e30c0c" stop-opacity=".5" class="stopColor0047ff svgShape"></stop><stop offset="1" stop-color="#e30c0c" stop-opacity="0" class="stopColor0047ff svgShape"></stop></linearGradient><linearGradient id="paint2_linear_22_2479" x1="21.371" x2="43.998" y1="20.872" y2="43.499" gradientUnits="userSpaceOnUse"><stop stop-color="#e30c0c" stop-opacity=".8" class="stopColor0047ff svgShape"></stop><stop offset="1" stop-color="#e30c0c" stop-opacity="0" class="stopColor0047ff svgShape"></stop></linearGradient><linearGradient id="paint3_linear_22_2479" x1="43.499" x2="20.872" y1="20.872" y2="43.499" gradientUnits="userSpaceOnUse"><stop stop-color="#e30c0c" stop-opacity=".8" class="stopColor0047ff svgShape"></stop><stop offset="1" stop-color="#e30c0c" stop-opacity="0" class="stopColor0047ff svgShape"></stop></linearGradient></defs></svg>
-                                </ng-container>
-                                <ng-container *ngIf="transactions[0]?.status === 'pending'">
+                                    <svg class="h-14 w-14 absolute bottom-4 right-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" id="Cancel"><path d="M50 12c-21 0-38 17-38 38s17 38 38 38 38-17 38-38-17-38-38-38zm0 72c-18.8 0-34-15.2-34-34s15.2-34 34-34 34 15.2 34 34-15.2 34-34 34zm2.8-34 12.6-12.6c.8-.8.8-2 0-2.8-.8-.8-2-.8-2.8 0L50 47.2 37.4 34.6c-.8-.8-2-.8-2.8 0-.8.8-.8 2 0 2.8L47.2 50 34.6 62.6c-.8.8-.8 2 0 2.8.8.8 2 .8 2.8 0L50 52.8l12.6 12.6c.8.8 2 .8 2.8 0 .8-.8.8-2 0-2.8L52.8 50z" fill="#e30c0c" class="color000000 svgShape"></path><path fill="#ff0000" d="M244-1070V614h-1784v-1684H244m8-8h-1800V622H252v-1700z" class="color0000ff svgShape"></path></svg></ng-container>
+                                <ng-container *ngIf="transaction.status === 'pending'">
                                     <svg class="h-14 w-14 absolute bottom-4 right-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="Pending">
                                         <g fill="#f2cd00" class="color000000 svgShape"><path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" fill="#f2cd00" class="color000000 svgShape"></path><path d="M12,6a1,1,0,0,0-1,1v4.59L8.29,14.29a1,1,0,1,0,1.41,1.41l3-3A1,1,0,0,0,13,12V7A1,1,0,0,0,12,6Z" fill="#f2cd00" class="color000000 svgShape"></path></g></svg>                                            </ng-container>
 
@@ -188,9 +186,9 @@
                                     </div>
                                     
                                     <div class="text-lg  text-gray-500" [ngClass]="{
-                                        'text-green-500': transactions[0]?.status === 'completed',
-                                        'text-red-500': transactions[0]?.status === 'cancelled',
-                                        'text-yellow-400': transactions[0]?.status === 'pending' ,
+                                        'text-green-500': transaction.status === 'completed',
+                                        'text-red-500': transaction.status === 'cancelled',
+                                        'text-yellow-400': transaction.status === 'pending' ,
                                     }">{{ transaction.status }}</div>
                                 </div>
                         </div>

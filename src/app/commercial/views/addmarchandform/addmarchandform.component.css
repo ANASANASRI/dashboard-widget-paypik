@@ -1,0 +1,10 @@
+.error-label {
+    color: red;
+    border: red;
+}
+
+.border-label {
+    border: 1px dashed red;
+    border-color: red;
+}
+

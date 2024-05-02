@@ -39,7 +39,7 @@
 
             <div class=" mt-6 grid w-full grid-cols-2 justify-end space-x-4 md:flex">
                 <button type="button"
-                    class="mb-6 inline-block w-auto rounded-xl bg-gray-200 px-6 py-2.5 font-medium text-gray-700 outline-none hover:opacity-80 focus:ring hover:shadow-md hover:bg-emerald-450"
+                    class="mb-6 inline-block w-auto rounded-xl bg-gray-200 px-6 py-2.5 font-medium text-gray-700 outline-none hover:opacity-80 hover:shadow-md hover:bg-emerald-450"
                     (click)="resetFilters()">Reset</button>
 
                 <button type="button"
@@ -134,7 +134,7 @@
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                                         <div class="inline-block">
-                                            <a [routerLink]="['/marchand/dashboard/more/transaction'  ,marchandId,transaction.transactionId]"
+                                            <a [routerLink]="['/marchand/dashboard/more/transaction' ,marchandId ,transaction.transactionId ,transaction.clientName]"
                                                 class="inline-block px-6 py-3 font-sans text-xs font-bold text-gray-900 uppercase align-middle transition-all rounded-lg select-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-gray-900/10 active:bg-gray-900/20">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke-width="2" stroke="currentColor" class="w-5 h-5">

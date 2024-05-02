@@ -35,6 +35,7 @@ export class MoreComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.marchandId = +params['id'];
       this.transactionId = +params['transaId'];
+      this.clientName = params['clientName']; 
       this.retrieveMarchandAndTransaction();
     });
   }
@@ -43,7 +44,9 @@ export class MoreComponent implements OnInit {
   retrieveMarchandAndTransaction(): void {
     this.retrieveMarchandById();
     this.retrieveTransactionById();
+    this.retrieveNumberOfTransactions();
   }
+
 
   // Retrieve marchand by ID
   retrieveMarchandById(): void {
@@ -149,4 +152,28 @@ export class MoreComponent implements OnInit {
     });
   }  
   
+  ////////////////  numberOfTransactions 
+
+  numberOfTransactions: number = 0;
+  clientName!: string;
+  
+  retrieveNumberOfTransactions(): void {
+    this.transactionService
+      .getNumberOfTransactionsByClientAndMarchand(
+        this.marchandId,
+        this.clientName
+      )
+      .subscribe({
+        next: (count: number) => {
+          this.numberOfTransactions = count;
+          console.log('Nombre de transactions:', count);
+        },
+        error: (error) =>
+          console.error(
+            'Erreur lors de la récupération du nombre de transactions:',
+            error
+          ),
+      });
+  }
+
 }

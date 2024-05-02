@@ -1,14 +1,18 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Marchand } from '../../model/marchand.model';
+import { MarchandService } from '../../services/marchand.service';
 
 @Component({
   selector: 'app-addmarchandform',
   templateUrl: './addmarchandform.component.html',
   styleUrl: './addmarchandform.component.css'
 })
-export class AddmarchandformComponent {
+export class AddmarchandformComponent implements OnInit{
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(        
+    private marchandService: MarchandService,
+    private fb: FormBuilder) {
     console.log('Constructor - myForm:', this.myForm);
   }
 
@@ -56,35 +60,84 @@ export class AddmarchandformComponent {
     }
   }
 
-  /////////// cancel form
+  /////////////////////
 
-
-  ///////////////// error 
-
-  myForm!: FormGroup;
-
-
+    myForm!: FormGroup;
+  
+  
     ngOnInit(): void {
-        this.myForm = this.formBuilder.group({
-            username: ['', Validators.required],
-            // Define other form controls here with their validators
-        });
+      this.initializeForm();
     }
+  
+    initializeForm(): void {
+      this.myForm = this.fb.group({
+        username: [''],
+        about: [''],
+        rc: [''],
+        addressesiege: [''],
+        email: [''],
+        telephone: [''],
+        dgName: [''],
+        webHost: [''],
+        activite: [''],
+        anneeActivite: [''],
+        legalFormValue: [''],
+        url: ['']
+      });
+    }
+  
+  
 
     submitForm(): void {
-        if (this.myForm.valid) {
-            // Handle form submission here
-        }
+      this.myForm.markAllAsTouched();
+      
+      if (this.myForm.valid) {
+        const marchandData: Marchand = {
+          marchandId: 0, 
+          marchandName: this.myForm.get('username')?.value,
+          marchandDescription: this.myForm.get('about')?.value,
+          marchandRcIf: this.myForm.get('rc')?.value,
+          marchandSiegeAddresse: this.myForm.get('addressesiege')?.value,
+          marchandEmail: this.myForm.get('email')?.value,
+          marchandPhone: this.myForm.get('telephone')?.value,
+          marchandDgName: this.myForm.get('dgName')?.value,
+          marchandHost: this.myForm.get('webHost')?.value,
+          marchandTypeActivite: this.myForm.get('activite')?.value,
+          marchandAnneeActivite: this.myForm.get('anneeActivite')?.value,
+          marchandFormejuridique: this.myForm.get('legalFormValue')?.value,
+          marchandLogoUrl: this.myForm.get('url')?.value,
+          marchandStatus: 'JustCreated', // You may set the initial status here
+          callback: 'string', // Assuming these values are set elsewhere
+          serviceId: 'string', // Assuming these values are set elsewhere
+          accessKey: 'string', // Assuming these values are set elsewhere
+          secretKey: 'string' // Assuming these values are set elsewhere
+        };
+  
+        // Call the service method to save the merchant
+        this.marchandService.saveMarchand(marchandData).subscribe(
+          (savedMarchand: Marchand) => {
+            console.log('Merchant saved successfully:', savedMarchand);
+            // Optionally, perform any additional actions after saving
+            this.myForm.reset();
+          },
+          (error) => {
+            console.error('Error occurred while saving merchant:', error);
+            // Handle error if needed
+          }
+        );
+  
+      } else {
+        // Handle form validation errors if needed
+      }
+    }
+    //////////////////// clear form
+
+    clearForm(): void {
+      this.myForm.reset(); // This will reset all form controls to their initial state
     }
 
-    cancelForm(): void {
-        // Handle cancel action here
-        console.log('cancelForm called');
-        if (this.myForm) {
-          console.log('Resetting form');
-          
-        } else {
-          console.log('myForm is undefined');
-        }
-    }
+    ///////////////// save the marchand
+
+
+  
 }

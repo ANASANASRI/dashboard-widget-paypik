@@ -59,13 +59,18 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   subMenuToggleHandlerOnPageReload = (): void => {
-    const elem = this.elementRef.nativeElement.querySelector('[aria-current="page"]')
-      .closest('ul.sub-menu-item') as Element;
+    const elem = this.elementRef.nativeElement.querySelector('[aria-current="page"]');
+    if (elem) {
+        const closestUl = elem.closest('ul.sub-menu-item');
+        if (closestUl) {
+            const subMenu = closestUl.previousElementSibling;
+            if (subMenu) {
+                subMenu.setAttribute('aria-expanded', 'true');
+            }
+        }
+    }
+};
 
-    const subMenu = elem?.previousSibling as Element;
-
-    subMenu?.setAttribute('aria-expanded', 'true');
-  }
 
   subMenuToggleHandlerOnRouteChange = (): void => {
     this.routerSubscription = this.router.events.subscribe((event) => {

@@ -14,25 +14,29 @@
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
               <div class="sm:col-span-3">
-                <label for="photo" class="block text-sm font-medium leading-6 text-gray-700">Photo</label>
+                <label for="url" 
+                [ngClass]="{'error-label': myForm.get('url')!.invalid && myForm.get('url')!.touched}"
+                class="block text-sm font-medium leading-6 text-gray-700">Photo</label>
                 <div class="mt-2 flex items-center gap-x-3">
                   <input type="file" (change)="onFileSelected($event)" accept="*" style="display:none;">
                   <div class="shrink-0">
-                    <img id="preview_img" class="h-11 w-11 object-cover rounded-full" [src]="previewImageUrl" />
+                    <img [ngClass]="{'border-label': myForm.get('url')!.invalid && myForm.get('url')!.touched}" id="preview_img" class="h-11 w-11 object-cover rounded-full" [src]="previewImageUrl" />
                   </div>
                   <div *ngIf="uploadOption">
                     <label class="block">
                       <span class="sr-only"></span>
-                      <input type="file" (change)="loadFile($event)" class="block w-full text-sm text-slate-500
-                          file:mr-4 file:py-2 file:px-4
-                          file:rounded-full file:border-0
-                          file:text-sm file:font-semibold
-                          file:bg-violet-50 file:text-violet-700
-                          hover:file:bg-violet-100"/>
+                      <input required type="file" formControlName="url" (change)="loadFile($event)" 
+                      class="block w-full text-sm text-slate-500
+                                        file:mr-4 file:py-2 file:px-4
+                                        file:rounded-full file:border-0
+                                        file:text-sm file:font-semibold
+                                        file:bg-violet-50 file:text-violet-700
+                                        hover:file:bg-violet-100"/>
                     </label>
                   </div>
                   <div *ngIf="!uploadOption">
-                    <input type="url" placeholder="Entrer L'URL d'image" [(ngModel)]="imageUrl"
+                    <input required type="url" placeholder="Entrer L'URL d'image" [(ngModel)]="imageUrl" formControlName="url"
+                    [ngClass]="{'border-label': myForm.get('url')!.invalid && myForm.get('url')!.touched}"
                       class="rounded-md px-2.5 py-1.5 text-sm focus:ring-emerald-600 font-semibold text-gray-900 shadow-sm ring-1  focus:outline-none ring-inset ring-gray-300 hover:bg-gray-50">
                   </div>
                   <button type="button" (click)="toggleOption()"
@@ -41,29 +45,35 @@
                   </button>
                 </div>
               </div>
+              
 
 
               <div class="sm:col-span-4">
-                <label for="username" class="block text-sm font-medium leading-6 text-gray-700">Nom entité </label>
+
+                <label for="username" 
+                      class="block text-sm font-medium leading-6 text-gray-700"
+                      [ngClass]="{'error-label': myForm.get('username')!.invalid && myForm.get('username')!.touched}">
+                    Nom entité 
+                </label>
                 <div class="mt-2 flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300  sm:max-w-md">
                   <input type="text" formControlName="username" name="username" id="username" autocomplete="username"
-                    class="rounded-md pl-3 block flex-1 border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-1 focus:ring-emerald-600 focus:outline-none  sm:text-sm sm:leading-6"
-                    placeholder="(entreprise ou auto-entrepreneur)" required />
+                    class="rounded-md pl-3 block flex-1 border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-200 focus:ring-1 focus:ring-emerald-600 focus:outline-none  sm:text-sm sm:leading-6"
+                    placeholder="(entreprise ou auto-entrepreneur)" [ngClass]="{'border-label': myForm.get('username')!.invalid && myForm.get('username')!.touched}" required />
                 </div>
-                <!-- <span class="text-danger" *ngIf="editCustomerFormGroup.controls['name'].invalid 
-                        && (editCustomerFormGroup.controls['name'].dirty 
-                        || editCustomerFormGroup.controls['name'].touched)">
-                  Name is required.
-                </span> -->
+                
               </div>
 
 
               <div class="col-span-full">
-                <label for="about" class="block text-sm font-medium leading-6 text-gray-900">Description</label>
+                <label for="about" class="block text-sm font-medium leading-6 text-gray-900"
+                [ngClass]="{'error-label': myForm.get('about')!.invalid && myForm.get('about')!.touched}">
+                  Description
+                </label>
                 <div class="mt-2">
-                  <textarea id="about" name="about" rows="3"
-                    class="rounded-md pl-3 block w-full  py-1.5  shadow-sm  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-emerald-600 focus:outline-none "
-                    placeholder="Description des produits ou serices vendus."></textarea>
+                  <textarea formControlName="about"  id="about" name="about" rows="3" autocomplete="about"
+                  [ngClass]="{'border-label': myForm.get('about')!.invalid && myForm.get('about')!.touched}"
+                  class="rounded-md pl-3 block w-full  py-1.5  shadow-sm  ring-1 ring-inset ring-gray-300 placeholder:text-gray-200 focus:ring-1 focus:ring-emerald-600 focus:outline-none "
+                    placeholder="Description des produits ou serices vendus." required></textarea>
                 </div>
               </div>
 
@@ -76,86 +86,119 @@
 
             <div class=" grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div class="sm:col-span-3 ">
-                <label for="rc" class="block text-sm font-medium leading-6 text-gray-900">RC ou IF (Α.Ε.)</label>
+                <label for="rc" class="block text-sm font-medium leading-6 text-gray-900"
+                [ngClass]="{'error-label': myForm.get('rc')!.invalid && myForm.get('rc')!.touched}">RC ou IF (Α.Ε.)</label>
                 <div class="mt-2">
-                  <input type="text" name="rc" id="rc" autocomplete="given-rc"
-                    class="focus:outline-none block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                  <input required type="text" name="rc" id="rc" autocomplete="given-rc" formControlName="rc"
+                  [ngClass]="{'border-label': myForm.get('rc')!.invalid && myForm.get('rc')!.touched}"
+                    class="pl-3 focus:outline-none block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6" required>
                 </div>
               </div>
 
               <div class="sm:col-span-3">
-                <label for="addressesiege" class="block text-sm font-medium leading-6 text-gray-900">Addresse du siège
+                <label  for="addressesiege" class="block text-sm font-medium leading-6 text-gray-900"
+                [ngClass]="{'error-label': myForm.get('addressesiege')!.invalid && myForm.get('addressesiege')!.touched}">Addresse du siège
                   social</label>
                 <div class="mt-2">
-                  <input type="text" name="addressesiege" id="addressesiege" autocomplete="addressesiege"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                  <input required type="text" name="addressesiege" id="addressesiege" autocomplete="addressesiege"
+                  [ngClass]="{'border-label': myForm.get('addressesiege')!.invalid && myForm.get('addressesiege')!.touched}"
+                  formControlName="addressesiege" class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
                 </div>
               </div>
 
               <div class="sm:col-span-3">
-                <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Addresse e-mail</label>
+                <label for="email" class="block text-sm font-medium leading-6 text-gray-900"
+                    [ngClass]="{'error-label': myForm.get('email')!.invalid && myForm.get('email')!.touched}">
+                    Adresse e-mail
+                </label>
                 <div class="mt-2">
-                  <input id="email" name="email" type="email" autocomplete="email"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                    <input required id="email" name="email" type="email" autocomplete="email" formControlName="email"
+                        pattern="[a-zA-Z0-9._%+-]+@gmail\.com"
+                        [ngClass]="{'border-label': myForm.get('email')!.invalid && myForm.get('email')!.touched}"
+                        class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                    <div *ngIf="myForm.get('email')?.hasError('pattern') && myForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
+                        Veuillez entrer une adresse e-mail Gmail valide (ex: exemple&#64;gmail.com).
+                    </div>
                 </div>
+            </div>
+            
+
+                <div class="sm:col-span-3">
+                  <label for="telephone" class="block text-sm font-medium leading-6 text-gray-900"
+                      [ngClass]="{'error-label': myForm.get('telephone')!.invalid && myForm.get('telephone')!.touched}">
+                      Téléphone
+                  </label>
+                  <div class="mt-2">
+                      <input required type="tel" name="telephone" id="telephone" autocomplete="telephone" formControlName="telephone"
+                          pattern="\+?\d[\d\+\s()-]*"
+                          [ngClass]="{'border-label': myForm.get('telephone')!.invalid && myForm.get('telephone')!.touched}"
+                          class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                      <div *ngIf="myForm.get('telephone')?.hasError('pattern') && myForm.get('telephone')?.touched" class="text-red-500 text-sm mt-1">
+                          Veuillez entrer un numéro de téléphone valide.
+                      </div>
+                  </div>
               </div>
 
-              <div class="sm:col-span-3">
-                <label for="telephone" class="block text-sm font-medium leading-6 text-gray-900">Téléphone</label>
-                <div class="mt-2">
-                  <input type="tel" name="telephone" id="telephone" autocomplete="telephone"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
-                </div>
-              </div>
 
               <div class="sm:col-span-3">
-                <label for="dg-name" class="block text-sm font-medium leading-6 text-gray-900">Nom du DG ou
+                <label for="dgName" class="block text-sm font-medium leading-6 text-gray-900"
+                [ngClass]="{'error-label': myForm.get('dgName')!.invalid && myForm.get('dgName')!.touched}">Nom du DG ou
                   gérant</label>
                 <div class="mt-2">
-                  <input type="text" name="dg-name" id="dg-name" autocomplete="dg-name"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                  <input required type="text" name="dgName" id="dgName" autocomplete="dgName" formControlName="dgName"
+                  [ngClass]="{'border-label': myForm.get('dgName')!.invalid && myForm.get('dgName')!.touched}"
+                    class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
                 </div>
               </div>
 
               <div class="sm:col-span-3">
-                <label for="web-host" class="block text-sm font-medium leading-6 text-gray-900">Adresse site web</label>
+                <label for="webHost" class="block text-sm font-medium leading-6 text-gray-900"
+                [ngClass]="{'error-label': myForm.get('webHost')!.invalid && myForm.get('webHost')!.touched}">Adresse site web</label>
                 <div class="mt-2">
-                  <input type="text" name="web-host" id="web-host" autocomplete="web-host"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                  <input required type="text" name="webHost" id="webHost" autocomplete="webHost" formControlName="webHost"
+                  [ngClass]="{'border-label': myForm.get('webHost')!.invalid && myForm.get('webHost')!.touched}"
+                    class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
                 </div>
               </div>
 
               <div class="sm:col-span-2 sm:col-start-1">
-                <label for="activite" class="block text-sm font-medium leading-6 text-gray-900">Type de
+                <label for="activite" class="block text-sm font-medium leading-6 text-gray-900"
+                [ngClass]="{'error-label': myForm.get('activite')!.invalid && myForm.get('activite')!.touched}">Type de
                   l'activité</label>
                 <div class="mt-2">
-                  <input type="text" name="activite" id="activite" autocomplete="address-level2"
-                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
+                  <input required type="text" name="activite" id="activite" autocomplete="address-level2" formControlName="activite"
+                  [ngClass]="{'border-label': myForm.get('activite')!.invalid && myForm.get('activite')!.touched}"
+                    class="pl-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:text-sm sm:leading-6">
                 </div>
               </div>
 
               <div class="sm:col-span-2">
-                <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Années d'activité</label>
+                <label for="anneeActivite" class="block text-sm font-medium leading-6 text-gray-900"
+                [ngClass]="{'error-label': myForm.get('anneeActivite')!.invalid && myForm.get('anneeActivite')!.touched}">Années d'activité</label>
                 <div class="mt-2">
-                  <select id="country" name="country" autocomplete="country-name"
-                    class="block w-full rounded-md h-9  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                  <select required  id="anneeActivite" name="anneeActivite" autocomplete="anneeActivite" formControlName="anneeActivite"
+                  [ngClass]="{'border-label': myForm.get('anneeActivite')!.invalid && myForm.get('anneeActivite')!.touched}"
+                    class="pl-3 block w-full rounded-md h-9  border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:max-w-xs sm:text-sm sm:leading-6">
                     <option value="">* Années d'activité</option>
-                    <option value="-1">Moins &lt; 1 an</option>
-                    <option value="1-5">1 an à 5 ans</option>
-                    <option value="+5">Plus &gt; 5 ans</option>
+                    <option value="MOINS_1_AN">Moins &lt; 1 an</option>
+                    <option value="UN_A_5_ANS">1 an à 5 ans</option>
+                    <option value="PLUS_5_ANS">Plus &gt; 5 ans</option>
                   </select>
                 </div>
               </div>
 
               <div class="sm:col-span-2">
-                <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Forme juridique</label>
+                <label for="legalFormValue" class="block text-sm font-medium leading-6 text-gray-900"
+                [ngClass]="{'error-label': myForm.get('legalFormValue')!.invalid && myForm.get('legalFormValue')!.touched}">
+                Forme juridique</label>
                 <div class="mt-2">
-                  <select id="country" name="country" autocomplete="country-name"
-                    class="block w-full rounded-md h-9 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                  <select required  id="legalFormValue" name="legalFormValue" autocomplete="legalFormValue-name" formControlName="legalFormValue"
+                  [ngClass]="{'border-label': myForm.get('legalFormValue')!.invalid && myForm.get('legalFormValue')!.touched}"
+                  class="pl-3 block w-full rounded-md h-9 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-1 focus:outline-none  focus:ring-inset focus:ring-emerald-600 sm:max-w-xs sm:text-sm sm:leading-6">
                     <option value="">* Forme juridique</option>
-                    <option value="entreprise">Entreprise</option>
-                    <option value="auto-entrepreneur">Auto-Entrepreneur</option>
-                    <option value="association">Association</option>
+                    <option value="Entreprise">Entreprise</option>
+                    <option value="AutoEntrepreneur">Auto-Entrepreneur</option>
+                    <option value="Association">Association</option>
                   </select>
                 </div>
               </div>
@@ -165,11 +208,11 @@
 
         <div class="flex flex-row justify-start pt-10">
           <!-- Cancel button -->
-          <button type="button" (click)="cancelForm()"
-            class="text-white mr-5 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Cancel</button>
+          <button type="button" (click)="clearForm()"
+            class="text-white mr-5 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Clear</button>
 
           <!-- Save button -->
-          <button type="submit"
+          <button type="submit" 
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
         </div>
       </form>
