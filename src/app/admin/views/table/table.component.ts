@@ -125,9 +125,11 @@ onItemsPerPageChange(selectedValue: number) {
 ////////////////////
 
 rejectOpen: boolean = false;
+marchandId!: number;
 
-toggleReject() {
+toggleReject(marchandId: number) {
   this.rejectOpen = !this.rejectOpen;
+  this.marchandId = marchandId;
 }
 
   //select input color text
@@ -142,6 +144,21 @@ toggleReject() {
   this.selectedOption1 = event.target.value;
 }
 
+
+
+///////////////////// Delete marchand
+  deleteMarchand(demandeId: number) {
+    this.marchandService.deleteMarchand(demandeId).subscribe(
+      (data) => {
+        console.log('marchand deleted successfully:', data);
+        window.location.href = '/admin/dashboard';
+        // Call any additional functions or handle the response as needed
+      },
+      (error) => {
+        console.error('Error deleteing marchand:', error);
+      }
+    );
+  }
 
 }
 

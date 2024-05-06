@@ -15,6 +15,10 @@ export class MarchandService {
     return this.http.get<Array<Marchand>>(environment.apiUrl + "/marchand/all")
   }
 
+  public getMarchandById(id: number): Observable<Array<Marchand>> {
+    return this.http.get<Array<Marchand>>(environment.apiUrl + "/marchand/" + id)
+  }
+
   // public searchMarchands(keyword: string): Observable<Array<Marchand>> {
   //   return this.http.get<Array<Marchand>>(environment.apiUrl + "/marchands/search?keyword=" + keyword)
   // }
@@ -28,7 +32,11 @@ export class MarchandService {
   }
 
   public editMarchand(marchand: Marchand): Observable<Marchand> {
-    return this.http.put<Marchand>(environment.apiUrl + "/marchands/" + marchand.marchandId, marchand);
+    return this.http.put<Marchand>(environment.apiUrl + "/marchand/update" , marchand);
+  }
+
+  findStatusMarchandPayment(marchandId: number, paymentMethodId: number): Observable<boolean> {
+    return this.http.get<boolean>(environment.apiUrl + '/method/status/' + marchandId + '/' + paymentMethodId)
   }
 
 }

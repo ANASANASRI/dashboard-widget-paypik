@@ -5,6 +5,8 @@ import { Chart, registerables } from 'chart.js';
 import { pageTransition } from 'src/app/shared/utils/animations';
 import { ActivatedRoute } from '@angular/router';
 import { Marchand } from '../../model/marchand.model';
+import { MethodService } from '../../services/method.service';
+import { PaymentMethod } from '../../model/paymentmethod.model';
 Chart.register(...registerables);
 
 @Component({
@@ -14,60 +16,132 @@ Chart.register(...registerables);
   animations: [pageTransition]
 })
 export class MoreComponent implements OnInit{
-  eventDate: any = formatDate(new Date(), 'MMM dd, yyyy', 'en');
-  marchanId!: string;
+  marchandId!:number;
+  marchands: Marchand[] = [];
+  //transactions: Transaction[] = [];
+  paymentMethods: PaymentMethod[] = [];
+  methods: PaymentMethod[] = [];
+  // Déclaration d'un ensemble pour stocker les numéros de méthode uniques
+  methodNumbers: number[] = [];
+  status: boolean | undefined;
+  paymentMethodId!: number;
 
   constructor(
     private route: ActivatedRoute,
-    private marchandService: MarchandService
-
-  ) { }
+    private marchandService: MarchandService,
+    private methodService:MethodService,
+  
+  ) {}
 
   ngOnInit(): void {
     this.fetchMarchands();
     this.route.params.subscribe(params => {
-      this.marchanId = params['marchanId'];
-      // Now you have the marchanId value, you can use it as needed
+      this.marchandId = params['marchanId'];
+      this.paymentMethodId = +params['paymentMethodId'];
+    Chart.register(...registerables); // Enregistrez les éléments Chart.js nécessaires
+
+    this.retrieveMarchandById();
+    
+    this.getPaymentMethods();
     });
-
   }
-
-  ////////////Scroll to section //////////////
-
-  @ViewChild('detailedDescription') detailedDescription!: ElementRef;
-
-  scrollToSection() {
-    if (this.detailedDescription && this.detailedDescription.nativeElement) {
-      this.detailedDescription.nativeElement.scrollIntoView({ behavior: 'smooth' });
-    }
+  //find marchand by id 
+  retrieveMarchandById(): void {
+    this.marchandService.getMarchandById(this.marchandId).subscribe({
+      next: (data: any) => { // Utilisation de 'any' temporairement pour résoudre le problème de type
+      console.log('Marchand data:', data);
+        this.marchands.push(data as Marchand); // Cast 'data' en tant que Marchand
+    
+      },
+      error: (error) => console.error(error),
+    });
+  
   }
-
-  ///////////////////  Services  //////////////////////////
-  get getmarchandId() {
-    return this.marchanId;
+  
+  
+  findStatusForMethod(method: PaymentMethod): void {
+    this.marchandService.findStatusMarchandPayment(this.marchandId, method.paymentMethodId)
+      .subscribe(status => {
+        method.methodStatus = status; // Assigner le statut à la méthode
+        console.log('Method:', method.methodName, 'status:', status);
+      });
   }
-
-  marchands: Marchand[] = [];
-  marchand: Marchand | undefined;
-
-  fetchMarchands() {
-    this.marchandService.getMarchands().subscribe(
-      (data: Marchand[]) => {
-        this.marchands = data;
+  
+  updateStatus(paymentMethodId: number, event: any): void {
+    const checked = event.target.checked;
+    this.methodService
+      .updateMarchandMethodStatus(paymentMethodId, this.marchandId, checked)
+      .subscribe({
+        next: (response) => {
+          console.log('Status updated successfully:', response);
+          // Vous pouvez effectuer des actions supplémentaires après la mise à jour du statut si nécessaire
+        },
+        error: (error) => {
+          console.error('Error updating status:', error);
+          // Gérer l'erreur si la mise à jour échoue
+        },
+      });
+  }
+  getPaymentMethods(): void {
+    this.methodService.getAll().subscribe(
+      (data) => {
+        this.paymentMethods = data;
         
-        const Id = this.marchanId; 
-
-        this.marchand = this.marchands.find(marchand => marchand.marchandId === Number(Id));
-        if (!this.marchand) {
-          console.error('Marchand not found with id:', Id);
-        }
+        console.log('les methodes pay:', this.paymentMethods);
+        
+        // Call findStatusForMethod for each payment method
+        this.paymentMethods.forEach((method) => {
+          this.findStatusForMethod(method);
+        });
       },
       (error) => {
-        console.error('Error fetching marchands:', error);
+        console.error('Error fetching unverified demandes:', error);
       }
     );
   }
+  
+  
+  isMethodChecked(method: PaymentMethod): boolean {
+    return this.methods.some(m => m.paymentMethodId === method.paymentMethodId && m.methodStatus === true);
+  }
+  
+  /*update implement */
+  
+  
+    ////////////Scroll to section //////////////
+  
+    @ViewChild('detailedDescription') detailedDescription!: ElementRef;
+  
+    scrollToSection() {
+      if (this.detailedDescription && this.detailedDescription.nativeElement) {
+        this.detailedDescription.nativeElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    //////////////////////////////
 
 
+    get getmarchandId() {
+      return this.marchandId;
+    }
+  
+    marchand: Marchand | undefined;
+  
+    fetchMarchands() {
+      this.marchandService.getMarchands().subscribe(
+        (data: Marchand[]) => {
+          this.marchands = data;
+          
+          const Id = this.marchandId; 
+  
+          this.marchand = this.marchands.find(marchand => marchand.marchandId === Number(Id));
+          if (!this.marchand) {
+            console.error('Marchand not found with id:', Id);
+          }
+        },
+        (error) => {
+          console.error('Error fetching marchands:', error);
+        }
+      );
+    }
   
 }

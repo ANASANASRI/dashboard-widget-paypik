@@ -1,27 +1,27 @@
 <nav class="flex items-center justify-between pb-4" aria-label="Pagination">
     <a class="relative inline-flex items-center rounded-md border border-emerald-700 bg-transparent px-4 py-2 text-sm font-medium text-emerald-700 hover:bg-emerald-50"
-        rel="prev" href="/admin/dashboard"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
-            height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+        rel="prev" href="/admin/dashboard"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
+            viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z">
             </path>
-        </svg> &nbsp; Previous
+        </svg>
+        &nbsp; Previous
     </a>
 </nav>
 
 <div [@pageTransition]>
-
     <section >
-            <div class="card p-4 bg-gradient-to-r from-emerald-50 via-white via-10-90 to-emerald-50 bg-opacity-25">
-                <img src="{{marchand?.marchandLogoUrl}}" alt="" class="shadow-xl w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square">
-                <div class="space-y-4 text-center divide-y dark:divide-gray-300">
-                    <div class="my-2 space-y-1">
-                        <h2 class="text-xl font-semibold sm:text-2xl">{{marchand?.marchandName}}</h2>
-                        <p class="px-5 text-xs sm:text-base dark:text-gray-600">{{marchand?.marchandEmail}}</p>
-                    </div>	
-                </div>
+        <div class="card p-4 bg-gradient-to-r from-emerald-50 via-white via-10-90 to-emerald-50 bg-opacity-25">
+            <img src="{{marchand?.marchandLogoUrl}}" alt="" class="shadow-xl w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square">
+            <div class="space-y-4 text-center divide-y dark:divide-gray-300">
+                <div class="my-2 space-y-1">
+                    <h2 class="text-xl font-semibold sm:text-2xl">{{marchand?.marchandName}}</h2>
+                    <p class="px-5 text-xs sm:text-base dark:text-gray-600">{{marchand?.marchandEmail}}</p>
+                </div>	
             </div>
-    </section>
+        </div>
+</section>
 
     <section class="grid grid-cols-1 mb-4 xl:grid-cols-2 gap-5">
         <div class="card p-8">
@@ -32,134 +32,77 @@
                 <div class="flex justify-center items-center">
                     <canvas id="areaWiseSale"></canvas>
                 </div>
-            </div>            
-        </div>        
+            </div>
+        </div>
 
         <div class="card p-8 bg-emerald-600 text-gray-50">
-            <h3 class="text-2xl">
-                Description Détaillée
-            </h3>
-            <a href="/marchand/dashboard/{{marchanId}}" class="inline-flex my-5 items-center justify-center p-5 text-base font-medium text-white rounded-lg bg-emerald-300 bg-opacity-25 hover:text-gray-900 hover:bg-emerald-200 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
-                <span class="w-full">Accédez au tableau de bord du <span class="underline decoration-emerald-100 underline-offset-4">{{marchand?.marchandName}}</span></span>
-                <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            <h3 class="text-2xl">Description Détaillée</h3>
+            <a (click)="scrollToSection()"
+                class="inline-flex my-5 items-center justify-center p-5 text-base font-medium text-white rounded-lg bg-emerald-300 bg-opacity-25 hover:text-gray-900 hover:bg-emerald-200 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                <span class="w-full">278 Transactions</span>
+                <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 5h12m0 0L9 1m4 4L9 9" />
                 </svg>
-            </a> 
+            </a>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque molestiae incidunt officiis veritatis,
-                architecto nam soluta, exercitationem minima laudantium harum qui.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque
+                molestiae incidunt officiis veritatis, architecto nam soluta,
+                exercitationem minima laudantium harum qui.
             </p>
             <div class="my-5"></div>
         </div>
-
     </section>
-    
+
     <div class="my-5"></div>
-    
+
     <section class="grid grid-cols-1 my-4 xl:grid-cols-2 2xl:grid-cols-3 gap-5">
         <div class="card p-8">
             <div class="card-title flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold leading-none">Gestion des modes de paiement</h3>
-                <a href="#" class="inline-flex items-center p-2 text-sm font-medium rounded-lg hover:bg-gray-100">
-                    View all
-                </a>
+                <h3 class="text-xl font-bold leading-none">
+                    Gestion des modes de paiement
+                </h3>
             </div>
-            <div class="overflow-y-auto overflow-x-hidden pr-4" style="max-height: 500px;">
+            <div class="overflow-y-auto overflow-x-hidden pr-4" style="max-height: 500px">
                 <ul role="list" class="divide-y divide-gray-200">
-                    <li class="py-3 sm:py-4" *ngFor="let i of [1, 2, 3, 4, 5, 6,7]">
+                    <li class="py-3 sm:py-4" *ngFor="let method of paymentMethods">
                         <div class="flex items-center space-x-4">
                             <div class="flex-shrink-0">
-                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/100x100" alt="user image">
+                                <img class="w-8 h-8 " [src]="method.methodIconUrl" alt="Icone de la méthode" />
                             </div>
                             <div class="flex-1 min-w-0">
                                 <p class="text-sm font-medium text-gray-900 truncate">
-                                    Token
+                                    {{ method.methodName }}
                                 </p>
                             </div>
                             <div class="inline-flex items-center text-base font-semibold text-gray-900">
                                 <label class="inline-flex items-center me-5 cursor-pointer">
-                                    <input type="checkbox" value="" class="sr-only peer">
-                                    <div class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-emerald-300 dark:peer-focus:ring-emerald-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-emerald-600"></div>
+                                    <input type="checkbox" [checked]="isMethodChecked(method)"
+                                        [checked]="method?.methodStatus"
+                                        (change)="updateStatus(method.paymentMethodId, $event)" class="sr-only peer" />
+
+                                    <div
+                                        class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-emerald-300 dark:peer-focus:ring-emerald-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-emerald-600">
+                                    </div>
                                 </label>
                             </div>
                         </div>
                     </li>
                 </ul>
-
             </div>
         </div>
-    
+
         <div class="card p-8 2xl:col-span-2">
             <div class="card-title flex justify-between items-center mb-4">
                 <h3 class="text-xl font-bold leading-none">Upcoming Events</h3>
             </div>
-            <div class="overflow-y-auto overflow-x-hidden pr-4" style="max-height: 500px;">
-                <!-- <div class="block md:flex md:items-center gap-6 py-3 my-3 border-b" *ngFor="let i of [1, 2, 3, 4, 5, 6]">
-                    <div class="hidden relative lg:block">
-                        <img src="https://placehold.co/600x400" alt="event image" class="w-48 rounded-lg">
-                        <span
-                            class="bi bi-calendar2-event absolute bottom-0 right-0 w-10 h-7 bg-emerald-500 text-center border rounded-tl-lg rounded-br-lg text-white"></span>
-                    </div>
-                    <div class="flex-1 my-3">
-                        <h4 class="text-lg font-semibold leading-none">
-                            Envato International Online Meetup 2020
-                        </h4>
-                        <p class="my-1 text-emerald-500">California, USA</p>
-                        <p class="text-xs text-justify">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint ipsa vero illum quos vitae
-                            dolorum, earum
-                            recusandae est modi ea possimus nihil aspernatur
-                            libero unde itaque error quis, sit tenetur esse quam harum corrupti! Quia, tenetur provident,
-                            vero, recusandae
-                            aliquam possimus at mollitia quo perspiciatis
-                            adipisci in? Odio, impedit cumque.
-                        </p>
-                    </div>
-                    <div class="w-80 flex justify-between">
-                        <div class="text-center text-emerald-600">
-                            <div
-                                class="flex items-center justify-center bg-emerald-50 rounded-full shadow-sm shadow-gray-200 w-12 h-12 xl:w-16 xl:h-16">
-                                <i class="bi bi-cash text-2xl block"></i>
-                            </div>
-                            <p class="text-sm mt-3">$200</p>
-                        </div>
-                        <div class="text-center text-emerald-600">
-                            <div
-                                class="flex items-center justify-center bg-gray-50 rounded-full shadow-sm shadow-gray-200 w-12 h-12 xl:w-16 xl:h-16">
-                                <i class="bi-ticket-perforated text-2xl block"></i>
-                            </div>
-                            <p class="text-sm mt-3">150 pcs left</p>
-                        </div>
-                        <div class="text-center text-emerald-600">
-                            <div
-                                class="flex items-center justify-center bg-emerald-50 rounded-full shadow-sm shadow-gray-200 w-12 h-12 xl:w-16 xl:h-16">
-                                <i class="bi bi-calendar2-check text-2xl block"></i>
-                            </div>
-                            <p class="text-sm mt-3">{{eventDate}}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <i class="bi bi-arrow-clockwise"></i>
-                    loading...
-                </div> -->
-            </div> 
+            <div class="overflow-y-auto overflow-x-hidden pr-4" style="max-height: 500px">
+
+            </div>
         </div>
     </section>
 
-    <div class="my-5"></div>
-
-    <!-- <section #detailedDescription>
-        <div class="card p-5 mt-5">
-            <div class="card-title flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold leading-none">Details des transactions</h3>
-            </div>
-            <app-transaction></app-transaction>
-        </div>
-    </section> -->
+    <!-- ///////////// Scroll To Top ////////////////// -->
+    <app-scroll-to-top></app-scroll-to-top>
 </div>
-
-
-
-<!-- ///////////// Scroll To Top ////////////////// -->
-<app-scroll-to-top></app-scroll-to-top>

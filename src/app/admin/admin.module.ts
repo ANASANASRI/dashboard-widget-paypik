@@ -44,7 +44,7 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
     TransactionComponent,
     ScrollToTopComponent,
     ReactiveFormsModule,
-    MatPaginatorModule,
+    MatPaginatorModule
 
   ]
 })

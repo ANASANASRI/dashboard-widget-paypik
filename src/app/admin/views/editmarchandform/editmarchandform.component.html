@@ -1,125 +1,305 @@
 <nav class="flex items-center justify-between pb-4" aria-label="Pagination">
-    <a class="relative inline-flex items-center rounded-md border border-emerald-700 bg-transparent px-4 py-2 text-sm font-medium text-emerald-700 hover:bg-emerald-50"
-        rel="prev" href="/admin/dashboard"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
-            height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z">
-            </path>
-        </svg> &nbsp; Previous
+    <a
+    class="relative inline-flex items-center rounded-md border border-emerald-700 bg-transparent px-4 py-2 text-sm font-medium text-emerald-700 hover:bg-emerald-50"
+    rel="prev"
+    href="/admin/dashboard"
+    ><svg
+        stroke="currentColor"
+        fill="currentColor"
+        stroke-width="0"
+        viewBox="0 0 448 512"
+        height="1em"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+        d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+        ></path>
+    </svg>
+    &nbsp; Previous
     </a>
 </nav>
 
 <div [@pageTransition]>
     <section class="grid grid-cols-1 my-4 gap-5">
+    <div class="flex-auto rounded-2xl px-4 bg-white lg:px-10 py-10 pt-0">
+        
+        <h3 class="text-xl font-bold leading-none mb-3 pt-5">Editer marchand</h3>
+        <hr class="mt-4 border-b-1 border-blueGray-300" />
 
-                <div class="flex-auto rounded-2xl px-4 bg-white lg:px-10 py-10 pt-0">
-                
-                <h3 class="text-xl font-bold leading-none mb-3 pt-5">Editer marchand</h3>
-                <hr class="mt-4 border-b-1 border-blueGray-300">
+        <form>
+        <h4 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+            User Information
+        </h4>
+        <div class="flex flex-wrap">
+            <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+                <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="marchandName"
+                >
+                Name
+                </label>
+                <input
+                type="text"
+                id="marchandName"
+                name="marchandName"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                [(ngModel)]="marchand.marchandName"
+                />
+            </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+                <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="marchandEmail"
+                >
+                Email address
+                </label>
+                <input
+                type="email"
+                id="marchandEmail"
+                name="marchandEmail"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                [(ngModel)]="marchand.marchandEmail"
+                />
 
-                <form>
-                    <h4 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                    User Information
-                    </h4>
-                    <div class="flex flex-wrap">
-                    <div class="w-full lg:w-6/12 px-4">
-                        <div class="relative w-full mb-3">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                            Name
-                        </label>
-                        <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{marchand?.marchandName}}">
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-6/12 px-4">
-                        <div class="relative w-full mb-3">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                            Email address
-                        </label>
-                        <input type="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{marchand?.marchandEmail}}">
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-6/12 px-4">
-                        <div class="relative w-full mb-3">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                            First Name
-                        </label>
-                        <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{marchand?.marchandHost}}">
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-6/12 px-4">
-                        <div class="relative w-full mb-3">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                            Last Name
-                        </label>
-                        <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{marchand?.marchandPhone}}">
-                        </div>
-                    </div>
-                    </div>
+            </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+                <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="marchandHost"
+                >
+                Host
+                </label>
+                <input
+                type="text"
+                id="marchandHost"
+                name="marchandHost"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                [(ngModel)]="marchand.marchandHost"
+                />
+            </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+                <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="marchandPhone"
+                >
+                Tel
+                </label>
+                <input
+                type="text"
+                id="marchandPhone"
+                name="marchandPhone"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                [(ngModel)]="marchand.marchandPhone"
+                />
+            </div>
+            </div>
+        </div>
 
-                    <hr class="mt-6 border-b-1 border-blueGray-300">
+        <hr class="mt-6 border-b-1 border-blueGray-300" />
 
-                    <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                    Contact Information
-                    </h6>
-                    <div class="flex flex-wrap">
-                    <div class="w-full lg:w-12/12 px-4">
-                        <div class="relative w-full mb-3">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                            Address
-                        </label>
-                        <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{marchand?.marchandSiegeAddresse}}">
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-4/12 px-4">
-                        <div class="relative w-full mb-3">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                            City
-                        </label>
-                        <input type="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="New York">
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-4/12 px-4">
-                        <div class="relative w-full mb-3">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                            Country
-                        </label>
-                        <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="United States">
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-4/12 px-4">
-                        <div class="relative w-full mb-3">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlfor="grid-password">
-                            Postal Code
-                        </label>
-                        <input type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="Postal Code">
-                        </div>
-                    </div>
-                    </div>
-
-                    <hr class="mt-6 border-b-1 border-blueGray-300">
-
-                    <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
-                    Description
-                    </h6>
-                    <div class="flex flex-wrap">
-                    <div class="w-full lg:w-12/12 px-4">
-                        <div class="relative w-full mb-3">
-                        <textarea type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="4"> {{marchand?.marchandDescription}}</textarea>
-                        </div>
-                    </div>
-                    </div>
-                </form>
-                <!-- Edit button added here -->
-                <div class="flex justify-end">
-                    <button class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded">
-                        Modifier
-                    </button>
-                </div>
+        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+            Contact Information
+        </h6>
+        <div class="flex flex-wrap">
+            <div class="w-full lg:w-12/12 px-4">
+            <div class="relative w-full mb-3">
+                <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="marchandSiegeAddresse"
+                >
+                Address
+                </label>
+                <input
+                type="text"
+                id="marchandSiegeAddresse"
+                name="marchandSiegeAddresse"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                [(ngModel)]="marchand.marchandSiegeAddresse"
+                />
+            </div>
+            </div>
+            <div class="w-full lg:w-4/12 px-4">
+            <div class="relative w-full mb-3">
+                <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="marchandDgName"
+                >
+                Marchad DG Name
+                </label>
+                <input
+                type="text"
+                id="marchandDgName"
+                name="marchandDgName"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                [(ngModel)]="marchand.marchandDgName"
+                />
+            </div>
+            </div>
+            <div class="w-full lg:w-4/12 px-4">
+            <div class="relative w-full mb-3">
+                <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="country"
+                >
+                marchandRcIf
+                </label>
+                <input
+                type="text"
+                id="marchandRcIf"
+                name="marchandRcIf"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                value=""
+                [(ngModel)]="marchand.marchandRcIf"
+                />
+            </div>
             </div>
 
+            <div class="w-full lg:w-4/12 px-4">
+            <div class="relative w-full mb-3">
+                <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="activite"
+                >
+                Type Activite
+                </label>
+                <input
+                type="text"
+                id="activite"
+                name="activite"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                value=""
+                [(ngModel)]="marchand.marchandTypeActivite"
+                />
+            </div>
+            </div>
 
+            <div class="w-full lg:w-4/12 px-4">
+            <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="formejuridique"
+                >Formejuridique</label
+            >
+            <select
+                id="cars"
+                name="formejuridique"
+                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                [(ngModel)]="marchand.marchandFormejuridique"
+            >
+                <option value="Entreprise">Entreprise</option>
+                <option value="AutoEntrepreneur">AutoEntrepreneur</option>
+                <option value="Association">Association</option>
+            </select>
+            </div>
+            <div class="w-full lg:w-4/12 px-4">
+            <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="anne"
+                >Annee Activite</label
+            >
+            <select
+                id="annees"
+                name="anne"
+                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                [(ngModel)]="marchand.marchandAnneeActivite"
+            >
+                <option value="MOINS_1_AN">MOINS_1_AN</option>
+                <option value="UN_A_5_ANS">UN_A_5_ANS</option>
+                <option value="PLUS_5_ANS">PLUS_5_ANS</option>
+            </select>
+            </div>
+            <div class="w-full lg:w-4/12 px-4">
+            <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="statu"
+                >Status</label
+            >
+            <select
+                id="status"
+                name="statu"
+                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                [(ngModel)]="marchand.marchandStatus"
+            >
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+                <option value="JustCreated">JustCreated</option>
+            </select>
+            </div>
+        </div>
+
+        <hr class="mt-6 border-b-1 border-blueGray-300" />
+
+        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+            Description
+        </h6>
+        <div class="flex flex-wrap">
+            <div class="w-full lg:w-12/12 px-4">
+            <div class="relative w-full mb-3">
+                <textarea
+                type="text"
+                id="marchandDescrip"
+                name="marchandDescrip"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                rows="4"
+                [(ngModel)]="marchand.marchandDescription"
+                ></textarea>
+            </div>
+            </div>
+        </div>
+
+        <!-- Bouton Modifier ajouté ici -->
+        <div class="flex justify-end">
+            <button
+            class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded"
+            (click)="submitForm()"
+            >
+            Modifier
+            </button>
+        </div>
+        <!-- Alert for successful modification -->
+        <div
+        *ngIf="modificationReussie"
+        class="bg-green-100 border mt-3 border-green-400 text-green-700 px-4 py-3 rounded-lg relative"
+        role="alert"
+        >
+        <strong class="font-bold">Modification réussie! </strong>
+        <span class="block sm:inline"> Le marchand a été modifié avec succès.</span
+        >
+        <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <svg
+            (click)="modificationReussie = false"
+            class="fill-current h-6 w-6 text-green-500"
+            role="button"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            >
+            <title>Close</title>
+            <path
+                d="M14.348 14.849a1 1 0 0 1-1.414 1.414L10 11.414l-2.929 2.93a1 1 0 1 1-1.414-1.415L8.586 10 5.657 7.071a1 1 0 0 1 1.414-1.415L10 8.586l2.93-2.93a1 1 0 0 1 1.414 1.415L11.414 10l2.93 2.929z"
+            />
+            </svg>
+        </span>
+        </div>
+        </form>
+
+        <!-- Edit button added here 
+        <div class="flex justify-end">
+        <button
+            class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded"
+            (click)="submitForm()"
+        >
+            Modifier
+        </button>
+        </div>-->
+    </div>
     </section>
 </div>
-
 
 <app-scroll-to-top></app-scroll-to-top>
