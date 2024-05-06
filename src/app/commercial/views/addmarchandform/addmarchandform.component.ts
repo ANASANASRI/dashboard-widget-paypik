@@ -136,7 +136,15 @@ export class AddmarchandformComponent implements OnInit{
       this.myForm.reset(); // This will reset all form controls to their initial state
     }
 
-    ///////////////// save the marchand
+    ///////////////// change image
+    updatePreviewImageUrl(event: Event) {
+      const inputElement = event.target as HTMLInputElement;
+      if (inputElement) {
+        this.previewImageUrl = inputElement.value;
+      }
+    }
+    
+    
 
 
   
