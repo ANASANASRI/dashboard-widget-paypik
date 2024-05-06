@@ -55,17 +55,25 @@ export class TableComponent implements OnInit{
 
   get filteredMarchands() {
     // Apply search filter first
-    const filteredData = this.marchands.filter(marchand => 
-      marchand.marchandName.toLowerCase().includes(this.searchTerm.toLowerCase())
+    let filteredData = this.marchands.filter(marchand => 
+        marchand.marchandName.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
-  
+
+    // Apply status filter if a status is selected
+    if (this.selectedOption1 !== '') {
+        filteredData = filteredData.filter(marchand =>
+            marchand.marchandStatus === this.selectedOption1
+        );
+    }
+
     // Calculate pagination indexes
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-  
+
     // Return the slice of data based on pagination indexes
     return filteredData.slice(startIndex, endIndex);
-  }
+}
+
   
   ////////////////////////////// send Id //////////////////////////////
 
@@ -120,6 +128,18 @@ rejectOpen: boolean = false;
 
 toggleReject() {
   this.rejectOpen = !this.rejectOpen;
+}
+
+  //select input color text
+
+  selectedOption: string = '';
+  handleChange(event: any) {
+  this.selectedOption = event.target.value;
+  }
+
+  selectedOption1: string = '';
+  handleChange1(event: any) {
+  this.selectedOption1 = event.target.value;
 }
 
 
