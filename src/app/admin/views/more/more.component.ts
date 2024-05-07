@@ -1,7 +1,8 @@
 import { MarchandService } from './../../services/marchand.service';
 import { Component ,OnInit,ViewChild, ElementRef } from '@angular/core';
 import { formatDate } from '@angular/common';
-import { Chart, registerables } from 'chart.js';
+import Chart from 'chart.js/auto';
+import {  registerables } from 'chart.js';
 import { pageTransition } from 'src/app/shared/utils/animations';
 import { ActivatedRoute } from '@angular/router';
 import { Marchand } from '../../model/marchand.model';

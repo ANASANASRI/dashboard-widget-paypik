@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Chart, registerables } from 'chart.js';
+import Chart from 'chart.js/auto';
+import {  registerables } from 'chart.js';
 import { pageTransition } from 'src/app/shared/utils/animations';
 import { Transaction } from '../../model/transaction.model';
 import { TransactionService } from '../../services/transaction.service';

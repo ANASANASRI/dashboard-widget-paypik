@@ -17,7 +17,7 @@ import { AlertComponent } from '../shared/components/alert/alert.component';
 import { TransactionComponent } from './views/transaction/transaction.component';
 import { MoreComponent } from './views/more/more.component';
 import { EditmarchandformComponent } from './views/editmarchandform/editmarchandform.component';
-import { SingletransactionComponent } from './views/singletransaction/singletransaction.component';
+import { ChartComponent } from './views/chart/chart.component';
 
 
 const routes: Routes = [
@@ -41,7 +41,7 @@ const routes: Routes = [
       },
       {
         path: AdminRoutes.Transaction,
-        component: SingletransactionComponent,
+        component: ChartComponent,
       },
       {
         path: AdminRoutes.Edit,

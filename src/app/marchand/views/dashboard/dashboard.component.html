@@ -6,7 +6,7 @@
                     Méthodes les plus utilisées
                 </h3>
             </div>
-            <div id="chart" class="w-3/6 mx-auto relative" (mouseenter)="showTitle = true"
+            <div id="chart" class="widthT mx-auto relative" (mouseenter)="showTitle = true"
                 (mouseleave)="showTitle = false">
                 <div class="flex justify-center items-center">
                     <canvas id="areaWiseSale" class="w-full h-64"></canvas>
@@ -16,19 +16,25 @@
 
         <div class="card p-8 bg-emerald-600 text-gray-50">
             <h3 class="text-2xl">Description Détaillée</h3>
-            <h2 class="my-5 text-emerald-100 hover:text-white hover:underline" (click)="scrollToSection()">
+            <h2 (click)="scrollToSection()"
+                class="hover:scale-105 duration-700 w-auto my-5  p-5 text-base font-medium text-white rounded-lg bg-emerald-300 bg-opacity-25 hover:text-gray-900 hover:bg-emerald-200 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
                 <span class="text-4xl font-bold">
                     {{ calculateTotalTransactions }}
                 </span>
-                Transactions
+                <div class="flex">
+                    Transactions
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6 ml-2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                </div>
             </h2>
 
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque
-                molestiae incidunt officiis veritatis, architecto nam soluta,
-                exercitationem minima laudantium harum qui.
-            </p>
-            <div class="my-5"></div>
+            <div>
+                CHART
+            </div>
+
         </div>
     </section>
 

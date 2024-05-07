@@ -15,9 +15,9 @@ import { SettingsModule } from './views/settings/settings.module';
 import { ElementsModule } from './views/elements/elements.module';
 import { ScrollToTopComponent } from './views/scroll-to-top/scroll-to-top.component';
 import { EditmarchandformComponent } from './views/editmarchandform/editmarchandform.component';
-import { SingletransactionComponent } from './views/singletransaction/singletransaction.component';
+import { ChartComponent } from './views/chart/chart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -31,7 +31,7 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
     MoreComponent,
     TableComponent,
     EditmarchandformComponent,
-    SingletransactionComponent,
+    ChartComponent,
     
   ],
   imports: [
@@ -45,7 +45,6 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
     ScrollToTopComponent,
     ReactiveFormsModule,
     MatPaginatorModule
-
   ]
 })
 export class AdminModule { }
