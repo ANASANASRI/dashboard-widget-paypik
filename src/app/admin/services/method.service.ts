@@ -22,7 +22,7 @@ export class MethodService {
     return this.http.get<PaymentMethod>(environment.apiUrl + '/method/findById/' + id)
   }
 
-  updateMarchandMethodStatus(paymentMethodId: number, marchandId: number, status: boolean): Observable<any> {
-    return this.http.put<any>(environment.apiUrl + '/method/updateMarchandMethodStatusByPaymentMethodId/' + paymentMethodId + '/' + marchandId + '/' + status, {}) 
+  updateMarchandMethodStatus(paymentMethodId: number, marchandId: number): Observable<any> {
+    return this.http.put<any>(environment.apiUrl + '/method/'+ marchandId + '/payment-method/' + paymentMethodId ,{}) 
   }
 }

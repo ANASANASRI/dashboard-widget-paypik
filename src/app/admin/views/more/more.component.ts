@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Marchand } from '../../model/marchand.model';
 import { MethodService } from '../../services/method.service';
 import { PaymentMethod } from '../../model/paymentmethod.model';
+import { Transaction } from '../../model/transaction.model';
+import { TransactionService } from '../../services/transaction.service';
 Chart.register(...registerables);
 
 @Component({
@@ -30,14 +32,15 @@ export class MoreComponent implements OnInit{
     private route: ActivatedRoute,
     private marchandService: MarchandService,
     private methodService:MethodService,
-  
+    private transitionService : TransactionService
   ) {}
 
   ngOnInit(): void {
     this.fetchMarchands();
     this.route.params.subscribe(params => {
       this.marchandId = params['marchanId'];
-      this.paymentMethodId = +params['paymentMethodId'];
+      this.paymentMethodId = params['paymentMethodId'];
+      this.fetchTransactionsByMarchand(this.marchandId);
     Chart.register(...registerables); // Enregistrez les éléments Chart.js nécessaires
 
     this.retrieveMarchandById();
@@ -45,6 +48,7 @@ export class MoreComponent implements OnInit{
     this.getPaymentMethods();
     });
   }
+
   //find marchand by id 
   retrieveMarchandById(): void {
     this.marchandService.getMarchandById(this.marchandId).subscribe({
@@ -55,7 +59,6 @@ export class MoreComponent implements OnInit{
       },
       error: (error) => console.error(error),
     });
-  
   }
   
   
@@ -67,17 +70,16 @@ export class MoreComponent implements OnInit{
       });
   }
   
-  updateStatus(paymentMethodId: number, event: any): void {
-    const checked = event.target.checked;
+  updateStatus(paymentMethodId: number): void {
     this.methodService
-      .updateMarchandMethodStatus(paymentMethodId, this.marchandId, checked)
+      .updateMarchandMethodStatus(paymentMethodId, this.marchandId)
       .subscribe({
-        next: (response) => {
-          console.log('Status updated successfully:', response);
+        next: () => {
+          console.log('Status updated successfully');
           // Vous pouvez effectuer des actions supplémentaires après la mise à jour du statut si nécessaire
         },
         error: (error) => {
-          console.error('Error updating status:', error);
+          console.error('Error updating status:',error);
           // Gérer l'erreur si la mise à jour échoue
         },
       });
@@ -102,7 +104,7 @@ export class MoreComponent implements OnInit{
   
   
   isMethodChecked(method: PaymentMethod): boolean {
-    return this.methods.some(m => m.paymentMethodId === method.paymentMethodId && m.methodStatus === true);
+    return this.methods.some(m => m.paymentMethodId === method.paymentMethodId && m.methodStatus === true );
   }
   
   /*update implement */
@@ -143,5 +145,44 @@ export class MoreComponent implements OnInit{
         }
       );
     }
+
+    ///////////// Fetche number of transaction by marchand  
+    transactions: Transaction[]=[];
   
+    fetchTransactionsByMarchand(marchandId:number) {
+      this.transitionService.getTransactionsByMarchand(marchandId).subscribe(
+        (data: Transaction[]) => {
+          this.transactions = data;
+        },
+        (error) => {
+          console.error('Error fetching transactions:', error);
+        }
+      );
+    }
+
+    get totalTransactionsByMarchand() {
+      return this.transactions.length;
+    }  
+
+    get thisMarchand() {
+      return this.marchand;
+    } 
+    /////////////  Fetch marchand by id 
+    // fetchMarchandByid(marchandId :number) {
+    //   this.marchandService.getMarchandById(marchandId).subscribe(
+    //     (data: Marchand[]) => {
+    //       this.marchands = data;
+          
+    //       const Id = this.marchandId; 
+  
+    //       this.marchand = this.marchands.find(marchand => marchand.marchandId === Number(Id));
+    //       if (!this.marchand) {
+    //         console.error('Marchand not found with id:', Id);
+    //       }
+    //     },
+    //     (error) => {
+    //       console.error('Error fetching marchands:', error);
+    //     }
+    //   );
+    // }
 }

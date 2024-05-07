@@ -16,6 +16,10 @@ export class TransactionService {
     return this.http.get<Array<Transaction>>(environment.apiUrl + "/transaction/all")
   }
 
+  public getTransactionsByMarchand(marchandId: number): Observable<Array<Transaction>> {
+    return this.http.get<Array<Transaction>>(environment.apiUrl + "/transaction/byMarchand/" + marchandId)
+  }
+
   // public searchTransactions(keyword: string): Observable<Array<Transaction>> {
   //   return this.http.get<Array<Transaction>>(environment.apiUrl + "/transactions/search?keyword=" + keyword)
   // }

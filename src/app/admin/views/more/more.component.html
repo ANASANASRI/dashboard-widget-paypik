@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" href="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/css/main.ad49aa9b.css" />
+</head>
+
 <nav class="flex items-center justify-between pb-4" aria-label="Pagination">
     <a class="relative inline-flex items-center rounded-md border border-emerald-700 bg-transparent px-4 py-2 text-sm font-medium text-emerald-700 hover:bg-emerald-50"
         rel="prev" href="/admin/dashboard"><svg stroke="currentColor" fill="currentColor" stroke-width="0"
@@ -37,9 +41,9 @@
 
         <div class="card p-8 bg-emerald-600 text-gray-50">
             <h3 class="text-2xl">Description Détaillée</h3>
-            <a (click)="scrollToSection()"
-                class="inline-flex my-5 items-center justify-center p-5 text-base font-medium text-white rounded-lg bg-emerald-300 bg-opacity-25 hover:text-gray-900 hover:bg-emerald-200 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
-                <span class="w-full">278 Transactions</span>
+            <a href="/marchand/dashboard/{{marchandId}}"
+                class="hover:scale-105 duration-700 inline-flex my-5 items-center justify-center p-5 text-base font-medium text-white rounded-lg bg-emerald-300 bg-opacity-25 hover:text-gray-900 hover:bg-emerald-200 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                <span class="w-full">{{totalTransactionsByMarchand}} Transactions</span>
                 <svg class="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -47,9 +51,7 @@
                 </svg>
             </a>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque
-                molestiae incidunt officiis veritatis, architecto nam soluta,
-                exercitationem minima laudantium harum qui.
+                {{thisMarchand?.marchandDescription}}
             </p>
             <div class="my-5"></div>
         </div>
@@ -80,8 +82,7 @@
                                 <label class="inline-flex items-center me-5 cursor-pointer">
                                     <input type="checkbox" [checked]="isMethodChecked(method)"
                                         [checked]="method?.methodStatus"
-                                        (change)="updateStatus(method.paymentMethodId, $event)" class="sr-only peer" />
-
+                                        (change)="updateStatus(method.paymentMethodId)" class="sr-only peer" />
                                     <div
                                         class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-emerald-300 dark:peer-focus:ring-emerald-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-emerald-600">
                                     </div>
@@ -95,10 +96,52 @@
 
         <div class="card p-8 2xl:col-span-2">
             <div class="card-title flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold leading-none">Upcoming Events</h3>
+                <h3 class="text-xl font-bold leading-none">Plus d'informations concernant ce marchand :</h3>
             </div>
-            <div class="overflow-y-auto overflow-x-hidden pr-4" style="max-height: 500px">
+            <div class="overflow-y-auto overflow-x-hidden pr-4 bg-white bg-clip-border shadow-3xl shadow-shadow-500 dark:!bg-navy-800 dark:text-white dark:!shadow-none p-3" style="max-height: 500px">
+                <div class="grid grid-cols-2 gap-4 px-2 w-full">
+                    <div class="hover:scale-105 duration-700 border border-emerald-600 flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
+                    <p class="text-sm text-gray-600">Address de siege</p>
+                    <p class="text-base font-medium text-gray-700 w-60 truncate">
+                        {{thisMarchand?.marchandSiegeAddresse}}
+                    </p>
+                    </div>
 
+                    <div class="hover:scale-105 duration-700 border border-emerald-600 flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
+                    <p class="text-sm text-gray-600">Type d'activite</p>
+                    <p class="text-base font-medium text-gray-700">
+                        {{thisMarchand?.marchandTypeActivite}}
+                    </p>
+                    </div>
+
+                    <div class="hover:scale-105 duration-700 border border-emerald-600 flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
+                    <p class="text-sm text-gray-600">Forme juridique</p>
+                    <p class="text-base font-medium text-gray-700">
+                        {{thisMarchand?.marchandFormejuridique}}
+                    </p>
+                    </div>
+
+                    <div class="hover:scale-105 duration-700 border border-emerald-600 flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
+                    <p class="text-sm text-gray-600">Nom du directeur général</p>
+                    <p class="text-base font-medium text-gray-700">
+                        {{thisMarchand?.marchandDgName}}
+                    </p>
+                    </div>
+
+                    <div class="hover:scale-105 duration-700 border border-emerald-600 flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
+                    <p class="text-sm text-gray-600">Rc ou If</p>
+                    <p class="text-base font-medium text-gray-700">
+                        {{thisMarchand?.marchandRcIf}}
+                    </p>
+                    </div>
+
+                    <div class="hover:scale-105 duration-700 border border-emerald-600 flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
+                    <p class="text-sm text-gray-600">Host url</p>
+                    <p class="text-base text-gray-700 font-medium  w-60 truncate">
+                        {{thisMarchand?.marchandHost}}
+                    </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
