@@ -17,7 +17,7 @@
 <div [@pageTransition]>
     <section >
         <div class="card p-4 bg-gradient-to-r from-emerald-50 via-white via-10-90 to-emerald-50 bg-opacity-25">
-            <img src="{{marchand?.marchandLogoUrl}}" alt="" class="shadow-xl w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square">
+            <img src="{{marchand?.marchandLogoUrl}}" alt="" class="max-w-xs transition duration-300 ease-in-out hover:scale-105 shadow-xl w-32 h-32 mx-auto rounded-lg dark:bg-gray-500 aspect-square">
             <div class="space-y-4 text-center divide-y dark:divide-gray-300">
                 <div class="my-2 space-y-1">
                     <h2 class="text-xl font-semibold sm:text-2xl">{{marchand?.marchandName}}</h2>
@@ -28,9 +28,10 @@
 </section>
 
     <section class="grid grid-cols-1 mb-4 xl:grid-cols-2 gap-5">
-        <div class="card p-8 ">
-            <!-- bg-transparent -->
-            <app-chart/>
+        
+        <!-- Chart  -->
+        <div class="mt-4 p-8 bg-transparent">
+            <app-chart [marchandId]="marchandId"></app-chart>
         </div>
 
         <div class="card p-8 bg-emerald-600 text-gray-50">
@@ -60,8 +61,8 @@
                     Gestion des modes de paiement
                 </h3>
             </div>
-            <div class="overflow-y-auto overflow-x-hidden pr-4" style="max-height: 500px">
-                <ul role="list" class="divide-y divide-gray-200">
+            <div class="overflow-y-auto items-center overflow-x-hidden pr-4" style="max-height: 500px">
+                <ul role="list" class=" divide-y divide-gray-200">
                     <li class="py-3 sm:py-4" *ngFor="let method of paymentMethods">
                         <div class="flex items-center space-x-4">
                             <div class="flex-shrink-0">

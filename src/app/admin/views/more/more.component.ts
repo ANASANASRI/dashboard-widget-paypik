@@ -148,6 +148,7 @@ export class MoreComponent implements OnInit{
     }
 
     ///////////// Fetche number of transaction by marchand  
+    
     transactions: Transaction[]=[];
   
     fetchTransactionsByMarchand(marchandId:number) {
