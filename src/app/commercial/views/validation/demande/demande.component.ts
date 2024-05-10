@@ -73,9 +73,9 @@ export class DemandeComponent implements OnInit {
 
 
   get demande() {
-    return this.thisDemande
+    return this.thisDemande || {};
   }
-    
+  
 ////////////////////
 
   modalOpen: boolean = false;

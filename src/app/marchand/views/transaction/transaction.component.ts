@@ -42,6 +42,12 @@ export class TransactionComponent {
       this.retrieveTransactions();
       this.loadPymentMethods();
     });
+
+    // Call applyFilters() whenever the input value changes
+    this.dateInput.nativeElement.addEventListener('input', () => this.applyFilters());
+    this.statusInput.nativeElement.addEventListener('change', () => this.applyFilters());
+    this.clientNameInput.nativeElement.addEventListener('input', () => this.applyFilters());
+    this.paymentMethodInput.nativeElement.addEventListener('change', () => this.applyFilters());
   }
 
   retrieveTransactions(): void {
@@ -123,21 +129,18 @@ export class TransactionComponent {
         const inputDate = new Date(date);
         return transactionDate.toDateString() === inputDate.toDateString();
       });
-      this.dateInput.nativeElement.value = '';
     }
     const status = this.statusInput.nativeElement.value;
     if (status) {
       filteredTransactions = filteredTransactions.filter(transaction =>
         transaction.status.toLowerCase() === status.toLowerCase()
       );
-      this.statusInput.nativeElement.value = '';
     }
     const clientName = this.clientNameInput.nativeElement.value;
     if (clientName) {
       filteredTransactions = filteredTransactions.filter(transaction =>
         transaction.clientName.toLowerCase().includes(clientName.toLowerCase())
       );
-      this.clientNameInput.nativeElement.value = '';
     }
     const paymentMethod = this.paymentMethodInput.nativeElement.value;
     if (paymentMethod) {
@@ -150,7 +153,6 @@ export class TransactionComponent {
         },
         error: (error) => console.error(error)
       });
-      this.paymentMethodInput.nativeElement.selectedIndex = 0;
       return;
     }
     this.filteredTransactions = filteredTransactions;

@@ -18,6 +18,8 @@ import { EditmarchandformComponent } from './views/editmarchandform/editmarchand
 import { ChartComponent } from './views/chart/chart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule} from '@angular/material/paginator';
+import { IncreaseDirective } from './directives/increase.directive';
+import { IncreaseNumberDirective } from './directives/increase-number.directive';
 
 
 
@@ -32,7 +34,8 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     TableComponent,
     EditmarchandformComponent,
     ChartComponent,
-    
+    IncreaseDirective,
+    IncreaseNumberDirective
   ],
   imports: [
     CommonModule,
@@ -44,7 +47,8 @@ import { MatPaginatorModule} from '@angular/material/paginator';
     TransactionComponent,
     ScrollToTopComponent,
     ReactiveFormsModule,
-    MatPaginatorModule,
+    MatPaginatorModule
+    
   ]
 })
 export class AdminModule { }

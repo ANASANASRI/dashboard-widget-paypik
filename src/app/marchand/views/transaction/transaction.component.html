@@ -4,15 +4,15 @@
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             <div class="flex flex-col">
                 <label for="name" class="text-sm font-medium text-gray-500">Name client</label>
-                <input type="text" id="name" #clientNameInput placeholder="Client Name"
+                <input type="text" id="name" #clientNameInput (input)="applyFilters()" placeholder="Client Name"
                     class="mt-2 block w-full rounded-md border   px-2 py-2 shadow-sm outline-none focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50" />
             </div>
 
             <div class="flex flex-col">
                 <label for="method" class="text-sm font-medium text-gray-500">Payment Method</label>
                 <select id="method" [class.text-gray-400]="selectedOption === ''" [class.text-black]="selectedOption !== ''"
-                    class="mt-2 block w-full rounded-md border px-2 py-2 shadow-sm outline-none focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50"
-                    #paymentMethodInput>
+                    class="mt-2 block w-full rounded-md border px-2 py-2.5 shadow-sm outline-none focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                    #paymentMethodInput (change)="applyFilters()">
                     <option value="" disabled selected hidden class="text-gray-300">Select Payment Method</option>
                     <option *ngFor="let method of paymentMethods" [value]="method.methodName">{{ method.methodName }}
                     </option>
@@ -21,14 +21,14 @@
 
             <div class="flex flex-col">
                 <label for="date" class="text-sm font-medium text-gray-500">Date of Entry</label>
-                <input type="date" #dateInput
+                <input type="date" #dateInput (input)="applyFilters()"
                     class="mt-2 block w-full cursor-pointer rounded-md border border-green-100 bg-gray-100 px-2 py-2 shadow-sm outline-none focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50 text-gray-400" />
             </div>
 
             <div class="flex flex-col">
                 <label for="status" class="text-sm font-medium text-gray-500">Status</label>
-                <select id="status" #statusInput [class.text-gray-400]="selectedOption1 === ''" [class.text-black]="selectedOption1 !== ''"
-                    class="mt-2 block w-full cursor-pointer rounded-md border px-2 py-2 shadow-sm outline-none focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50">
+                <select id="status" #statusInput  (change)="applyFilters()" [class.text-gray-400]="selectedOption1 === ''" [class.text-black]="selectedOption1 !== ''"
+                    class="mt-2 block w-full cursor-pointer rounded-md border px-2 py-2.5 shadow-sm outline-none focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50">
                     <option value="" >Select Status</option>
                     <option value="completed">Completed</option>
                     <option value="pending">Pending</option>
@@ -36,14 +36,23 @@
                 </select>
             </div>
 
-            <div class=" mt-6 grid w-full grid-cols-2 justify-end space-x-4 md:flex">
-                <button type="button"
-                    class="mb-6 inline-block w-auto rounded-xl bg-gray-200 px-6 py-2.5 font-medium text-gray-700 outline-none hover:opacity-80 hover:shadow-md hover:bg-emerald-450"
-                    (click)="resetFilters()">Reset</button>
+            <div class=" mt-6 grid w-full grid-cols-1 space-x-4 md:flex">
+                <!-- <button type="button"
+                    class=" mb-6 inline-block w-auto rounded-xl bg-gray-200 px-6 py-2.5 font-medium text-gray-700 outline-none hover:opacity-80 hover:shadow-md hover:bg-emerald-450"
+                    (click)="resetFilters()">Reset</button> -->
 
-                <button type="button"
+
+                    <button type="button" class="mt-0.5 mb-6 w-auto flex items-center px-6 py-2.5 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-emerald-600 rounded-lg hover:bg-emerald-500 focus:outline-none focus:ring focus:ring-emerald-300 focus:ring-opacity-80"
+                            (click)="resetFilters()">
+                        <svg class="w-5 h-5 mx-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+                        </svg>
+                    
+                        <span class="mx-1">Refresh</span>
+                    </button>
+                <!-- <button type="button"
                     class="mb-6 inline-block w-auto rounded-xl bg-emerald-600 px-6 py-2.5 font-medium uppercase leading-normal text-white hover:shadow-md hover:bg-emerald-500"
-                    (click)="applyFilters()">Search</button>
+                    (click)="applyFilters()">Search</button> -->
             </div>
         </div>
 

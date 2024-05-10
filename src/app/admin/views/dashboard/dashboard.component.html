@@ -14,7 +14,7 @@
                 <span class="bi bi-credit-card-2-front text-3xl"></span>
             </div>
             <div>
-                <h4 class="text-xl font-bold">{{totalTransactions}}</h4>
+                <h4 class="text-xl font-bold" >{{totalTransactions}}</h4>
                 <p class="text-md text-gray-400">Total Transactions</p>
             </div>
         </div>
@@ -32,8 +32,8 @@
                 <span class="bi bi-cash-stack text-3xl"></span>
             </div>
             <div>
-                <h4 class="text-xl font-bold">{{totalAmounts}} MAD</h4>
-                <p class="text-md text-gray-400">Total Revenue</p>
+                <h4 class="text-xl font-bold" [appIncreaseNumber]="totalAmount.valueOf()">{{totalAmounts}} </h4>
+                <p class="text-md text-gray-400">Total Revenue <span class="text-lg font-semibold">(MAD)</span></p>
             </div>
         </div>
     </section>

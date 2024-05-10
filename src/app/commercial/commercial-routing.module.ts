@@ -8,7 +8,7 @@ import { AdminDataTableComponent } from './views/elements/data-table/data-table.
 import { FormsComponent } from './views/elements/forms/forms.component';
 import { AdminModalComponent } from './views/elements/modal/admin-modal.component';
 import { AdminTabComponent } from './views/elements/tab/admin-tab.component';
-import { EventsComponent } from './views/validation/validation.component';
+import { ValidationComponent } from './views/validation/validation.component';
 import { DemandeComponent } from './views/validation/demande/demande.component';
 import { ProfileComponent } from './views/settings/profile/profile.component';
 import { UsersComponent } from './views/settings/users/users.component';
@@ -26,7 +26,7 @@ const routes: Routes = [
   {
     title: 'Validation',
     path: CommercialRoutes.Validation,
-    component: EventsComponent,
+    component: ValidationComponent,
     children: [
       {
         path: 'marchand/:demandeId',

@@ -46,9 +46,11 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   ngAfterViewInit(): void {
-    this.subMenuToggleHandlerOnRouteChange();
-    setTimeout(() => { this.subMenuToggleHandlerOnPageReload() }, 1);
-  }
+    setTimeout(() => {
+        this.subMenuToggleHandlerOnPageReload();
+    }, 100); // Adjust the delay as needed
+}
+
 
   ngOnDestroy(): void {
     this.routerSubscription.unsubscribe();
@@ -71,7 +73,8 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
     const subMenu = elem?.previousSibling as Element;
 
     subMenu?.setAttribute('aria-expanded', 'true');
-  }
+}
+
 
   subMenuToggleHandlerOnRouteChange = (): void => {
     this.routerSubscription = this.router.events.subscribe((event) => {
