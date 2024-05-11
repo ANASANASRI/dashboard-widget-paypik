@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
-import { RxStompService } from '@stomp/ng2-stompjs';
-
-import { Observable } from 'rxjs';
+import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebSocketService {
+  private socket$: WebSocketSubject<any>;
 
-  constructor(private rxStompService: RxStompService) { }
+  constructor() {
+    this.socket$ = webSocket('ws://localhost:8085/tutorial'); // WebSocket URL
+  }
 
-  connect(): Observable<any> {
-    return new Observable(observer => {
-      this.rxStompService.watch('/ws').subscribe(message => {
-        observer.next(JSON.parse(message.body));
-      });
-    });
+  // Method to subscribe to WebSocket messages
+  subscribeToMessages() {
+    return this.socket$.asObservable();
   }
 }
