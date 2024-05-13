@@ -25,13 +25,41 @@
     <div class="flex-auto rounded-2xl px-4 bg-white lg:px-10 py-10 pt-0">
         
         <h3 class="text-xl font-bold leading-none mb-3 pt-5">Editer marchand</h3>
-        <hr class="mt-4 border-b-1 border-blueGray-300" />
+        <hr class="mt-4 border-b-1 border-emerald-700" />
 
         <form>
-        <h4 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+        <h4 class="text-emerald-700 text-sm mt-3 mb-6 font-bold uppercase">
             User Information
         </h4>
+        
         <div class="flex flex-wrap">
+
+            <div class="w-full lg:w-full px-4 mb-6 mt-2">
+                <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                for="marchandLogoUrl">Logo</label>
+
+                <div class="mt-2 flex items-center gap-x-4">
+                <input type="file" (change)="onFileSelected($event)" accept="*" style="display:none;">
+                <div class="shrink-0">
+                    <img id="preview_img" class="hover:scale-110 duration-700 h-16 w-16 object-cover rounded-lg" [src]="previewImageUrl" />
+                </div>
+
+                <div>
+                    <input 
+                    type="text"
+                    id="marchandLogoUrl"
+                    name="marchandLogoUrl"
+                    [(ngModel)]="marchand.marchandLogoUrl"
+                    (input)="updatePreviewImageUrl($event)"
+                    class="rounded-md min-w-80 max-w-96 text-blueGray-600 px-2.5 py-1.5 text-sm focus:ring-emerald-600  shadow-sm ring-1 focus:outline-none ring-inset ring-gray-300 hover:bg-gray-50">
+                </div>
+
+                </div>
+            </div>
+
+
+
             <div class="w-full lg:w-6/12 px-4">
             <div class="relative w-full mb-3">
                 <label
@@ -44,7 +72,7 @@
                 type="text"
                 id="marchandName"
                 name="marchandName"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow  focus:ring-emerald-600 focus:ring-1 focus:outline-none w-full ease-linear transition-all duration-150"
                 [(ngModel)]="marchand.marchandName"
                 />
             </div>
@@ -61,7 +89,7 @@
                 type="email"
                 id="marchandEmail"
                 name="marchandEmail"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow  focus:ring-emerald-600 focus:ring-1 focus:outline-none w-full ease-linear transition-all duration-150"
                 [(ngModel)]="marchand.marchandEmail"
                 />
 
@@ -79,7 +107,7 @@
                 type="text"
                 id="marchandHost"
                 name="marchandHost"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow  focus:ring-emerald-600 focus:ring-1 focus:outline-none w-full ease-linear transition-all duration-150"
                 [(ngModel)]="marchand.marchandHost"
                 />
             </div>
@@ -96,16 +124,16 @@
                 type="text"
                 id="marchandPhone"
                 name="marchandPhone"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow  focus:ring-emerald-600 focus:ring-1 focus:outline-none w-full ease-linear transition-all duration-150"
                 [(ngModel)]="marchand.marchandPhone"
                 />
             </div>
             </div>
         </div>
 
-        <hr class="mt-6 border-b-1 border-blueGray-300" />
+        <hr class="mt-6 border-b-1 border-emerald-700" />
 
-        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+        <h6 class="text-emerald-700 text-sm mt-3 mb-6 font-bold uppercase">
             Contact Information
         </h6>
         <div class="flex flex-wrap">
@@ -121,7 +149,7 @@
                 type="text"
                 id="marchandSiegeAddresse"
                 name="marchandSiegeAddresse"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow  focus:ring-emerald-600 focus:ring-1 focus:outline-none w-full ease-linear transition-all duration-150"
                 [(ngModel)]="marchand.marchandSiegeAddresse"
                 />
             </div>
@@ -138,7 +166,7 @@
                 type="text"
                 id="marchandDgName"
                 name="marchandDgName"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow  focus:ring-emerald-600 focus:ring-1 focus:outline-none w-full ease-linear transition-all duration-150"
                 [(ngModel)]="marchand.marchandDgName"
                 />
             </div>
@@ -155,7 +183,7 @@
                 type="text"
                 id="marchandRcIf"
                 name="marchandRcIf"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow  focus:ring-emerald-600 focus:ring-1 focus:outline-none w-full ease-linear transition-all duration-150"
                 value=""
                 [(ngModel)]="marchand.marchandRcIf"
                 />
@@ -174,7 +202,7 @@
                 type="text"
                 id="activite"
                 name="activite"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow  focus:ring-emerald-600 focus:ring-1 focus:outline-none w-full ease-linear transition-all duration-150"
                 value=""
                 [(ngModel)]="marchand.marchandTypeActivite"
                 />
@@ -190,7 +218,7 @@
             <select
                 id="cars"
                 name="formejuridique"
-                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                class="mt-1 block w-full p-2 border border-gray-300 rounded-md   focus:ring-emerald-600 focus:ring-1 focus:outline-none"
                 [(ngModel)]="marchand.marchandFormejuridique"
             >
                 <option value="Entreprise">Entreprise</option>
@@ -207,7 +235,7 @@
             <select
                 id="annees"
                 name="anne"
-                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-emerald-600 focus:ring-1 focus:outline-none"
                 [(ngModel)]="marchand.marchandAnneeActivite"
             >
                 <option value="MOINS_1_AN">MOINS_1_AN</option>
@@ -224,7 +252,7 @@
             <select
                 id="status"
                 name="statu"
-                class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                class="mt-1 block w-full p-2 border border-gray-300 rounded-md  focus:ring-emerald-600 focus:ring-1 focus:outline-none"
                 [(ngModel)]="marchand.marchandStatus"
             >
                 <option value="Active">Active</option>
@@ -234,9 +262,9 @@
             </div>
         </div>
 
-        <hr class="mt-6 border-b-1 border-blueGray-300" />
+        <hr class="mt-6 border-b-1 border-emerald-700" />
 
-        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+        <h6 class="text-emerald-700 text-sm mt-3 mb-6 font-bold uppercase">
             Description
         </h6>
         <div class="flex flex-wrap">
@@ -246,7 +274,7 @@
                 type="text"
                 id="marchandDescrip"
                 name="marchandDescrip"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow  focus:ring-emerald-600 focus:ring-1 focus:outline-none w-full ease-linear transition-all duration-150"
                 rows="4"
                 [(ngModel)]="marchand.marchandDescription"
                 ></textarea>

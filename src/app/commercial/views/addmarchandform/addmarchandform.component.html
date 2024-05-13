@@ -21,7 +21,7 @@
                   <input type="file" (change)="onFileSelected($event)" accept="*" style="display:none;">
                   <div class="shrink-0">
                     <img [ngClass]="{'border-label': myForm.get('url')!.invalid && myForm.get('url')!.touched}" 
-                      id="preview_img" class="h-11 w-11 object-cover rounded-full" [src]="previewImageUrl" />
+                      id="preview_img" class="h-14 w-14 object-cover rounded-lg" [src]="previewImageUrl" />
                   </div>
                   <div *ngIf="uploadOption">
                     <label class="block">

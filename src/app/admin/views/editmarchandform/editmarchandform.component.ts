@@ -40,6 +40,7 @@ marchandId: string = '';
         // Vérification si le marchand a été trouvé
         console.log('Marchand id', id);
         console.log('Marchand ', this.marchand);
+        this.previewImageUrl=this.marchand.marchandLogoUrl;
         if (!this.marchand) {
           console.error('Marchand not found with id:', id);
         }
@@ -72,6 +73,42 @@ marchandId: string = '';
     }
   }
 
+
+
+  //////////////////photo
+  uploadOption: boolean = true;
+  imageUrl: string = '';
+
+
+
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    // Do something with the selected file
+  }
+
+  previewImageUrl!: string ;
+
+  loadFile(event: any) {
+    const input = event.target;
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      this.previewImageUrl = reader.result as string;
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
+  updatePreviewImageUrl(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement) {
+      this.previewImageUrl = inputElement.value;
+    }
+  }
 
 
 
