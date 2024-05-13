@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Observable } from 'rxjs';
@@ -8,6 +8,8 @@ import { Demandedto } from '../model/demandedto.model';
   providedIn: 'root'
 })
 export class DemandeService {
+  private eventSource: EventSource | undefined;
+
 
   constructor(private http: HttpClient) { }
 
@@ -34,4 +36,36 @@ export class DemandeService {
   updateDemandeAccepted(demandeId: number): Observable<Demandedto> {
     return this.http.put<Demandedto>(environment.apiUrl + "/demandes/" + demandeId +"/accepted", null);
   }
+
+//////////////// SEE
+
+  // getAllDemandesNotVerifiedSEE(): Observable<Demandedto> {
+  //   const headers = new HttpHeaders().set('Content-Type', 'text/event-stream');
+  //   const eventSourceUrl = environment.apiUrl + '/demandes/not-verified-sse?headers=' + encodeURIComponent(JSON.stringify(headers));
+  //   return new Observable<Demandedto>(observer => {
+  //     this.eventSource = new EventSource(eventSourceUrl);
+
+  //     this.eventSource.onmessage = (event) => {
+  //       const demande: Demandedto = JSON.parse(event.data);
+  //       observer.next(demande);
+  //     };
+
+  //     this.eventSource.onerror = (error) => {
+  //       console.error('EventSource failed:', error);
+  //       observer.error(error);
+  //     };
+
+  //     return () => {
+  //       this.closeSSEConnection(); // Call closeSSEConnection() when the Observable is unsubscribed
+  //     };
+  //   });
+  // }
+
+  // closeSSEConnection() {
+  //   if (this.eventSource) {
+  //     this.eventSource.close();
+  //   }
+  // }
+
+
 }
