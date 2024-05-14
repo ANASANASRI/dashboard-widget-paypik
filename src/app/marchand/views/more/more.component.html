@@ -49,7 +49,7 @@
                                         <div class="flex items-center">
                                             <div class="flex flex-col">
                                                 <div
-                                                    class="w-full flex-none text-lg text-gray-200 font-bold leading-none">
+                                                    class="w-full flex-none text-lg text-gray-400 font-bold leading-none">
                                                     {{ marchand.marchandName }}
                                                 </div>
                                                 <div class="flex-auto text-gray-400 my-1">
@@ -126,12 +126,13 @@
                     <div class="grid grid-cols-12 gap-4">
                         <div class="hover:scale-105 duration-700 col-span-12 sm:col-span-4">
                             <div class="p-3.5 relative bg-white border  shadow-lg rounded-2xl">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="h-14 w-14 absolute bottom-4 right-3 text-green-400" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-                                </svg>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com/pqirzoux.json"
+                                    trigger="hover"
+                                    class=" absolute bottom-4 right-3"
+                                    colors="primary:#4ade80"
+                                    style="width:56px;height:56px">
+                                </lord-icon>
                                 <div class="flex justify-between items-center">
                                     <i class="fab fa-behance text-xl text-gray-400"></i>
                                 </div>
@@ -240,11 +241,7 @@
                                     </div>
                                 </div>
                                 <div class="flex flex-col ml-3 min-w-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 5l7 7-7 7"></path>
-                                    </svg>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -260,7 +257,7 @@
             <span *ngIf="loading; else notLoading">
                 <button 
                         type="button" 
-                        class="px-4 py-3 bg-emerald-500 rounded-md text-white outline-none  shadow-lg transform active:scale-x-75 transition-transform mx-5 flex"
+                        class=" hover:scale-110 duration-700 px-4 py-3 bg-emerald-500 rounded-md text-white outline-none  shadow-lg transform active:scale-x-75 transition-transform mx-5 flex"
                     >
                     <svg width="20" height="20" fill="currentColor" class="mr-2 animate-spin" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                         <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z">
@@ -273,9 +270,9 @@
                 <button 
                     (click)="startLoading()"
                     type="button" 
-                    class="px-4 py-3 bg-emerald-500 rounded-md text-white outline-none  shadow-lg transform active:scale-x-75 transition-transform mx-5 flex"
+                    class="px-4 py-3 bg-emerald-500 hover:bg-emerald-600 rounded-md text-white outline-none  shadow-lg transform active:scale-x-75 transition-transform mx-5 flex"
                 >
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class=" h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
 

@@ -9,10 +9,24 @@
             </div> -->
             <div class="relative inline-block">
                 <div class="relative">
-                    <a href="/admin/dashboard">
-                    <button  type="button" class="text-xl text-light rounded-full w-10 h-10 transition hover:bg-emerald-100">
-                        <i class="bi bi-bell"></i>
-                    </button>  </a>
+                    <a href="/admin/dashboard"> 
+                        <ng-container *ngIf="justCreatedMarchand === 0; else elseBlock">
+                            <button type="button" class="text-xl text-light rounded-full w-10 h-10 transition hover:bg-emerald-100">
+                                <i class="bi bi-bell"></i>
+                            </button>  
+                        </ng-container>
+                            
+                        <ng-template #elseBlock>
+                            <lord-icon
+                                src="https://cdn.lordicon.com/vspbqszr.json"
+                                trigger="loop"
+                                state="loop-bell"
+                                class="mt-2 mr-0.5 rounded-full transition hover:bg-emerald-100"
+                                colors="primary:#9ca3af"
+                                style="width:30px;height:30px">
+                            </lord-icon> 
+                        </ng-template>
+                    </a>
                     <div id="containerDiv" *ngIf="justCreatedMarchand !== 0">
                         <div class="px-1 rounded-full text-slate-400 text-center text-xs absolute -top-0 -end-0" style="z-index: 9999;">
                             {{ justCreatedMarchand }}

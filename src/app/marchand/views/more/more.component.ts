@@ -142,7 +142,7 @@ export class MoreComponent implements OnInit {
           pdf.addImage(footerImg, 'PNG', 0, footerY, footerWidth, footerHeight);
   
           // Add content image with padding
-          pdf.addImage(imgData, 'PNG', 0, paddingTop, imgWidth, imgHeight);
+          pdf.addImage(imgData, 'PNG', 4.5, paddingTop, imgWidth, imgHeight);
   
           pdf.save('content.pdf');
   

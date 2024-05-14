@@ -1,18 +1,16 @@
 import { NgClass, NgIf } from '@angular/common';
 import {  AfterViewInit, ViewChild,Component, Input, OnInit, ElementRef } from '@angular/core';
-import { Marchand } from '../../model/marchand.model';
-import { MarchandService } from '../../services/marchand.service';
+import { Marchand } from '../../../../model/marchand.model';
+import { MarchandService } from '../../../../services/marchand.service';
 import lottie from "lottie-web";
 import { defineElement } from "@lordicon/element";
 
-defineElement(lottie.loadAnimation);
-
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrl: './table.component.css'
+  selector: 'app-usertable',
+  templateUrl: './usertable.component.html',
+  styleUrl: './usertable.component.css'
 })
-export class TableComponent implements OnInit{
+export class UsertableComponent implements OnInit{
 
   @ViewChild('statusInput') statusInputRef!: ElementRef;
   @Input() columnData: any = [];
@@ -205,4 +203,3 @@ marchand !: Marchand | undefined;
   }
 
 }
-
