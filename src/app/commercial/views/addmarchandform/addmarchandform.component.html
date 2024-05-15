@@ -13,7 +13,7 @@
 
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
-              <div class="sm:col-span-3">
+              <!-- <div class="sm:col-span-3">
                 <label for="url" 
                   [ngClass]="{'error-label': myForm.get('url')!.invalid && myForm.get('url')!.touched}"
                   class="block text-sm font-medium leading-6 text-gray-700">Photo</label>
@@ -47,8 +47,28 @@
                     Autre moyen
                   </button>
                 </div>
+              </div> -->
+              <div class="sm:col-span-3">
+                <label for="url" 
+                  [ngClass]="{'error-label': myForm.get('url')!.invalid && myForm.get('url')!.touched}"
+                  class="block text-sm font-medium leading-6 text-gray-700">Photo</label>
+                <div class="mt-2 flex items-center gap-x-3">
+                  <input type="file" (change)="onFileSelected($event)" accept="*" style="display:none;">
+                  <div class="shrink-0">
+                    <img [ngClass]="{'border-label': myForm.get('url')!.invalid && myForm.get('url')!.touched}" 
+                      id="preview_img" class="h-14 w-14 object-cover rounded-lg" [src]="previewImageUrl" />
+                  </div>
+                  
+                  <div >
+                    <input required type="url" placeholder="Enter Image URL" 
+                      [(ngModel)]="imageUrl" formControlName="url"
+                      (input)="updatePreviewImageUrl($event)"
+                      [ngClass]="{'border-label': myForm.get('url')!.invalid && myForm.get('url')!.touched}"
+                      class="rounded-md px-2.5 py-1.5 text-sm focus:ring-emerald-600 font-semibold text-gray-900 shadow-sm ring-1  focus:outline-none ring-inset ring-gray-300 hover:bg-gray-50">
+                    </div>
+                  
+                </div>
               </div>
-              
               
 
               <div class="sm:col-span-4">

@@ -97,8 +97,8 @@ export class DashboardComponent implements OnInit {
   private calculateTotalYearAmountMAD(): void {
     const exchangeRates: { [key: string]: number } = {
       'MAD': 1,
-      'EUR': 0.092701,
-      'USD': 0.1
+      'EUR': 10.81081081,
+      'USD': 10 
       // Add more currencies and their exchange rates as needed
     };
 
@@ -116,8 +116,8 @@ export class DashboardComponent implements OnInit {
   private calculateTotalDayAmountMAD(): void {
     const exchangeRates: { [key: string]: number } = {
       'MAD': 1,
-      'EUR': 0.092701,
-      'USD': 0.1
+      'EUR': 10.81081081,
+      'USD': 10 
       // Add more currencies and their exchange rates as needed
     };
 
