@@ -148,7 +148,7 @@ marchandId!: number;
 }
 
 ///////////////////// Delete marchand
-
+@ViewChild('modalElement') modalElement!: ElementRef;
 marchand !: Marchand | undefined;
 
   deleteMarchand(marchandId: number) {
@@ -168,6 +168,7 @@ marchand !: Marchand | undefined;
           this.marchandService.editMarchand(this.marchand).subscribe(
             (updatedMarchand: Marchand) => {
               console.log('Marchand updated successfully:', updatedMarchand);
+              this.modalElement.nativeElement.remove();
             },
             (error) => {
               console.error('Error updating marchand:', error);
@@ -179,6 +180,7 @@ marchand !: Marchand | undefined;
       (error) => {
         console.error('Error fetching marchands:', error);
       }
+      
     );
   
     // this.marchandService.deleteMarchand(marchandId).subscribe(
