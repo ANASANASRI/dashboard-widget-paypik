@@ -31,7 +31,6 @@ export class ChartComponent implements OnInit {
 
 
 
-
   fetchTransactionsByMarchand(marchandId: number) {
     this.transactionService.getTransactionsByMarchand(marchandId).subscribe(
       (data: Transaction[]) => {
@@ -39,29 +38,28 @@ export class ChartComponent implements OnInit {
           'MAD': 1,
           'EUR': 0.092701,
           'USD': 0.1
+          // Add more currencies and their exchange rates as needed
         };
-
+  
         const currentDate = new Date();
-        const previousYear = currentDate.getFullYear() - 1;
-        const previousYearStartDate = new Date(previousYear, 0, 1);
-        const previousYearEndDate = new Date(previousYear, 11, 31);
-
+        const currentYear = currentDate.getFullYear();
+        const currentYearStartDate = new Date(currentYear, 0, 1);
+        const currentYearEndDate = new Date(currentYear, 11, 31);
+  
         let totalMADAmount = 0;
-        let previousYearTotalMADAmount = 0;
-        
+        let uniqueClientIds = new Set<string>();
+  
         for (const transaction of data) {
           const transactionDate = new Date(transaction.timestamp);
-          if (transactionDate >= previousYearStartDate && transactionDate <= previousYearEndDate) {
-            previousYearTotalMADAmount += this.convertToMAD(transaction.amount, transaction.currency, exchangeRates);
-            this.uniqueClientIdsLastYear.add(transaction.clientId); // Add client ID to set for last year
+          if (transactionDate >= currentYearStartDate && transactionDate <= currentYearEndDate) {
+            totalMADAmount += this.convertToMAD(transaction.amount, transaction.currency, exchangeRates);
+            uniqueClientIds.add(transaction.clientId);
           }
-          totalMADAmount += this.convertToMAD(transaction.amount, transaction.currency, exchangeRates);
-          this.uniqueClientIds.add(transaction.clientId); // Add client ID to set
         }
-
-        this.previousTotalAmount = previousYearTotalMADAmount;
+  
         this.totalAmount = totalMADAmount;
-
+        this.uniqueClientIds = uniqueClientIds;
+  
       },
       (error) => {
         console.error('Error fetching transactions amounts:', error);
@@ -69,11 +67,10 @@ export class ChartComponent implements OnInit {
     );
   }
   
-  // Function to convert amount to MAD
-  convertToMAD(amount: number, currency: string, exchangeRates: { [key: string]: number }): number {
-    const exchangeRate = exchangeRates[currency];
-    return amount * exchangeRate;
+  private convertToMAD(amount: number, currency: string, exchangeRates: { [key: string]: number }): number {
+    return amount * exchangeRates[currency];
   }
+  
   
   get totalAmounts() {
     if (this.totalAmount !== undefined && this.totalAmount !== null) {

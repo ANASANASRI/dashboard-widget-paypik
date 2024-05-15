@@ -17,9 +17,11 @@ export class DashboardComponent implements OnInit {
   showTitle: boolean = false;
   totalTransactions = 0;
   transactions: Transaction[] = [];
-  merchantId!: number;
+  marchantId!: number;
   paymentMethodCounts: { [key: string]: number } = {};
   eventDate: string | undefined;
+  totalYearAmountMAD: number = 0;
+  totalDayAmountMAD: number = 0;
   
   @ViewChild('detailedDescription') detailedDescription!: ElementRef;
 
@@ -33,7 +35,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.merchantId = +params['id'];
+      this.marchantId = +params['id'];
       this.retrieveTransactions();
     });
 
@@ -50,7 +52,7 @@ export class DashboardComponent implements OnInit {
   }
 
   retrieveTransactions(): void {
-    this.transactionService.getTransactionsByMarchandId(this.merchantId).subscribe({
+    this.transactionService.getTransactionsByMarchandId(this.marchantId).subscribe({
       next: (data: Transaction[]) => {
         this.transactions = data;
         this.paymentMethodCounts = this.countPaymentMethods(this.transactions);
@@ -63,6 +65,8 @@ export class DashboardComponent implements OnInit {
             'rgba(75, 192, 192, 0.2)',
           ] }]
         };
+        this.calculateTotalYearAmountMAD();
+        this.calculateTotalDayAmountMAD();
         this.createChart();
       },
       error: (error) => console.error(error)
@@ -90,6 +94,44 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  private calculateTotalYearAmountMAD(): void {
+    const exchangeRates: { [key: string]: number } = {
+      'MAD': 1,
+      'EUR': 0.092701,
+      'USD': 0.1
+      // Add more currencies and their exchange rates as needed
+    };
+
+    const currentYear = new Date().getFullYear();
+    this.totalYearAmountMAD = this.transactions.reduce((total, transaction) => {
+      const transactionYear = new Date(transaction.timestamp).getFullYear();
+      if (transactionYear === currentYear) {
+        const amountMAD = transaction.amount * exchangeRates[transaction.currency];
+        return total + amountMAD;
+      }
+      return total;
+    }, 0);
+  }
+
+  private calculateTotalDayAmountMAD(): void {
+    const exchangeRates: { [key: string]: number } = {
+      'MAD': 1,
+      'EUR': 0.092701,
+      'USD': 0.1
+      // Add more currencies and their exchange rates as needed
+    };
+
+    const currentDate = new Date().toDateString();
+    this.totalDayAmountMAD = this.transactions.reduce((total, transaction) => {
+      const transactionDate = new Date(transaction.timestamp).toDateString();
+      if (transactionDate === currentDate) {
+        const amountMAD = transaction.amount * exchangeRates[transaction.currency];
+        return total + amountMAD;
+      }
+      return total;
+    }, 0);
+  }
+
   scrollToSection(): void {
     if (this.detailedDescription && this.detailedDescription.nativeElement) {
       this.detailedDescription.nativeElement.scrollIntoView({ behavior: 'smooth' });
@@ -104,4 +146,6 @@ export class DashboardComponent implements OnInit {
     const ctx = document.getElementById('areaWiseSale') as HTMLCanvasElement;
     new Chart(ctx, { type: 'doughnut', data: this.data, options: this.options });
   }
+
+  // here we will add a code
 }
