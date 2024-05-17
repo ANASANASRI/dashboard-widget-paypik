@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { HomeComponent } from './home/home.component';
@@ -18,6 +18,7 @@ import { PublicComponent } from './public.component';
     PublicHeaderComponent,
     PublicFooterComponent,
     RouterOutlet,
-  ],
+  ], 
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PublicModule {}

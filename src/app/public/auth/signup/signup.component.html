@@ -1,165 +1,260 @@
-<div [@pageTransition] class="main shadow-2xl flex justify-center items-center pt-20">
+<div [@pageTransition] class="main shadow-2xl flex justify-center items-center pt-24">
     <div class="card p-5 w-10/12 xl:w-1/2 grid grid-cols-1 md:grid-cols-2">
-        <div class="relative flex flex-col pt-0 md:p-8">
-
-            <form #marchandForm="ngForm" class="" (ngSubmit)="submitMarchandForm(marchandForm)">
-
-                    <div class="relative">
-                        <input type="text" id="username" name="username" class="form-control w-full ps-10" 
-                            placeholder="* Nom entité (entreprise ou auto-entrepreneur)" required>
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-shop"></i>
-                        </span>
+        <div class="relative flex flex-col p-1 md:p-8">
+            <form [formGroup]="form" class="" (ngSubmit)="submitMarchandForm()">
+                <div class="relative">
+                    <input type="text" id="username" formControlName="username" class="form-control w-full ps-10"
+                        placeholder="* Nom entité (entreprise ou auto-entrepreneur)" [ngClass]="{
+            'border-label':
+                form.get('username')?.invalid && form.get('username')?.touched
+            }" />
+                    <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                        <i class="bi bi-shop"></i>
+                    </span>
+                    <!-- Error Message -->
+                    <div *ngIf="
+            form.get('username')?.invalid && form.get('username')?.touched
+            " class="text-red-500 text-sm mt-1">
+                        * Nom entité requis.
                     </div>
+                </div>
 
-                    <div class="my-5"></div>
+                <div class="my-5"></div>
 
-                    <div class="relative">
-                        <select id="juridique" name="juridique" class="form-select w-full ps-10" [class.text-gray-400]="selectedOption === ''" [class.text-black]="selectedOption !== ''" (change)="handleChange($event)">
-                            <option value="">* Forme juridique</option>
-                            <option value="entreprise">Entreprise</option>
-                            <option value="auto-entrepreneur">Auto-Entrepreneur</option>
-                            <option value="association">Association</option>
-                        </select>
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-bank2"></i>
-                        </span>
+
+                <div class="relative">
+                    <input type="text" id="c_logo" formControlName="c_logo" class="form-control w-full ps-10"
+                        placeholder="* Logo URL" />
+                    <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                        <i class="bi bi-image-alt"></i>
+                    </span>
+                    <!-- Error Message -->
+                    <div *ngIf="
+                    form.get('c_logo')?.invalid && form.get('c_logo')?.touched
+                    " class="text-red-500 text-sm mt-1">
+                        * Logo URL requis.
                     </div>
+                </div>
 
-                    <div class="my-5"></div>
+                <div class="my-5"></div>
 
-                    <div class="relative">
-                        <input type="text" id="c_capital" class="form-control w-full ps-10"
-                            placeholder="* RC ou IF (A.E.)">
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-pencil-square"></i>
-                        </span>
+                <div class="relative">
+                    <select id="juridique" formControlName="juridique" class="form-select w-full ps-10"
+                        [class.text-gray-400]="selectedOption === ''" [class.text-black]="selectedOption !== ''"
+                        (change)="handleChange($event)">
+                        <option value="">* Forme juridique</option>
+                        <option value="Entreprise">Entreprise</option>
+                        <option value="AutoEntrepreneur">Auto-Entrepreneur</option>
+                        <option value="Association">Association</option>
+                    </select>
+                    <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                        <i class="bi bi-bank2"></i>
+                    </span>
+                    <!-- Error Message -->
+                    <div *ngIf="
+            form.get('juridique')?.invalid && form.get('juridique')?.touched
+            " class="text-red-500 text-sm mt-1">
+                        * Forme juridique requise.
                     </div>
+                </div>
 
-                    <div class="my-5"></div>
+                <div class="my-5"></div>
 
-                    <div class="relative">
-                        <input type="text" id="c_address" class="form-control w-full ps-10"
-                            placeholder="* Addresse du siège social">
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-geo-alt"></i>
-                        </span>
+                <div class="relative">
+                    <input type="text" id="c_capital" formControlName="c_capital" class="form-control w-full ps-10"
+                        placeholder="* RC ou IF (A.E.)" />
+                    <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                        <i class="bi bi-pencil-square"></i>
+                    </span>
+                    <!-- Error Message -->
+                    <div *ngIf="
+                form.get('c_capital')?.invalid && form.get('c_capital')?.touched
+            " class="text-red-500 text-sm mt-1">
+                        * RC ou IF requis.
                     </div>
+                </div>
+                <div class="my-5"></div>
 
-                    <div class="my-5"></div>
-
-                    <div class="relative">
-                        <input type="text" id="c_logo" class="form-control w-full ps-10"
-                            placeholder="* Logo URL">
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-image-alt"></i>
-                        </span>
+                <div class="relative">
+                    <input type="text" id="c_address" formControlName="c_address" class="form-control w-full ps-10"
+                        placeholder="* Adresse du siège social" />
+                    <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                        <i class="bi bi-geo-alt"></i>
+                    </span>
+                    <!-- Error Message -->
+                    <div *ngIf="
+                form.get('c_address')?.invalid && form.get('c_address')?.touched
+            " class="text-red-500 text-sm mt-1">
+                        * Adresse du siège social requise.
                     </div>
+                </div>
+                <div class="my-5"></div>
 
-                    <div class="my-5"></div>
-
-                    <div class="relative">
-                        <input type="text" id="c_dg" class="form-control w-full ps-10"
-                            placeholder="* Nom du DG ou gérant">
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-person-circle"></i>
-                        </span>
+                <div class="relative">
+                    <input type="text" id="c_dg" formControlName="c_dg" class="form-control w-full ps-10"
+                        placeholder="* Nom du DG ou gérant" />
+                    <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                        <i class="bi bi-person-circle"></i>
+                    </span>
+                    <!-- Error Message -->
+                    <div *ngIf="form.get('c_dg')?.invalid && form.get('c_dg')?.touched"
+                        class="text-red-500 text-sm mt-1">
+                        * Nom du DG ou gérant requis.
                     </div>
+                </div>
+                <div class="my-5"></div>
 
-                    <div class="my-5"></div>
-
-                    <div class="relative">
-                        <input type="text" id="c_field" class="form-control w-full ps-10"
-                            placeholder="* Type de l'activité">
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-ui-checks-grid"></i>
-                        </span>
+                <div class="relative">
+                    <input type="text" id="c_field" formControlName="c_field" class="form-control w-full ps-10"
+                        placeholder="* Type de l'activité" />
+                    <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                        <i class="bi bi-ui-checks-grid"></i>
+                    </span>
+                    <!-- Error Message -->
+                    <div *ngIf="form.get('c_field')?.invalid && form.get('c_field')?.touched"
+                        class="text-red-500 text-sm mt-1">
+                        * Type de l'activité requis.
                     </div>
+                </div>
 
-                    <div class="my-5"></div>
+                <div class="my-5"></div>
 
-                    <div class="relative">
-                        <input type="text" id="c_web" class="form-control w-full ps-10"
-                            placeholder="* Addresse site web">
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-pc-display"></i>
-                        </span>
+                <div class="relative">
+                    <input type="text" id="c_web" formControlName="c_web" class="form-control w-full ps-10"
+                        placeholder="* Adresse site web" />
+                    <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                        <i class="bi bi-pc-display"></i>
+                    </span>
+                    <!-- Error Message -->
+                    <div *ngIf="form.get('c_web')?.invalid && form.get('c_web')?.touched"
+                        class="text-red-500 text-sm mt-1">
+                        * Adresse site web requise.
                     </div>
+                </div>
+                <div class="my-5"></div>
 
-                    <div class="my-5"></div>
-
-                    <div class="relative">
-                        <input type="text" id="email" class="form-control w-full ps-10"
-                            placeholder="* Addresse e-mail">
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-envelope-at"></i>
-                        </span>
+                <div class="relative">
+                    <input type="text" id="email" formControlName="email" class="form-control w-full ps-10"
+                        placeholder="* Adresse e-mail" pattern="[a-zA-Z0-9._%+-]+@gmail\.com" />
+                    <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                        <i class="bi bi-envelope-at"></i>
+                    </span>
+                    <div *ngIf="form.get('email')?.hasError('pattern') 
+                " class="text-red-500 text-sm mt-1">
+                        Veuillez entrer une adresse e-mail Gmail valide (ex:
+                        exemple&#64;gmail.com).
                     </div>
-
-                    <div class="my-5"></div>
-
-                    <div class="relative">
-                        <input type="text" id="phone" class="form-control w-full ps-10"
-                            placeholder="* Téléphone">
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-telephone"></i>
-                        </span>
+                    <!-- Error Message -->
+                    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+                        class="text-red-500 text-sm mt-1">
+                        * Adresse email requise.
                     </div>
+                </div>
 
-                    <div class="my-5"></div>
+                <div class="my-5"></div>
 
-                    <div class="relative">
-                        <select id="c_fieldyears" name="c_fieldyears" class="form-select w-full ps-10" [class.text-gray-400]="selectedOption1 === ''" [class.text-black]="selectedOption1 !== ''" (change)="handleChange1($event)">
-                            <option value="">* Années d'activité</option>
-                            <option value="-1">Moins &lt; 1 an</option>
-                            <option value="1-5">1 an à 5 ans</option>
-                            <option value="+5">Plus &gt; 5 ans</option>
-                        </select>
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-calendar3"></i>
-                        </span>
+                <div class="relative">
+                    <input type="tel" id="telephone" formControlName="telephone" class="form-control w-full ps-10"
+                        placeholder="* Téléphone" />
+                    <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                        <i class="bi bi-telephone"></i>
+                    </span>
+                    <!-- Error Message -->
+                    <div *ngIf="form.get('telephone')?.hasError('pattern') 
+                " class="text-red-500 text-sm mt-1">
+                        Numéro de téléphone invalide !
                     </div>
-
-                    <div class="my-5"></div>
-
-                    <div class="relative">
-                        <textarea name="c_products" id="comment" data-email="required" class="form-control w-full ps-10 text-gray-400" placeholder="* Description des produits ou services vendus"></textarea>
-                        <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                            <i class="bi bi-body-text"></i>
-                        </span>
+                    <!-- Error Message -->
+                    <div *ngIf="form.get('telephone')?.invalid && form.get('telephone')?.touched"
+                        class="text-red-500 text-sm mt-1">
+                        * Numéro de téléphone requise.
                     </div>
+                </div>
 
+                <div class="my-5"></div>
+
+                <div class="relative">
+                    <select id="c_fieldyears" formControlName="c_fieldyears" class="form-select w-full ps-10"
+                        [class.text-gray-400]="selectedOption === ''" [class.text-black]="selectedOption !== ''"
+                        (change)="handleChange($event)">
+                        <option value="">* Années d'activité</option>
+                        <option value="MOINS_1_AN">Moins &lt; 1 an</option>
+                        <option value="UN_A_5_ANS">1 an à 5 ans</option>
+                        <option value="PLUS_5_ANS">Plus &gt; 5 ans</option>
+                    </select>
+                    <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                        <i class="bi bi-calendar3"></i>
+                    </span>
+                    <!-- Error Message -->
+                    <div *ngIf="
+                form.get('c_fieldyears')?.invalid &&
+                form.get('c_fieldyears')?.touched
+            " class="text-red-500 text-sm mt-1">
+                        * Années d'activité requises.
+                    </div>
+                </div>
+
+                <div class="my-5"></div>
+
+                <div class="relative">
+                    <textarea id="c_products" formControlName="c_products"
+                        class="form-control w-full ps-10 text-gray-400"
+                        placeholder="* Description des produits ou services vendus"></textarea>
+                    <span class="absolute top-2 left-0 ps-3 text-gray-400">
+                        <i class="bi bi-body-text"></i>
+                    </span>
+                    <!-- Error Message -->
+                    <div *ngIf="
+                form.get('c_products')?.invalid && form.get('c_products')?.touched
+            " class="text-red-500 text-sm mt-1">
+                        * Description des produits ou services vendus requise.
+                    </div>
+                </div>
             </form>
         </div>
 
         <div class="md:block hidden text-white bg-emerald-600 rounded-lg p-4 xl:p-12">
-
             <h2 class="text-lg xl:text-2xl pb-1">Ouvrir un compte marchand</h2>
-
-            <p class="text-xs pb-1">La manière la plus simple de<br>gérer vos paiements</p>
-
-            <div class="hover:scale-x-105 duration-700 py-3 pt-10">
-                <img src={{signupbannerImage}} alt="login page image"
-                    class="border rounded-lg border-emerald-600 shadow">
+            <p class="text-xs pb-1">
+                La manière la plus simple de<br />gérer vos paiements
+            </p>
+            <div class="py-3 pt-10">
+                <img [src]="signupbannerImage" alt="login page image"
+                    class="border rounded-lg border-emerald-600 shadow" />
             </div>
 
-            <!-- Move the button here -->
-            <!-- The button for the second div -->
-            <button type="button" class="btn w-full bg-emerald-50 text-emerald-700  rounded-lg  hover:bg-emerald-100 focus:ring-4 focus:ring-emerald-300 dark:bg-emerald-600 dark:hover:bg-emerald-600 dark:focus:ring-emerald-700" 
-            (click)="submitMarchandForm(marchandForm)">
+            <button type="button"
+                class="btn w-full bg-emerald-50 text-emerald-700 rounded-lg hover:bg-emerald-100 focus:ring-4 focus:ring-emerald-300 dark:bg-emerald-600 dark:hover:bg-emerald-600 dark:focus:ring-emerald-700"
+                (click)="submitMarchandForm()">
                 ENVOYER MA DEMANDE
             </button>
 
             <div class="text-sm text-gray-300 pt-1">
                 <p>
-                    Déjà inscrit ? 
+                    Déjà inscrit ?
                     <a [routerLink]="commonService.prepareRoute(publicRoutes.Signin)" class="text-white">
-                        Connectez-vous 
+                        Connectez-vous
                     </a>
                     plutôt.
                 </p>
             </div>
-
         </div>
     </div>
+
+</div>
+
+<!-- Alert for successful addDemandeReussie -->
+<div *ngIf="addDemandeReussie"
+    class="bg-green-100 p-5 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative" role="alert">
+    <strong class="font-bold">Ajout de demande réussi !</strong>
+    <span class="block sm:inline">La demande a été ajoutée avec succès.</span>
+    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+        <lord-icon
+            (click)="addDemandeReussie = false"
+            src="https://cdn.lordicon.com/nqtddedc.json"
+            trigger="hover"
+            colors="primary:#15803d"
+            style="width:30px;height:30px">
+        </lord-icon>
+    </span>
 </div>
