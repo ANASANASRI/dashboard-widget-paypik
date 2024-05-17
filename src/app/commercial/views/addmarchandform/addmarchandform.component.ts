@@ -10,6 +10,8 @@ import { MarchandService } from '../../services/marchand.service';
 })
 export class AddmarchandformComponent implements OnInit{
 
+  addMarchandReussie: boolean = false;
+
   constructor(        
     private marchandService: MarchandService,
     private fb: FormBuilder) {
@@ -119,6 +121,11 @@ export class AddmarchandformComponent implements OnInit{
             console.log('Merchant saved successfully:', savedMarchand);
             // Optionally, perform any additional actions after saving
             this.myForm.reset();
+
+          this.addMarchandReussie = true;
+          setTimeout(() => {
+            this.addMarchandReussie = false;
+          }, 3000); 
           },
           (error) => {
             console.error('Error occurred while saving merchant:', error);

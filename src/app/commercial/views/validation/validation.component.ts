@@ -1,5 +1,5 @@
 import { DemandeService } from './../../services/demande.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
 import { pageTransition } from 'src/app/shared/utils/animations';
 import { Demandedto } from '../../model/demandedto.model';
@@ -13,6 +13,7 @@ import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
 })
 export class ValidationComponent implements OnInit{
 
+
   unverifiedDemandes: Demandedto[] = [];
   currentDemandeId: number | null = null; 
   socket$: WebSocketSubject<any> = webSocket('ws://your-backend-url');
@@ -23,21 +24,21 @@ export class ValidationComponent implements OnInit{
   ) { }
 
 
-  // ngOnInit(): void {
-  //   this.getAllDemandesNotVerified();
-  // }
-
-  
-//every 5 seconds
   ngOnInit(): void {
     this.getAllDemandesNotVerified();
-    this.pollDemandes(); // Start polling for updates
   }
-  pollDemandes() {
-    setInterval(() => {
-      this.getAllDemandesNotVerified();
-    }, 5000); // Poll every 5 seconds (adjust as needed)
-  }
+
+  
+// //every 5 seconds
+//   ngOnInit(): void {
+//     this.getAllDemandesNotVerified();
+//     this.pollDemandes(); // Start polling for updates
+//   }
+//   pollDemandes() {
+//     setInterval(() => {
+//       this.getAllDemandesNotVerified();
+//     }, 5000); // Poll every 5 seconds (adjust as needed)
+//   }
 
 
   getAllDemandesNotVerified() {

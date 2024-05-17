@@ -49,7 +49,6 @@ export class DemandeComponent implements OnInit {
       (data) => {
         console.log('Demande rejected successfully:', data);
         window.location.href = '/commercial/validation';
-        // Call any additional functions or handle the response as needed
       },
       (error) => {
         console.error('Error rejecting demande:', error);

@@ -20,9 +20,12 @@ export class TableComponent implements OnInit{
   @Input() pageData: number[] = [];
 
   shorting: boolean = false;
+  deleteReussie: boolean = false; 
+
 
   marchands: Marchand[] = [];
   searchTerm: string = '';
+
 
   currentPage: number = 1;
   itemsPerPage: number = 5;
@@ -129,6 +132,7 @@ export class TableComponent implements OnInit{
 
 rejectOpen: boolean = false;
 marchandId!: number;
+marchandIdDeleted!: number;
 
   toggleReject(marchandId: number) {
     this.rejectOpen = !this.rejectOpen;
@@ -148,8 +152,9 @@ marchandId!: number;
 }
 
 ///////////////////// Delete marchand
-@ViewChild('modalElement') modalElement!: ElementRef;
-marchand !: Marchand | undefined;
+  @ViewChild('modalElement') modalElement!: ElementRef;
+  marchand !: Marchand | undefined;
+  errorMessage!: boolean;
 
   deleteMarchand(marchandId: number) {
     this.marchandService.getMarchands().subscribe(
@@ -159,45 +164,37 @@ marchand !: Marchand | undefined;
         const Id = marchandId; 
 
         this.marchand = this.marchands.find(marchand => marchand.marchandId === Number(Id));
-        if (this.marchand?.marchandStatus === "Active") {
-          this.marchand.marchandStatus = "Inactive"
-        }
 
-        if (this.marchand) {
-          // Appel du service pour mettre à jour le marchand
-          this.marchandService.editMarchand(this.marchand).subscribe(
-            (updatedMarchand: Marchand) => {
-              console.log('Marchand updated successfully:', updatedMarchand);
-              this.modalElement.nativeElement.remove();
-            },
-            (error) => {
-              console.error('Error updating marchand:', error);
-              // Affichez un message d'erreur à l'utilisateur
-            }
-          );
-        }
-      },
-      (error) => {
-        console.error('Error fetching marchands:', error);
-      }
-      
-    );
-  
-    // this.marchandService.deleteMarchand(marchandId).subscribe(
-    //   (data) => {
-    //     console.log('marchand deleted successfully:', data);
-    //     window.location.href = '/admin/dashboard';
-    //     // Call any additional functions or handle the response as needed
-    //   },
-    //   (error) => {
-    //     console.error('Error deleteing marchand:', error);
-    //   }
-    // );
+        this.marchandService.deleteMarchand(marchandId).subscribe(
+          (data) => {
+            console.log('marchand deleted successfully:', data);
+            this.modalElement.nativeElement.remove();
+
+            // Assuming you have the marchandId available in your component
+            this.marchandIdDeleted = marchandId; // Replace marchandId with the actual value
+
+            this.deleteReussie = true;
+            setTimeout(() => {
+              this.deleteReussie = false;
+              location.reload(); 
+            }, 3000);
+          },
+          (error) => {
+            console.log(error);
+            this.modalElement.nativeElement.remove(); 
+            this.errorMessage = true;
+            setTimeout(() => {
+              this.errorMessage = false;
+            }, 5000);
+          }
+
+        );
+    });
   }
 
 
   /////////////////// reset filter
-    
+
   resetFilters(): void {
       this.searchTerm = ''; // Reset the search term to empty string
       this.selectedOption1 = ''; // Reset the selected option in the dropdown to empty string
@@ -206,5 +203,39 @@ marchand !: Marchand | undefined;
       (this.statusInputRef.nativeElement as HTMLSelectElement).value = '';
   }
 
-}
 
+  //  Swipe
+  swipeMarchand(marchandId: number) {
+    this.marchandService.getMarchands().subscribe(
+      (data: Marchand[]) => {
+        this.marchands = data;
+
+        const Id = marchandId; 
+
+        this.marchand = this.marchands.find(marchand => marchand.marchandId === Number(Id));
+        
+        if (this.marchand) {
+          if (this.marchand.marchandStatus === "Active") {
+            this.marchand.marchandStatus = "Inactive";
+          } else if (this.marchand.marchandStatus === "Inactive") {
+            this.marchand.marchandStatus = "Active";
+          }else if (this.marchand.marchandStatus === "JustCreated") {
+            this.marchand.marchandStatus = "Active";
+          }
+
+          this.marchandService.editMarchand(this.marchand).subscribe(
+            (updatedMarchand: Marchand) => {
+              console.log('Marchand swiped successfully:');
+            },
+            (error) => {
+              console.error('Error swiping marchand:', error);
+            }
+          );
+        }
+      },
+      (error) => {
+        console.error('Error fetching marchands:', error);
+      }
+    );
+  }
+}  
