@@ -53,7 +53,6 @@
                   [ngClass]="{'error-label': myForm.get('url')!.invalid && myForm.get('url')!.touched}"
                   class="block text-sm font-medium leading-6 text-gray-700">Photo</label>
                 <div class="mt-2 flex items-center gap-x-3">
-                  <input type="file" (change)="onFileSelected($event)" accept="*" style="display:none;">
                   <div class="shrink-0">
                     <img [ngClass]="{'border-label': myForm.get('url')!.invalid && myForm.get('url')!.touched}" 
                       id="preview_img" class="h-14 w-14 object-cover rounded-lg" [src]="previewImageUrl" />
@@ -236,7 +235,7 @@
 
           <!-- Save button -->
           <button type="submit" 
-            class="text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">Save</button>
+            class="text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">Save</button>
         </div>
       </form>
 

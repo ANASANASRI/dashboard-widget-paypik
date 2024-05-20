@@ -37,6 +37,13 @@ export class DemandeService {
     return this.http.put<Demandedto>(environment.apiUrl + "/demandes/" + demandeId +"/accepted", null);
   }
 
+  updateDemandeUpdateAndAccepted(demandeId: number,demande: Demandedto): Observable<Demandedto> {
+    return this.http.put<Demandedto>(environment.apiUrl + "/demandes/" + demandeId +"/update/accepted", demande);
+  }
+
+  updateDemandeUpdate(demandeId: number,demande: Demandedto): Observable<Demandedto> {
+    return this.http.put<Demandedto>(environment.apiUrl + "/demandes/" + demandeId +"/update", demande);
+  }
 //////////////// SEE
 
   // getAllDemandesNotVerifiedSEE(): Observable<Demandedto> {

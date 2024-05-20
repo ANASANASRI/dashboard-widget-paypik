@@ -186,10 +186,10 @@
                         <i class="bi bi-calendar3"></i>
                     </span>
                     <!-- Error Message -->
-                    <div *ngIf="
-                form.get('c_fieldyears')?.invalid &&
-                form.get('c_fieldyears')?.touched
-            " class="text-red-500 text-sm mt-1">
+                    <div *ngIf=" 
+                        form.get('c_fieldyears')?.invalid &&
+                        form.get('c_fieldyears')?.touched
+                        " class="text-red-500 text-sm mt-1">
                         * Années d'activité requises.
                     </div>
                 </div>

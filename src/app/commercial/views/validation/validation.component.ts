@@ -24,21 +24,20 @@ export class ValidationComponent implements OnInit{
   ) { }
 
 
+  // ngOnInit(): void {
+  //   this.getAllDemandesNotVerified();
+  // }
+
+// //every 5 seconds
   ngOnInit(): void {
     this.getAllDemandesNotVerified();
+    // this.pollDemandes(); 
   }
-
-  
-// //every 5 seconds
-//   ngOnInit(): void {
-//     this.getAllDemandesNotVerified();
-//     this.pollDemandes(); // Start polling for updates
-//   }
-//   pollDemandes() {
-//     setInterval(() => {
-//       this.getAllDemandesNotVerified();
-//     }, 5000); // Poll every 5 seconds (adjust as needed)
-//   }
+  pollDemandes() {
+    setInterval(() => {
+      this.getAllDemandesNotVerified();
+    }, 5000); // Poll every 5 seconds
+  }
 
 
   getAllDemandesNotVerified() {
