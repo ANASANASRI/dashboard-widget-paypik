@@ -167,4 +167,18 @@ export class DemandeComponent implements OnInit {
         );
     }
   }
+
+
+  ////  Update image 
+  updateLogoUrl(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement) {
+      this.editFormData.demandeMarchandLogoUrl = inputElement.value;
+    }
+  }
+
+  isValidImageUrl(url: string): boolean {
+    const pattern = /\.(jpg|jpeg|png|gif|svg)$/;
+    return pattern.test(url);
+  }
 }

@@ -146,29 +146,38 @@
                 <span class="sr-only">Close</span>
             </button>
 
-            <div class="flex mb-2 items-start justify-between p-2 border-b rounded-t">
+            <div class="flex mb-3 items-start justify-between p-2 border-b rounded-t">
                 <h3 class="text-xl font-semibold">Editer la demande</h3>
             </div>
 
             <div class="p-6 space-y-6">
                 <form (ngSubmit)="onSubmit(editForm, isAcceptedEdit)" #editForm="ngForm">
                     <div class="grid grid-cols-6 gap-6">
-                        <div class="relative mb-2 col-span-6 sm:col-span-3">
+                        <div class="relative mb-4 col-span-6 sm:col-span-3">
                             <input [(ngModel)]="editFormData.demandeMarchandName" name="demandeMarchandName" type="text" id="demandeMarchandName" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" 
                             placeholder={{demande.demandeMarchandName}} required>
-                            <span class="absolute -top-6 left-0 ps-3 text-gray-400">
+                            <span class="absolute -top-7 left-0 ps-3 text-gray-400">
                                 <i class="bi bi-shop"></i> Nom entité
                             </span>  
                         </div>
-                        <div class="relative mb-2 col-span-6 sm:col-span-3">
-                            <input [(ngModel)]="editFormData.demandeMarchandLogoUrl" name="demandeMarchandLogoUrl" type="text" id="demandeMarchandLogoUrl" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" 
-                            placeholder={{demande.demandeMarchandLogoUrl}} required>
-                            <span class="absolute -top-6 left-0 ps-3 text-gray-400">
+                        <div class="relative mb-4 col-span-6 sm:col-span-3">
+                            <input [(ngModel)]="editFormData.demandeMarchandLogoUrl" name="demandeMarchandLogoUrl" type="text" 
+                                    id="demandeMarchandLogoUrl" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm 
+                                    rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" 
+                                    placeholder="{{demande.demandeMarchandLogoUrl}}" required (input)="updateLogoUrl($event)">
+                            <span class="absolute -top-7 left-0 ps-3 text-gray-400">
+                                <ng-container *ngIf="!isValidImageUrl(editFormData.demandeMarchandLogoUrl); else showImage">
                                 <i class="bi bi-image-alt"></i> Logo URL
+                                </ng-container>
+                                <ng-template #showImage>
+                                    <img [src]="editFormData.demandeMarchandLogoUrl" class=" h-6 w-6 object-cover rounded-sm inline-block" style="vertical-align: middle;" /> 
+                                    <span style="vertical-align: middle;"> Logo URL</span>
+                                </ng-template>
                             </span>   
                         </div>
+                        
 
-                        <div class="relative mb-2 col-span-6 sm:col-span-3">
+                        <div class="relative mb-4 col-span-6 sm:col-span-3">
                             <select 
                                 id="demandeMarchandFormejuridique" 
                                 [(ngModel)]="editFormData.demandeMarchandFormejuridique" 
@@ -180,64 +189,64 @@
                                 <option value="AutoEntrepreneur">Auto-Entrepreneur</option>
                                 <option value="Association">Association</option>
                             </select>
-                            <span class="absolute -top-6 left-0 ps-3 text-gray-400">
+                            <span class="absolute -top-7 left-0 ps-3 text-gray-400">
                                 <i class="bi bi-bank2"></i> Forme juridique
                             </span> 
                         </div>                        
-                        <div class="relative mb-2 col-span-6 sm:col-span-3">
+                        <div class="relative mb-4 col-span-6 sm:col-span-3">
                             <input [(ngModel)]="editFormData.demandeMarchandRcIf" name="demandeMarchandRcIf" type="text" id="demandeMarchandRcIf" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" 
                             placeholder={{demande.demandeMarchandRcIf}} required>
-                            <span class="absolute -top-6 left-0 ps-3 text-gray-400">
+                            <span class="absolute -top-7 left-0 ps-3 text-gray-400">
                                 <i class="bi bi-pencil-square"></i> RC ou IF
                             </span> 
                         </div>
 
-                        <div class="relative mb-2 col-span-6 sm:col-span-3">
+                        <div class="relative mb-4 col-span-6 sm:col-span-3">
                             <input [(ngModel)]="editFormData.demandeMarchandSiegeAddresse" name="demandeMarchandSiegeAddresse" type="text" id="demandeMarchandSiegeAddresse" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" 
                             placeholder={{demande.demandeMarchandSiegeAddresse}} required>
-                            <span class="absolute -top-6 left-0 ps-3 text-gray-400">
+                            <span class="absolute -top-7 left-0 ps-3 text-gray-400">
                                 <i class="bi bi-geo-alt"></i> Adresse du siège social
                             </span> 
                         </div>
-                        <div class="relative mb-2 col-span-6 sm:col-span-3">
+                        <div class="relative mb-4 col-span-6 sm:col-span-3">
                             <input [(ngModel)]="editFormData.demandeMarchandDgName" name="demandeMarchandDgName" type="text" id="demandeMarchandDgName" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" 
                             placeholder={{demande.demandeMarchandDgName}} required>
-                            <span class="absolute -top-6 left-0 ps-3 text-gray-400">
+                            <span class="absolute -top-7 left-0 ps-3 text-gray-400">
                                 <i class="bi bi-person-circle"></i> Nom du DG
                             </span> 
                         </div>
 
-                        <div class="relative mb-2 col-span-6 sm:col-span-3">
+                        <div class="relative mb-4 col-span-6 sm:col-span-3">
                             <input [(ngModel)]="editFormData.demandeMarchandTypeActivite" name="demandeMarchandTypeActivite" type="text" id="demandeMarchandTypeActivite" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" 
                             placeholder={{demande.demandeMarchandDgName}} required>
-                            <span class="absolute -top-6 left-0 ps-3 text-gray-400">
+                            <span class="absolute -top-7 left-0 ps-3 text-gray-400">
                                 <i class="bi bi-ui-checks-grid"></i> Type de l'activité
                             </span> 
                         </div>
-                        <div class="relative mb-2 col-span-6 sm:col-span-3">
+                        <div class="relative mb-4 col-span-6 sm:col-span-3">
                             <input [(ngModel)]="editFormData.demandeMarchandHost" name="demandeMarchandHost" type="text" id="demandeMarchandHost" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" 
                             placeholder={{demande.demandeMarchandHost}} required>
-                            <span class="absolute -top-6 left-0 ps-3 text-gray-400">
+                            <span class="absolute -top-7 left-0 ps-3 text-gray-400">
                                 <i class="bi bi-pc-display"></i> Adresse site web
                             </span> 
                         </div>
 
-                        <div class="relative mb-2 col-span-6 sm:col-span-3">
+                        <div class="relative mb-4 col-span-6 sm:col-span-3">
                             <input [(ngModel)]="editFormData.demandeMarchandEmail" name="demandeMarchandEmail" type="email" id="demandeMarchandEmail" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" 
                             placeholder={{demande.demandeMarchandEmail}} required>
-                            <span class="absolute -top-6 left-0 ps-3 text-gray-400">
+                            <span class="absolute -top-7 left-0 ps-3 text-gray-400">
                                 <i class="bi bi-envelope-at"></i> Adresse email
                             </span> 
                         </div>
-                        <div class="relative mb-2 col-span-6 sm:col-span-3">
+                        <div class="relative mb-4 col-span-6 sm:col-span-3">
                             <input [(ngModel)]="editFormData.demandeMarchandPhone" name="demandeMarchandPhone" type="tel" id="demandeMarchandPhone" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" 
                             placeholder={{demande.demandeMarchandPhone}} required>
-                            <span class="absolute -top-6 left-0 ps-3 text-gray-400">
+                            <span class="absolute -top-7 left-0 ps-3 text-gray-400">
                                 <i class="bi bi-telephone"></i> Numéro de téléphone
                             </span> 
                         </div>
 
-                        <div class="relative mb-2 col-span-6 sm:col-span-3">
+                        <div class="relative mb-3 col-span-6 sm:col-span-3">
                             <select 
                                 id="demandeMarchandAnneeActivite" 
                                 [(ngModel)]="editFormData.demandeMarchandAnneeActivite" 
@@ -249,14 +258,14 @@
                                 <option value="UN_A_5_ANS">1 an à 5 ans</option>
                                 <option value="PLUS_5_ANS">Plus &gt; 5 ans</option>
                             </select>
-                            <span class="absolute -top-6 left-0 ps-3 text-gray-400">
+                            <span class="absolute -top-7 left-0 ps-3 text-gray-400">
                                 <i class="bi bi-calendar3"></i> Années d'activité
                             </span>
                         </div>
-                        <div class="relative mb-2 col-span-6 sm:col-span-3">
+                        <div class="relative mb-3 col-span-6 sm:col-span-3">
                             <textarea [(ngModel)]="editFormData.demandeMarchandDescription" name="demandeMarchandDescription" id="demandeMarchandDescription" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" 
                             placeholder={{demande.demandeMarchandDescription}} required></textarea>
-                            <span class="absolute -top-6 left-0 ps-3 text-gray-400">
+                            <span class="absolute -top-7 left-0 ps-3 text-gray-400">
                                 <i class="bi bi-body-text"></i> Description
                             </span> 
                         </div>
