@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DatetimeHelper } from 'src/app/_core/helpers/datetime.helper';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { pageTransition } from 'src/app/shared/utils/animations';
@@ -132,5 +132,17 @@ export class SignupComponent implements OnInit{
   clearForm(): void {
     this.form.reset(); // This will reset all form controls to their initial state
   }
+
+
+  /// Update logo 
+  previewImageUrl: string = '';
+
+  updatePreviewImageUrl(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement) {
+      this.previewImageUrl = inputElement.value;
+    }
+  }
+
 
 }

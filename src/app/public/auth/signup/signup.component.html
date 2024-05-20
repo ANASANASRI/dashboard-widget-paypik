@@ -24,17 +24,18 @@
 
                 <div class="relative">
                     <input type="text" id="c_logo" formControlName="c_logo" class="form-control w-full ps-10"
-                        placeholder="* Logo URL" />
+                        placeholder="* Logo URL" (input)="updatePreviewImageUrl($event)" />
                     <span class="absolute top-2 left-0 ps-3 text-gray-400">
-                        <i class="bi bi-image-alt"></i>
+                        <i *ngIf="!previewImageUrl" class="bi bi-image-alt"></i>
+                        <img *ngIf="previewImageUrl" [src]="previewImageUrl" class="h-5 w-5 object-cover rounded-sm" />
                     </span>
                     <!-- Error Message -->
-                    <div *ngIf="
-                    form.get('c_logo')?.invalid && form.get('c_logo')?.touched
-                    " class="text-red-500 text-sm mt-1">
-                        * Logo URL requis.
+                    <div *ngIf="form.get('c_logo')?.invalid && form.get('c_logo')?.touched" class="text-red-500 text-sm mt-1">
+                        * Logo URL required.
                     </div>
                 </div>
+                
+
 
                 <div class="my-5"></div>
 
@@ -249,12 +250,8 @@
     <strong class="font-bold">Ajout de demande réussi !</strong>
     <span class="block sm:inline">La demande a été ajoutée avec succès.</span>
     <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-        <lord-icon
-            (click)="addDemandeReussie = false"
-            src="https://cdn.lordicon.com/nqtddedc.json"
-            trigger="hover"
-            colors="primary:#15803d"
-            style="width:30px;height:30px">
+        <lord-icon (click)="addDemandeReussie = false" src="https://cdn.lordicon.com/nqtddedc.json" trigger="hover"
+            colors="primary:#15803d" style="width:30px;height:30px">
         </lord-icon>
     </span>
 </div>
