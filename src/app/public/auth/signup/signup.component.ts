@@ -92,6 +92,7 @@ export class SignupComponent implements OnInit{
           console.log('Demande enregistrée avec succès:', saveDemande);
           this.isLoading = false;
           this.form.reset();
+          this.previewImageUrl = ''; // Clear the preview image URL
 
           this.addDemandeReussie = true;
           setTimeout(() => {
@@ -131,6 +132,7 @@ export class SignupComponent implements OnInit{
 }*/
   clearForm(): void {
     this.form.reset(); // This will reset all form controls to their initial state
+    this.previewImageUrl = '';
   }
 
 
@@ -143,6 +145,5 @@ export class SignupComponent implements OnInit{
       this.previewImageUrl = inputElement.value;
     }
   }
-
 
 }
