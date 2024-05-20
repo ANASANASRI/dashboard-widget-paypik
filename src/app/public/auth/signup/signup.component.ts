@@ -92,12 +92,13 @@ export class SignupComponent implements OnInit{
           console.log('Demande enregistrée avec succès:', saveDemande);
           this.isLoading = false;
           this.form.reset();
+
           this.previewImageUrl = ''; // Clear the preview image URL
 
           this.addDemandeReussie = true;
           setTimeout(() => {
             this.addDemandeReussie = false;
-          }, 3000); 
+          }, 5000); 
         },
         (error) => {
           console.error('Erreur lors de l\'enregistrement de la demande:', error);
@@ -132,7 +133,6 @@ export class SignupComponent implements OnInit{
 }*/
   clearForm(): void {
     this.form.reset(); // This will reset all form controls to their initial state
-    this.previewImageUrl = '';
   }
 
 

@@ -77,7 +77,15 @@
                             <button type="button"
                                 class="ml-8 w-auto flex items-center px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-emerald-600 rounded-lg hover:bg-emerald-500 focus:outline-none focus:ring focus:ring-emerald-300 focus:ring-opacity-80"
                                 (click)="resetFilters()">
-                                <svg class="animate-spin animate-infinite animate-duration-[4000ms] animate-reverse w-5 h-5 mx-1"
+                                    <!-- <lord-icon
+                                        src="https://cdn.lordicon.com/twemlvxy.json"
+                                        trigger="loop-on-hover"
+                                        colors="primary:#ffffff"
+                                        style="width:20px;height:20px"
+                                        class="mx-1">
+                                    </lord-icon> -->
+                                    
+                                <svg class="animate-spin animate-thrice animate-duration-[4000ms] animate-reverse w-5 h-5 mx-1"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd"
                                         d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
@@ -188,7 +196,7 @@
                                             <a [routerLink]="['/admin/dashboard/marchand/edit', marchand.marchandId]"
                                                 x-data="{ tooltip: 'Edite' }"
                                                 class=" text-indigo-600 hover:text-indigo-900">
-                                                <lord-icon src="https://cdn.lordicon.com/wuvorxbv.json" trigger="hover"
+                                                <lord-icon src="https://cdn.lordicon.com/wuvorxbv.json" trigger="loop-on-hover" 
                                                     colors="primary:#312e81  ,secondary:#4f46e5"
                                                     style="width:24px;height:24px">
                                                 </lord-icon>
@@ -197,7 +205,7 @@
                                             <a (click)="swipeMarchand(marchand.marchandId)"
                                                 x-data="{ tooltip: 'Swipe' }"
                                                 class="ml-3 text-yellow-400 hover:text-yellow-600 ">
-                                                <lord-icon src="https://cdn.lordicon.com/xunzgeah.json" trigger="hover"
+                                                <lord-icon src="https://cdn.lordicon.com/xunzgeah.json" trigger="loop-on-hover"
                                                     colors="primary:#ca8a04 " style="width:24px;height:24px">
                                                 </lord-icon>
                                             </a>
@@ -205,7 +213,7 @@
                                             <a (click)="toggleReject(marchand.marchandId)"
                                                 x-data="{ tooltip: 'Delete' }"
                                                 class="ml-3 text-red-600 hover:text-red-900 ">
-                                                <lord-icon src="https://cdn.lordicon.com/wpyrrmcq.json" trigger="hover"
+                                                <lord-icon src="https://cdn.lordicon.com/wpyrrmcq.json" trigger="loop-on-hover"
                                                     colors="primary:#dc2626" style="width:24px;height:24px">
                                                 </lord-icon>
                                             </a>

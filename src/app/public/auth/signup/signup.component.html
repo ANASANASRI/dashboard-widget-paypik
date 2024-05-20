@@ -246,9 +246,9 @@
 
 <!-- Alert for successful addDemandeReussie -->
 <div *ngIf="addDemandeReussie"
-    class="bg-green-100 p-5 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative" role="alert">
+    class="relative animate-fade-up animate-once bg-green-100 p-5 border border-green-400 text-green-700 px-4 py-3 rounded-lg " role="alert">
     <strong class="font-bold">Ajout de demande réussi !</strong>
-    <span class="block sm:inline">La demande a été ajoutée avec succès.</span>
+    <span class="block sm:inline">Dans les prochaines 24 heures, vous recevrez un autre email de notre part vous informant de la décision concernant votre demande.</span>
     <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
         <lord-icon (click)="addDemandeReussie = false" src="https://cdn.lordicon.com/nqtddedc.json" trigger="hover"
             colors="primary:#15803d" style="width:30px;height:30px">
