@@ -50,4 +50,13 @@ export class SigninComponent {
   protected onAlertCloseHandler = (e: any) => {
     this.serverErrors = [];
   };
+
+  /// Forget password
+
+  modalOpen: boolean = false;
+
+
+  togglePassForget() {
+      this.modalOpen = !this.modalOpen;
+  }
 }
