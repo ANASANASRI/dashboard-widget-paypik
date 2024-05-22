@@ -10,37 +10,40 @@
             </div>
 
             <div class="flex flex-wrap pt-16">
-    
-                <form class="mb-12 w-full shrink-0 grow-0 basis-auto md:px-3 lg:mb-0 lg:w-5/12 lg:px-6">
+                <form class="mb-12 w-full shrink-0 grow-0 basis-auto md:px-3 lg:mb-0 lg:w-5/12 lg:px-6" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                 
                     <div class="mb-3 w-full">
-                        <label class="block font-medium mb-[2px] text-emerald-700" htmlFor="exampleInput90">
-                                Nom
+                        <label class="block font-medium mb-[2px] text-emerald-700" htmlFor="subject">
+                            Sujet
                         </label>
-                        <input type="text" class="px-2 py-2 border w-full outline-none rounded-md" id="exampleInput90" placeholder="Nom" />
+                        <input type="text" formControlName="subject" class="px-2 py-2 border w-full outline-none rounded-md" id="Subject" placeholder="Sujet" />
                     </div>
-            
+                
                     <div class="mb-3 w-full">
-                        <label class="block font-medium mb-[2px] text-emerald-700" htmlFor="exampleInput90">
-                                Email
+                        <label class="block font-medium mb-[2px] text-emerald-700" htmlFor="nom">
+                            Nom de l'entreprise
                         </label>
-                        <input type="email" class="px-2 py-2 border w-full outline-none rounded-md" id="exampleInput90"
-                                placeholder="Entrez votre adresse e-mail" />
+                        <input type="nom" formControlName="nom" class="px-2 py-2 border w-full outline-none rounded-md" id="nom" placeholder="Entrez votre entreprise nom" />
                     </div>
-            
+                
                     <div class="mb-3 w-full">
-                        <label class="block font-medium mb-[2px] text-emerald-700" htmlFor="exampleInput90">
-                                Message
+                        <label class="block font-medium mb-[2px] text-emerald-700" htmlFor="message">
+                            Message
                         </label>
-                        <textarea class="px-2 py-2 border rounded-[5px] w-full outline-none" name="" id=""></textarea>
+                        <textarea formControlName="message" class="px-2 py-2 border rounded-[5px] w-full outline-none" id="message"></textarea>
+                        <div *ngIf="contactForm.get('message').errors?.required && contactForm.get('message').touched" class="text-red-500">Message is required</div>
                     </div>
-            
-                    <button type="button"
+                
+                    <!-- ///////////////////// -->
+                    <button type="submit"
+                            [disabled]="!contactForm.valid"
                             class="mb-6 inline-block w-full rounded bg-emerald-600 px-6 py-2.5 font-medium uppercase leading-normal text-white hover:shadow-md hover:bg-emerald-500">
                             Envoyer
                     </button>
-            
+                    <!-- ///////////////////// -->
+
                 </form>
+                
             
                 <div class="w-full shrink-0 grow-0 basis-auto lg:w-7/12">
                     <div class="flex flex-wrap">
@@ -60,7 +63,7 @@
                                         Support technique
                                     </p>
                                     <p class="text-neutral-500 ">
-                                        supportexample.m2t
+                                        paypik.m2t&commat;gmail.com
                                     </p>
                                     <p class="text-neutral-500 ">
                                         +212 234-567-89
@@ -84,7 +87,7 @@
                                         Questions de vente
                                     </p>
                                     <p class="text-neutral-500 ">
-                                        salesexample.m2t
+                                        paypik.m2t&commat;gmail.com
                                     </p>
                                     <p class="text-neutral-500 ">
                                         +212 234-567-89
@@ -106,7 +109,7 @@
                                 <div class="ml-6 grow">
                                     <p class="mb-2 font-bold ">Presse</p>
                                     <p class="text-neutral-500 ">
-                                        pressexample.m2t
+                                        paypik.m2t&commat;gmail.com
                                     </p>
                                     <p class="text-neutral-500 ">
                                         +212 234-567-89
@@ -130,7 +133,7 @@
                                         report
                                     </p>
                                     <p class="text-neutral-500 ">
-                                        reportexample.m2t
+                                        paypik.m2t&commat;gmail.com
                                     </p>
                                     <p class="text-neutral-500">
                                         +212 234-567-89
