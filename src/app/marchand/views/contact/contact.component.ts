@@ -28,9 +28,8 @@ export class ContactComponent {
       this.emailserviceService.sendEmail(subject, nom, message)
         .subscribe(
           response => {
-            // Handle success response (e.g., show success message)
-            console.log('Email sent successfully:', response);
             this.contactForm.reset();
+            console.log('Email sent successfully:', response);
           },
           error => {
             // Handle error response (e.g., show error message)
