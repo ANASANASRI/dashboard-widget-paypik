@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { EmailserviceService } from './../../services/emailservice.service';
 import { Component} from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [CommonModule ,ReactiveFormsModule,FormsModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
