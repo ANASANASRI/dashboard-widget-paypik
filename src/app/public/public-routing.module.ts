@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { PublicRoutes } from './public.routes';
+import { IntegrationComponent } from './integration/integration.component';
 
 const routes: Routes = [
 
@@ -8,6 +10,11 @@ const routes: Routes = [
     path: '',
     title: 'Home',
     component: HomeComponent,
+  },
+  {
+    title: "Integration",
+    path: PublicRoutes.Integration,
+    component: IntegrationComponent
   },
   // {
   //   path: '',
