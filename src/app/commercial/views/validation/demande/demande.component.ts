@@ -47,6 +47,15 @@ export class DemandeComponent implements OnInit {
     );
   }
 
+  // updateDemandeRejected
+
+  loading: boolean = false;
+
+  startReject(demandeId: number) {
+    this.loading = true;
+    this.updateDemandeRejected(demandeId);
+  }
+
   updateDemandeRejected(demandeId: number) {
     this.demandeService.updateDemandeRejected(demandeId).subscribe(
       (data) => {
@@ -55,6 +64,9 @@ export class DemandeComponent implements OnInit {
       },
       (error) => {
         console.error('Error rejecting demande:', error);
+      },
+      () => {
+        this.loading = false; // Ensure loading is reset after the request completes
       }
     );
   }

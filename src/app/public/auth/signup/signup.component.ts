@@ -64,6 +64,9 @@ export class SignupComponent implements OnInit{
     });
   }
   
+  ////////////
+  isOpen: boolean = false;
+
   submitMarchandForm(): void {
     if (this.form.valid) {
       const demandeData: Demandedto = {
@@ -84,6 +87,7 @@ export class SignupComponent implements OnInit{
         demandeIsVerified: false
       };
   
+      this.isOpen = true; // Set isOpen to true when the form submission starts
       this.isLoading = true;
       console.log("data entrer ", demandeData);
   
@@ -91,6 +95,8 @@ export class SignupComponent implements OnInit{
         (saveDemande: any) => {
           console.log('Demande enregistrée avec succès:', saveDemande);
           this.isLoading = false;
+          this.isOpen = false; // Reset isOpen to false when the form submission is successful
+
           this.form.reset();
 
           this.previewImageUrl = ''; // Clear the preview image URL
@@ -102,6 +108,7 @@ export class SignupComponent implements OnInit{
         },
         (error) => {
           console.error('Erreur lors de l\'enregistrement de la demande:', error);
+          this.isOpen = false; // Reset isOpen to false when the form submission is successful
           this.isLoading = false;
           alert(`Erreur lors de l'enregistrement de la demande: ${error.message}`);
         }

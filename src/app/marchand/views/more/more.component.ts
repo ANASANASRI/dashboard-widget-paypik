@@ -20,7 +20,6 @@ export class MoreComponent implements OnInit {
   paymentMethods: PaymentMethod[] = [];
   marchandId!: number;
   transactionId!: number;
-  loading: boolean = false;
 
   @ViewChild('content', { static: false }) content!: ElementRef;
 
@@ -93,6 +92,7 @@ export class MoreComponent implements OnInit {
 
 
   // Pdf downloading
+  loading: boolean = false;
 
   startLoading() {
     // Set loading to true after a delay of 500 milliseconds

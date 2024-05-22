@@ -156,13 +156,20 @@ marchandIdDeleted!: number;
   marchand !: Marchand | undefined;
   errorMessage!: boolean;
 
+  // deleteMarchand 
+  loading: boolean = false;
+  
+  startDelete(marchandId: number) {
+    this.loading = true;
+    this.deleteMarchand(marchandId);
+  }
+
   deleteMarchand(marchandId: number) {
     this.marchandService.getMarchands().subscribe(
-      (data: Marchand[]) => {
+      (data: any[]) => { // Adjust type if needed
         this.marchands = data;
-        
-        const Id = marchandId; 
 
+        const Id = marchandId;
         this.marchand = this.marchands.find(marchand => marchand.marchandId === Number(Id));
 
         this.marchandService.deleteMarchand(marchandId).subscribe(
@@ -170,26 +177,31 @@ marchandIdDeleted!: number;
             console.log('marchand deleted successfully:', data);
             this.modalElement.nativeElement.remove();
 
-            // Assuming you have the marchandId available in your component
-            this.marchandIdDeleted = marchandId; // Replace marchandId with the actual value
-
+            this.marchandIdDeleted = marchandId;
             this.deleteReussie = true;
             setTimeout(() => {
               this.deleteReussie = false;
-              location.reload(); 
+              location.reload();
             }, 3000);
           },
           (error) => {
             console.log(error);
-            this.modalElement.nativeElement.remove(); 
+            this.modalElement.nativeElement.remove();
             this.errorMessage = true;
             setTimeout(() => {
               this.errorMessage = false;
             }, 5000);
+          },
+          () => {
+            this.loading = false; // Ensure loading is reset after the request completes
           }
-
         );
-    });
+      },
+      (error) => {
+        console.log(error);
+        this.loading = false; // Reset loading if the initial request fails
+      }
+    );
   }
 
 

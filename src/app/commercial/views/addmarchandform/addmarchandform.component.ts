@@ -32,7 +32,7 @@ export class AddmarchandformComponent implements OnInit{
 
   toggleOption() {
     this.uploadOption = !this.uploadOption;
-    this.imageUrl = ''; // Clear image URL when switching options
+    this.imageUrl = ''; 
   }
 
   openFileInput() {
