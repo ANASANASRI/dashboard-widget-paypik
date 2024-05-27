@@ -17,16 +17,22 @@
       </div>
       <div class="hidden lg:flex lg:gap-x-12">
          <a [routerLink]="commonService.prepareRoute(publicRoutes.Home)"
-            class="text-sm font-semibold leading-6 text-gray-900 hover:text-emerald-600">Home</a>
+            class="text-sm font-semibold leading-6 text-gray-900 hover:text-emerald-600">Accueil</a>
+
+         <a [routerLink]="commonService.prepareRoute(publicRoutes.Integration)"
+         class="text-sm font-semibold leading-6 text-gray-900  hover:text-emerald-600">Integration</a>
+
+         <a [routerLink]="commonService.prepareRoute(publicRoutes.Contact)"
+         class="text-sm font-semibold leading-6 text-gray-900  hover:text-emerald-600">Nous contacter</a>
 
          <a [routerLink]="commonService.prepareRoute(appRoutes.Admin, adminRoutes.Dashboard)"
-            class="text-sm font-semibold leading-6 text-gray-900  hover:text-emerald-600">Dashboard Admin</a>
+            class="text-sm font-semibold leading-6 text-gray-900  hover:text-emerald-600">Dash-Admin</a>
 
          <a [routerLink]="commonService.prepareRoute(appRoutes.Marchand)"
-         class="text-sm font-semibold leading-6 text-gray-900  hover:text-emerald-600">Dashboard Marchand</a>
+         class="text-sm font-semibold leading-6 text-gray-900  hover:text-emerald-600">Dash-Marchand</a>
 
          <a [routerLink]="commonService.prepareRoute(appRoutes.Commercial)"
-         class="text-sm font-semibold leading-6 text-gray-900  hover:text-emerald-600">Dashboard Commercial</a>
+         class="text-sm font-semibold leading-6 text-gray-900  hover:text-emerald-600">Dash-Commercial</a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
 

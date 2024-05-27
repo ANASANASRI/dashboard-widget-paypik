@@ -1,0 +1,17 @@
+.main {
+    background: #f8fafc  url('https://i.ibb.co/18zKBrK/bla.png') repeat 0 0;
+    -webkit-animation: animate 20s linear infinite;
+    -moz-animation: animate 30s linear infinite;
+    -ms-animation: animate 20s linear infinite;
+    -o-animation: animate 400s linear infinite;
+    animation: animate 70s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+}
+}
