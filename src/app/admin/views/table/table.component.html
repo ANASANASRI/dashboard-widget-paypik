@@ -159,9 +159,16 @@
                                         [ngClass]="{ 'opacity-40 hover:opacity-100': marchand.marchandStatus === 'Inactive' }">
                                         <td class="px-6 py-4  whitespace-nowrap">
                                             <div class="flex items-center">
-                                                <div class="flex-shrink-0 h-10 w-10">
+                                                <div class="relative flex-shrink-0 h-10 w-10">
                                                     <img class="hover:scale-110 duration-700 h-10 w-10 rounded-md"
                                                         [src]="marchand.marchandLogoUrl" alt="">
+                                                    <span
+                                                    class="absolute right-0 bottom-0 h-2 w-2 rounded-full ring ring-white"
+                                                    [ngClass]="{
+                                                        'bg-green-400': marchand.marchandStatus === 'Active',
+                                                        'bg-red-400': marchand.marchandStatus === 'Inactive',
+                                                        'bg-yellow-400': marchand.marchandStatus === 'JustCreated'
+                                                    }"></span>
                                                 </div>
                                                 <div class="ml-4">
                                                     <div class="text-sm font-medium text-gray-900 w-28 truncate">
