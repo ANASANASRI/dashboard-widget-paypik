@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { AppRoutes } from 'src/app/app.routes';
 import { MarchandRoutes, SettingRoutes ,SupportRoutes } from '../../marchand.routes';
+import { TokenService } from 'src/app/public/auth/token.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -34,6 +35,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     public readonly commonServices: CommonService,
     private readonly elementRef: ElementRef,
+    private tokenService:TokenService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -87,4 +89,10 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     })
   }
+
+  
+    // Method to handle logout
+    onLogout(): void {
+      this.tokenService.logOut();
+    }
 }

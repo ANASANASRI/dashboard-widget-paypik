@@ -96,8 +96,15 @@ app-sidebar[aria-expanded="false"] .brand {
 }
 
 .collapsible-btn-container {
-    @apply fixed left-0 top-1/2 translate-x-[15rem] transition-all duration-300
+    @apply fixed left-0 top-1/2 translate-x-[15rem] transition-all duration-300;
 }
+
+@media (max-width: 1400px) {
+    .collapsible-btn-container {
+        @apply fixed left-0 top-1/2 translate-x-[10rem] transition-all duration-300;
+    }
+}
+
 
 .collapsible-top-icon {
     @apply bg-emerald-950 h-4 w-1 translate-y-[0.15rem] rounded-full

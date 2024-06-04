@@ -15,6 +15,7 @@ import { AppRoutes } from 'src/app/app.routes';
 import { CommercialRoutes, ElementRoutes, SettingRoutes } from '../../commercial.routes';
 import { Demandedto } from '../../model/demandedto.model';
 import { DemandeService } from '../../services/demande.service';
+import { TokenService } from 'src/app/public/auth/token.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -37,6 +38,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
     public readonly commonServices: CommonService,
     private readonly elementRef: ElementRef,
     private demandeService: DemandeService,
+    private tokenService:TokenService,
     private router: Router) { }
 
   // ngOnInit(): void {
@@ -122,5 +124,10 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   get demandelenght(){
     return this.unverifiedDemandes.length;
+  }
+
+  // Method to handle logout
+  onLogout(): void {
+    this.tokenService.logOut();
   }
 }
