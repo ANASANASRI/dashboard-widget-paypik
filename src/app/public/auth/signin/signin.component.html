@@ -26,7 +26,7 @@
                     <label for="password">Mot de passe</label>
                     <div class="relative">
                         <input type="password" id="password" class="form-control w-full ps-10"
-                            formControlName="password" placeholder="veuillez entrer votre mot de passe">
+                            formControlName="password" placeholder="veuillez entrer votre mot de passe" #passwordInput>
                         <span class="absolute top-2 left-0 ps-3 text-gray-400">
                             <i class="bi bi-shield-lock"></i>
                         </span>
@@ -35,11 +35,12 @@
 
                 <div class="text-sm my-4">
                     <div class="inline-flex items-center gap-x-1">
-                        <input type="checkbox" id="rememberme" class="h-auto cursor-pointer">
-                        <label for="rememberme" class="cursor-pointer">Se souvenir de moi</label>
+                        <input type="checkbox" id="rememberme" class="h-auto cursor-pointer" (change)="togglePasswordVisibility()">
+                        <label for="rememberme" class="cursor-pointer">Voir mot de passe</label>
                     </div>
                     <a (click)="togglePassForget()" href="javascript:void(0)" class="text-emerald-600 float-right">
-                        Mot de passe oublié ?</a>
+                        Mot de passe oublié ?
+                    </a>
                 </div>
 
                 <button type="submit" class="btn w-full btn-theme" [disabled]="isLoading">

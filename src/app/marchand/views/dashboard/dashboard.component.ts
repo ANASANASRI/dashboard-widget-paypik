@@ -63,6 +63,7 @@ export class DashboardComponent implements OnInit {
             'rgba(54, 162, 235, 0.2)',
             'rgba(255, 206, 86, 0.2)',
             'rgba(75, 192, 192, 0.2)',
+            'rgba(212, 115, 212, 0.2)',
           ] }]
         };
         this.calculateTotalYearAmountMAD();
@@ -89,6 +90,7 @@ export class DashboardComponent implements OnInit {
         case '2': return 'Card';
         case '3': return 'Amanty';
         case '4': return 'Paiement direct';
+        case '5': return 'paypal';
         default: return '';
       }
     });

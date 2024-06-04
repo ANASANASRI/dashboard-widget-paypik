@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatetimeHelper } from 'src/app/_core/helpers/datetime.helper';
@@ -56,7 +56,7 @@ export class SigninComponent {
   }
 
   onSubmit(): void {
-    console.log(this.signInForm.value);
+    //console.log(this.signInForm.value);
   
     const username = this.signInForm.value.username;
     const password = this.signInForm.value.password;
@@ -66,8 +66,8 @@ export class SigninComponent {
   
       this.authService.signin(signinData).subscribe(
         (data) => {
-          console.log('Access Token:', data.accessToken);
-          console.log('User Roles:', data.roles);
+          //console.log('Access Token:', data.accessToken);
+          //console.log('User Roles:', data.roles);
           this.tokenService.saveToken(data.accessToken);
           
 
@@ -82,7 +82,7 @@ export class SigninComponent {
             this.authService.findMarchandIdByMarchandName(username).subscribe(
               (marchandId) => {
                 this.marchandId = marchandId;
-                console.log('Marchand ID:', marchandId);
+                //console.log('Marchand ID:', marchandId);
                 this.router.navigate(['/marchand/dashboard/' + this.marchandId]);
               },
               (error) => {
@@ -122,15 +122,26 @@ export class SigninComponent {
       this.router.navigate(['/commercial/validation']);
       
     } else {
-      this.router.navigate(['/signup']);
+      this.router.navigate(['/signin']);
     }
   }
 
   /// Forget password
   modalOpen: boolean = false;
-
   togglePassForget() {
       this.modalOpen = !this.modalOpen;
+  }
+
+
+  // Aficher le mot de passe
+  @ViewChild('passwordInput') passwordInput!: ElementRef;
+  togglePasswordVisibility() {
+    const passwordInputEl = this.passwordInput.nativeElement;
+    if (passwordInputEl.type === 'password') {
+      passwordInputEl.type = 'text';
+    } else {
+      passwordInputEl.type = 'password';
+    }
   }
 
 

@@ -99,7 +99,7 @@ app-sidebar[aria-expanded="false"] .brand {
     @apply fixed left-0 top-1/2 translate-x-[15rem] transition-all duration-300;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1200px) {
     .collapsible-btn-container {
         @apply fixed left-0 top-1/2 translate-x-[10rem] transition-all duration-300;
     }

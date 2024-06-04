@@ -20,7 +20,7 @@
                     </button>
                     <div class="text-left ml-3">
                         <p>{{ user?.firstName }} {{ user?.lastName }}</p>
-                        <p class="text-light text-xs">Marchand</p>
+                        <p class="text-light text-xs">{{ user?.roles?.length !>= 2 ? 'Administrateur: "Marchand"' : 'Marchand' }}</p>
                     </div>
                 </div>
 

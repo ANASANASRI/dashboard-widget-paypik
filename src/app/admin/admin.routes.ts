@@ -4,9 +4,15 @@ export enum AdminRoutes {
   Transaction = 'more/transaction',
   Edit = 'marchand/edit/:marchanId',
   Validation = 'validation',
+
+  // Add = 'marchand/add',
+  // MarchandDashboard = 'marchand/dashboard/:merchantId' ,
+  // EditUser='user/edit/:id',
+
   Settings = 'settings',
   Elements = 'elements',
 }
+
 
 export enum ElementRoutes {
   Alert = 'alert',

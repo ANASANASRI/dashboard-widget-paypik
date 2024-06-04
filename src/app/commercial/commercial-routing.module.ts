@@ -22,7 +22,6 @@ const routes: Routes = [
     redirectTo: CommercialRoutes.Validation,
     pathMatch: 'full',
   },
-
   {
     title: 'Validation',
     path: CommercialRoutes.Validation,

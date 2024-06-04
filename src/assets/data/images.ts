@@ -13,6 +13,6 @@ export class Images {
   };
 
   public static readonly users: IUsers = {
-    userOne: './assets/images/authpage/profile-image.jpg',
+    userOne: 'https://i.ibb.co/Fsk3Tx4/Design-sans-titre.png',
   };
 }

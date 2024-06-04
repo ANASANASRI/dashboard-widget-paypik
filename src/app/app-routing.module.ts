@@ -28,14 +28,12 @@ const routes: Routes = [
     path: AppRoutes.Commercial,
     component: CommercialComponent,
     canActivate: [CommercialGuard], // Utilisation du CommercialGuard pour protéger l'accès à la route commerciale
-    //canActivate: [CommercialGuard, AdminGuard], 
     loadChildren: () => import('./commercial/commercial.module').then((m) => m.CommercialModule),
   },
   {
     path: AppRoutes.Marchand,
     component: MarchandComponent,
     canActivate: [MarchandGuard], // Utilisation du MarchandGuard pour protéger l'accès à la route du marchand
-    //canActivate: [AdminGuard,MarchandGuard], 
     loadChildren: () => import('./marchand/marchand.module').then((m) => m.MarchandModule),
   },
   {
@@ -46,7 +44,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-      // enableTracing: true, //uncomment for debugging only
+    // enableTracing: true, //uncomment for debugging only
     preloadingStrategy: PreloadAllModules,
     scrollPositionRestoration: 'top',
   })],
