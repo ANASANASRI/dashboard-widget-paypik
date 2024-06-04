@@ -36,13 +36,14 @@
                 </div>
             </div>
             <div class="relative inline-block profile-dropdown">
-                <div class="flex items-center">
-                    <button type="button" (click)="onClickProfile()"
+    
+                <div class="flex items-center" (click)="onClickProfile()">
+                    <button type="button" 
                         class="flex w-10 h-10 overflow-hidden rounded-full border-2 border-emerald-500 shadow">
-                        <img src={{userOne}} alt="john doe" class="w-full object-cover">
+                        <img src={{user?.profilLogoUrl}} alt="user logo url" class="w-full object-cover">
                     </button>
                     <div class="text-left ml-3">
-                        <p>Anas Anasri</p>
+                        <p>{{ user?.firstName }} {{ user?.lastName }}</p>
                         <p class="text-light text-xs">Administrator</p>
                     </div>
                 </div>
@@ -51,32 +52,32 @@
                     <div class="flex gap-3 items-center">
                         <div
                             class="flex items-center justify-center rounded-full h-12 w-12 overflow-hidden border-2 border-emerald-600">
-                            <img class="w-full object-cover" src={{userOne}} alt="Profile">
+                            <img class="w-full object-cover" src={{user?.profilLogoUrl}} alt="Profile">
                         </div>
                         <div>
                             <div class="flex gap-1 text-sm font-semibold">
-                                <span>Anas Anasri</span>
+                                <span>{{ user?.firstName }} {{ user?.lastName }}</span>
                                 <span class="text-emerald-600">
                                     <i class="bi bi-check2-circle"></i>
                                 </span>
                             </div>
-                            <div class="text-xs text-slate-400">anasanasri&#64;gmail.com</div>
+                            <div class="text-xs text-slate-400">{{ user?.email}}</div>
                         </div>
                     </div>
                     <div class="border-t border-slate-500/30"></div>
                     <div class="flex flex-col text-sm">
-                        <a href="#" class="flex items-center gap-3 rounded-md p-2 hover:bg-slate-200">
+                        <a href="/admin/settings/profile" class="flex items-center gap-3 rounded-md p-2 hover:bg-slate-200">
                             <i class="bi bi-person-circle"></i>
                             <span>Profile</span>
                         </a>
-                        <a href="#" class="flex items-center gap-3 rounded-md p-2 hover:bg-slate-200">
+                        <!-- <a href="#" class="flex items-center gap-3 rounded-md p-2 hover:bg-slate-200">
                             <i class="bi bi-info-circle"></i>
                             <span>Help Center</span>
-                        </a>
+                        </a> -->
                     </div>
                     <div class="border-t border-slate-500/30"></div>
                     <div class="">
-                        <button type="button"
+                        <button type="button" (click)="onLogout()"
                             class="w-full p-2 text-left text-sm text-red-500 font-semibold rounded transition hover:bg-slate-200">
                             <i class="bi bi-power"></i>
                             Logout
