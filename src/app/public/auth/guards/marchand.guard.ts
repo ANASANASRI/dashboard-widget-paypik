@@ -9,16 +9,15 @@ import { SuperadminGuard } from './superadmin.guard';
 })
 export class MarchandGuard implements CanActivate {
 
-  constructor(private authService: AuthService, private router: Router, private SuperadminGuard: SuperadminGuard) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private superadminGuard: SuperadminGuard
+  ) {}
 
   canActivate(): boolean {
-    // Check if the user is an admin first
-    if (this.SuperadminGuard.canActivate()) {
-      return true;
-    }
-
-    // Then check if the user has marchand access
-    if (this.authService.isMarchand()) {
+    // Check if the user has commercial access or is a superadmin
+    if (this.authService.isMarchand() || this.superadminGuard.canActivate()) {
       return true;
     }
 
@@ -26,4 +25,5 @@ export class MarchandGuard implements CanActivate {
     this.router.navigate(['/signin']); // Redirect to the sign-in page if the user is not a marchand
     return false;
   }
+  
 }
