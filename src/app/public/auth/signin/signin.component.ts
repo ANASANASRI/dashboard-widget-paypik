@@ -74,6 +74,9 @@ export class SigninComponent {
           if(data.roles.includes('ROLE_ADMIN')) {
             this.redirectBasedOnRole(data.roles);
 
+          }else if (data.roles.includes('ROLE_COMMERCIAL')) {
+            this.redirectBasedOnRole(data.roles);
+
           } else if (data.roles.includes('ROLE_MARCHAND')) {
             // Si l'utilisateur est marchand, appeler findMarchandIdByMarchandName avant de rediriger
             this.authService.findMarchandIdByMarchandName(username).subscribe(
@@ -114,7 +117,6 @@ export class SigninComponent {
   private redirectBasedOnRole(roles: string[]): void {
     if (roles.includes('ROLE_ADMIN')) {
       this.router.navigate(['/admin/dashboard']);
-      
     
     } else if (roles.includes('ROLE_COMMERCIAL') ) {
       this.router.navigate(['/commercial/validation']);
