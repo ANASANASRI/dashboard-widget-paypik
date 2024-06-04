@@ -1,3 +1,4 @@
+import { TokenService } from './../../../public/auth/token.service';
 import {
   AfterViewInit,
   Component,
@@ -33,6 +34,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     public readonly commonServices: CommonService,
+    private tokenService:TokenService,
     private readonly elementRef: ElementRef,
     private router: Router) { }
 
@@ -82,4 +84,9 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     })
   }
+
+    // Method to handle logout
+    onLogout(): void {
+      this.tokenService.logOut();
+    }
 }
