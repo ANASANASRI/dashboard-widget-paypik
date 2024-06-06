@@ -2,11 +2,11 @@ import { User } from './../../../../model/user.model';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Marchand } from '../../../../model/marchand.model';
-import { Role } from '../../../../model/role.model';
 import { MarchandService } from '../../../../services/marchand.service';
 import { UserService } from 'src/app/admin/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, of } from 'rxjs';
+import { Role } from 'src/app/admin/model/role.model';
 
 
 @Component({
@@ -29,6 +29,7 @@ export class UsertableComponent implements OnInit {
   marchandId!: number;
   selectedOption1: string = '';
   editModalOpen: boolean = false;
+
   editFormData: User = {
     id: 0,
     username: '',
@@ -40,6 +41,7 @@ export class UsertableComponent implements OnInit {
     roles: [],
     status: ''
   };
+  
   roles: Role[] = [
     { id: 2, name: 'ROLE_MARCHAND' },
     { id: 3, name: 'ROLE_ADMIN' },
@@ -245,8 +247,8 @@ export class UsertableComponent implements OnInit {
     password: '',
     roles: [],
     profilLogoUrl:'', // Initialisez le tableau de rôles sélectionnés
-    // Ajoutez d'autres champs si nécessaire
   };
+
   toggleAddModal() {
     this.addModalOpen = !this.addModalOpen;
   }
@@ -262,6 +264,12 @@ export class UsertableComponent implements OnInit {
   }
 
   onAddSubmit(form: NgForm) {
+
+    const selectedRoleNames = this.selectedRoles.map(role => role.name);
+    this.addFormData.roles = selectedRoleNames;
+    
+    console.log(this.addFormData.roles ,   "==========" ,this.selectedRoles,   "==========" ,this.selectedRoles.at.name)
+
     if (form.valid) {
       this.addFormData.password = this.generatePassword(); // Générer et assigner un mot de passe
       // Envoyer les informations de l'utilisateur au service UserService pour créer un nouvel utilisateur
@@ -290,7 +298,24 @@ export class UsertableComponent implements OnInit {
     }
   }
 
+  // Component Modification
+  selectedRoles: Role[] = [];
 
+toggleRoleSelection(role: Role) {
+    const index = this.selectedRoles.findIndex(r => r.id === role.id);
+    if (index === -1) {
+        this.selectedRoles.push(role);
+    } else {
+        this.selectedRoles.splice(index, 1);
+    }
+}
+
+isRoleSelected(role: Role): boolean {
+    return this.selectedRoles.some(r => r.id === role.id);
+}
+
+
+  
 
   //
   hasAllRoles(userId: number): boolean {
@@ -298,9 +323,9 @@ export class UsertableComponent implements OnInit {
     if (!user || !user.roles) return false;
 
     const roleNames = user.roles.map((role: any) => role.name);
-      return roleNames.includes('ROLE_ADMIN') &&
-            roleNames.includes('ROLE_MARCHAND') &&
-            roleNames.includes('ROLE_COMMERCIAL');
+      return  roleNames.includes('ROLE_ADMIN') &&
+              roleNames.includes('ROLE_MARCHAND') &&
+              roleNames.includes('ROLE_COMMERCIAL');
     }
 
 

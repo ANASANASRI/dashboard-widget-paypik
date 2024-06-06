@@ -138,7 +138,7 @@
                         'opacity-40 hover:opacity-100': user.status === 'Inactive'
                     }"
                     >
-                    <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
+                    <th (click)="toggleEdit(user)" class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                         <div class="relative h-10 w-10">
                         <img
                             class="h-full w-full rounded-full object-cover object-center"
@@ -162,10 +162,10 @@
                     </th>
                     <td class="px-6 py-4">
                         <span
-                        class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold"
+                        class="inline-flex items-center gap-1 rounded-full  px-2 py-1 text-xs font-semibold"
                         [ngClass]="{
-                            'text-green-600': user.status === 'Active',
-                            'text-red-600': user.status === 'Inactive'
+                            'bg-green-50 text-green-600': user.status === 'Active',
+                            'bg-red-50 text-red-600': user.status === 'Inactive'
                         }"
                         >
                         <span
@@ -671,8 +671,6 @@
 
 
 
-<!--Ajouter ici le Model for Add user -->
-<!-- Model for Add User -->
 <!-- Model for Add User -->
 <div *ngIf="addModalOpen" class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-filter backdrop-blur-sm"></div>
 
@@ -721,17 +719,19 @@
                 </span>
             </div>
             <!-- Ajoutez les autres champs nécessaires -->
+            <!-- Template Modification -->
             <div class="relative mb-4 col-span-6 sm:col-span-3">
                 <div class="flex flex-wrap">
                     <label *ngFor="let role of roles" class="inline-flex items-center mr-4 mb-2">
-                        <input type="checkbox" [(ngModel)]="addFormData.roles[role.name]" name="roles" [value]="role.name" class="ml-8 form-checkbox text-emerald-600">
+                        <input type="checkbox" (change)="toggleRoleSelection(role)" [checked]="isRoleSelected(role)" class="ml-8 form-checkbox text-emerald-600">
                         <span class="ml-2 text-gray-700">{{ role.name }}</span>
                     </label>
-                    </div>
-                    <span class="absolute -top-7 left-0 ps-3 text-gray-400">
+                </div>
+                <span class="absolute -top-7 left-0 ps-3 text-gray-400">
                     <i class="bi bi-shield-lock"></i> Roles
-                    </span>
+                </span>
             </div>
+
             <!-- Ajoutez les autres champs nécessaires -->
             <div class="relative mb-4 col-span-6 sm:col-span-3">
                 <input [(ngModel)]="addFormData.profilLogoUrl" name="profilLogoUrl" type="text" id="profilLogoUrl" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Profil Logo URL" required />
@@ -739,17 +739,7 @@
                 <i class="bi bi-image"></i> Profil Logo URL
                 </span>
             </div>
-            <!-- <div class="relative mb-4 col-span-6 sm:col-span-3">
-    <div class="flex flex-wrap">
-    <label *ngFor="let role of roles" class="inline-flex items-center mr-4 mb-2">
-        <input type="checkbox" [(ngModel)]="addFormData.roles[role.name]" name="roles" [value]="role.name" class="ml-8 form-checkbox text-emerald-600">
-        <span class="ml-2 text-gray-700">{{ role.name }}</span>
-    </label>
-    </div>
-    <span class="absolute -top-7 left-0 ps-3 text-gray-400">
-    <i class="bi bi-shield-lock"></i> Roles
-    </span>
-</div>-->
+
 </div> 
     </form>
     </div>
