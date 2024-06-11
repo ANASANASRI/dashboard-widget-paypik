@@ -6,11 +6,10 @@ export interface User{
     username: string;
     firstName: string;
     lastName: string;
-    password: string;
-    roles?: Role[];
-    status:string;
-    profilLogoUrl:string;
     email: string;
-
+    password: string;
+    profilLogoUrl: string;
+    roles: Role[];
+    status: string;
 
 }

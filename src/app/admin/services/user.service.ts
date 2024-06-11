@@ -38,9 +38,9 @@ export class UserService {
   }
   /*Add*/
   // Ajoutez ici la méthode pour ajouter un utilisateur
-  public addUser(user: User): Observable<User> {
-    const url = `${environment.apiUrl}/auth/signup`;
-    return this.http.post<User>(url, user);
-  }
+  public addUser(user: any) {
+    return this.http.post('http://localhost:8085/auth/signup', user);
+}
+  
 
 }

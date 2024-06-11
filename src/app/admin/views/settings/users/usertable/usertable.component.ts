@@ -42,6 +42,7 @@ export class UsertableComponent implements OnInit {
     status: ''
   };
   
+  
   roles: Role[] = [
     { id: 2, name: 'ROLE_MARCHAND' },
     { id: 3, name: 'ROLE_ADMIN' },
@@ -263,57 +264,68 @@ export class UsertableComponent implements OnInit {
     return password;
   }
 
-  onAddSubmit(form: NgForm) {
-
-    const selectedRoleNames = this.selectedRoles.map(role => role.name);
-    this.addFormData.roles = selectedRoleNames;
-    
-    console.log(this.addFormData.roles ,   "==========" ,this.selectedRoles,   "==========" ,this.selectedRoles.at.name)
-
-    if (form.valid) {
-      this.addFormData.password = this.generatePassword(); // Générer et assigner un mot de passe
-      // Envoyer les informations de l'utilisateur au service UserService pour créer un nouvel utilisateur
-      this.userService.addUser(this.addFormData).subscribe(
-        () => {
-          console.log('Nouvel utilisateur ajouté avec succès');
-          this.fetchUsers();
-          this.addFormData = {
-            username: '',
-            firstName: '',
-            lastName: '',
-            email: '',
-            password: '',
-            roles: [], 
-            profilLogoUrl:'',// Réinitialisez le tableau de rôles sélectionnés
-            // Réinitialisez d'autres champs si nécessaire
-          };
-          this.toggleAddModal();
-          this.fetchUsers(); // Mettez à jour la liste des utilisateurs après l'ajout
-        },
-        (error) => {
-          console.error('Erreur lors de l\'ajout de l\'utilisateur :', error);
-          // Gérez l'erreur de manière appropriée
-        }
-      );
-    }
-  }
-
-  // Component Modification
-  selectedRoles: Role[] = [];
-
-toggleRoleSelection(role: Role) {
+  toggleRoleSelection(role: Role) {
     const index = this.selectedRoles.findIndex(r => r.id === role.id);
     if (index === -1) {
         this.selectedRoles.push(role);
     } else {
         this.selectedRoles.splice(index, 1);
     }
+    console.log(this.selectedRoles); // Debug log
 }
+
+
+
+
+
+
+onAddSubmit(form: NgForm) {
+  // Map the selected roles to their names
+  const selectedRoles = this.selectedRoles.map(role => role.name);
+  this.addFormData.roles = selectedRoles;
+
+  // Log the addFormData object
+  console.log('Add Form Data:', this.addFormData);
+
+  if (form.valid) {
+    // Generate and assign a password
+    this.addFormData.password = this.generatePassword();
+
+    // Send user data to the UserService to create a new user
+    this.userService.addUser(this.addFormData).subscribe(
+      () => {
+        console.log('New user added successfully');
+        this.fetchUsers();
+        this.addFormData = {
+          username: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+          roles: [],
+          profilLogoUrl: ''
+        };
+        this.selectedRoles = []; // Clear selected roles
+        this.toggleAddModal();
+        this.fetchUsers(); // Update user list after adding
+      },
+      (error) => {
+        console.error('Error adding user:', error);
+      }
+    );
+  }
+}
+
+
+
+
+// Component Modification
+selectedRoles: Role[] = [];
+
 
 isRoleSelected(role: Role): boolean {
-    return this.selectedRoles.some(r => r.id === role.id);
+  return this.selectedRoles.some(r => r.id === role.id);
 }
-
 
   
 

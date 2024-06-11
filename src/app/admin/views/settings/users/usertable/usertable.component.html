@@ -345,12 +345,11 @@
 
 
 
-<!--Model for Delete -->
+<!--Modèle pour Supprimer -->
 <div
     *ngIf="rejectOpen"
     class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-filter backdrop-blur-sm"
 ></div>
-
 <div
     *ngIf="editModalOpen"
     class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-filter backdrop-blur-sm"
@@ -359,8 +358,7 @@
     *ngIf="editModalOpen"
     class="fixed inset-0 flex items-center justify-center"
 >
-
-
+<!-- modèle d'édition -->
 
 
 
@@ -399,11 +397,11 @@
             clip-rule="evenodd"
             ></path>
         </svg>
-        <span class="sr-only">Close</span>
+        <span class="sr-only">Fermer</span>
         </button>
 
         <div class="flex mb-3 items-start justify-between p-2 border-b rounded-t">
-        <h3 class="text-xl font-semibold">Edit User</h3>
+        <h3 class="text-xl font-semibold">Modifier l'utilisateur</h3>
         </div>
 
         <div class="p-6 space-y-6">
@@ -416,11 +414,11 @@
                 type="text"
                 id="username"
                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                placeholder="Username"
+                placeholder="Nom d'utilisateur"
                 required
                 />
                 <span class="absolute -top-7 left-0 ps-3 text-gray-400">
-                <i class="bi bi-person"></i> Username
+                <i class="bi bi-person"></i> Nom d'utilisateur
                 </span>
             </div>
             <div class="relative mb-4 col-span-6 sm:col-span-3">
@@ -430,11 +428,11 @@
                 type="text"
                 id="firstName"
                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                placeholder="First Name"
+                placeholder="Prénom"
                 required
                 />
                 <span class="absolute -top-7 left-0 ps-3 text-gray-400">
-                <i class="bi bi-person-fill"></i> First Name
+                <i class="bi bi-person-fill"></i> Prénom
                 </span>
             </div>
             <div class="relative mb-4 col-span-6 sm:col-span-3">
@@ -444,11 +442,11 @@
                 type="text"
                 id="lastName"
                 class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                placeholder="Last Name"
+                placeholder="Nom de famille"
                 required
                 />
                 <span class="absolute -top-7 left-0 ps-3 text-gray-400">
-                <i class="bi bi-person-badge"></i> Last Name
+                <i class="bi bi-person-badge"></i> Nom de famille
                 </span>
             </div>
             <!--  <div class="relative mb-4 col-span-6 sm:col-span-3">
@@ -464,12 +462,12 @@
                 name="status"
                 [(ngModel)]="editFormData.status"
                 >
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
+                <option value="Active">Actif</option>
+                <option value="Inactive">Inactif</option>
                 </select>
 
                 <span class="absolute -top-7 left-0 ps-3 text-gray-400">
-                <i class="bi bi-toggle-on"></i> Status
+                <i class="bi bi-toggle-on"></i> Statut
                 </span>
             </div>
 
@@ -493,11 +491,9 @@
                 </label>
                 </div>
                 <span class="absolute -top-7 left-0 ps-3 text-gray-400">
-                <i class="bi bi-shield-lock"></i> Roles
+                <i class="bi bi-shield-lock"></i> Rôles
                 </span>
             </div>
-
-
 
             <div class="relative mb-4 col-span-6 sm:col-span-3">
                 <input
@@ -537,14 +533,14 @@
             type="button"
             class="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
         >
-            Cancel
+            Annuler
         </button>
         <button
             (click)="onSubmit(editForm)"
             type="button"
             class="ml-3 py-2 px-6 text-sm font-medium text-center text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-500 dark:hover:bg-yellow-600 dark:focus:ring-yellow-900"
         >
-            Edit
+        Mettre à jour
         </button>
         </div>
     </div>
@@ -681,34 +677,34 @@
         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
         </svg>
-        <span class="sr-only">Close</span>
+        <span class="sr-only">Fermer</span>
         </button>
 
         <div class="flex mb-3 items-start justify-between p-2 border-b rounded-t">
-        <h3 class="text-xl font-semibold">Add User</h3>
+        <h3 class="text-xl font-semibold">Ajouter un Utilisateur</h3>
         </div>
 
         <div class="p-6 space-y-6">
-        <form (ngSubmit)="onAddSubmit(addForm)" #addForm="ngForm">
+            <form (ngSubmit)="onAddSubmit(addForm)" #addForm="ngForm">
             <div class="grid grid-cols-6 gap-6">
             <div class="relative mb-4 col-span-6 sm:col-span-3">
-                <input [(ngModel)]="addFormData.username" name="username" type="text" id="username" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Username" required />
+                <input [(ngModel)]="addFormData.username" name="username" type="text" id="username" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Nom d'utilisateur" required />
                 <span class="absolute -top-7 left-0 ps-3 text-gray-400">
-                <i class="bi bi-person"></i> Username
+                <i class="bi bi-person"></i> Nom d'utilisateur
                 </span>
             </div>
             <!-- Ajoutez les autres champs nécessaires pour l'ajout d'un utilisateur -->
             <div class="relative mb-4 col-span-6 sm:col-span-3">
-                <input [(ngModel)]="addFormData.firstName" name="firstName" type="text" id="firstName" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="First Name" required />
+                <input [(ngModel)]="addFormData.firstName" name="firstName" type="text" id="firstName" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Prénom" required />
                 <span class="absolute -top-7 left-0 ps-3 text-gray-400">
-                <i class="bi bi-person"></i> First Name
+                <i class="bi bi-person"></i> Prénom
                 </span>
             </div>
             <!-- Ajoutez les autres champs nécessaires -->
             <div class="relative mb-4 col-span-6 sm:col-span-3">
-                <input [(ngModel)]="addFormData.lastName" name="lastName" type="text" id="lastName" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Last Name" required />
+                <input [(ngModel)]="addFormData.lastName" name="lastName" type="text" id="lastName" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Nom de famille" required />
                 <span class="absolute -top-7 left-0 ps-3 text-gray-400">
-                <i class="bi bi-person"></i> Last Name
+                <i class="bi bi-person"></i> Nom de famille
                 </span>
             </div>
             <!-- Ajoutez les autres champs nécessaires -->
@@ -719,7 +715,7 @@
                 </span>
             </div>
             <!-- Ajoutez les autres champs nécessaires -->
-            <!-- Template Modification -->
+            <!-- Modification du modèle -->
             <div class="relative mb-4 col-span-6 sm:col-span-3">
                 <div class="flex flex-wrap">
                     <label *ngFor="let role of roles" class="inline-flex items-center mr-4 mb-2">
@@ -728,15 +724,15 @@
                     </label>
                 </div>
                 <span class="absolute -top-7 left-0 ps-3 text-gray-400">
-                    <i class="bi bi-shield-lock"></i> Roles
+                    <i class="bi bi-shield-lock"></i> Rôles
                 </span>
-            </div>
+            </div>                      
 
             <!-- Ajoutez les autres champs nécessaires -->
             <div class="relative mb-4 col-span-6 sm:col-span-3">
-                <input [(ngModel)]="addFormData.profilLogoUrl" name="profilLogoUrl" type="text" id="profilLogoUrl" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Profil Logo URL" required />
+                <input [(ngModel)]="addFormData.profilLogoUrl" name="profilLogoUrl" type="text" id="profilLogoUrl" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="URL du logo de profil" required />
                 <span class="absolute -top-7 left-0 ps-3 text-gray-400">
-                <i class="bi bi-image"></i> Profil Logo URL
+                <i class="bi bi-image"></i> URL du logo de profil
                 </span>
             </div>
 

@@ -8,6 +8,8 @@ import { pageTransition } from 'src/app/shared/utils/animations';
 import { MarchandService } from '../../services/marchand.service';
 import { Marchand } from '../../model/marchand.model';
 import { TransactionService } from '../../services/transaction.service';
+import { ExtchangeService } from '../../services/extchange.service';
+import { forkJoin, map } from 'rxjs';
 
 Chart.register(...registerables);
 
@@ -67,6 +69,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private marchandService: MarchandService,
+    private extchangeService: ExtchangeService,
     private transitionService : TransactionService
   ) {}
 
@@ -91,6 +94,44 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
+
+// Extchange Rate With Api
+  // fetchTransactionsTotalAmounts() {
+  //   this.transitionService.getTransactions().subscribe(
+  //     (data: Transaction[]) => {
+  //       // Create an array to store conversion observables
+  //       const conversionObservables = [];
+
+  //       // Iterate through each transaction and create an observable for currency conversion
+  //       for (const transaction of data) {
+  //         conversionObservables.push(this.extchangeService.convertCurrency(transaction.amount, transaction.currency));
+  //       }
+
+  //       // Use forkJoin to wait for all conversion observables to complete
+  //       forkJoin(conversionObservables).pipe(
+  //         map((convertedAmounts: string[]) => {
+  //           // Calculate the sum of converted amounts
+  //           let totalMADAmount = 0;
+  //           for (const amount of convertedAmounts) {
+  //             totalMADAmount += parseFloat(amount);
+  //           }
+  //           return totalMADAmount;
+  //         })
+  //       ).subscribe(
+  //         (totalMADAmount: number) => {
+  //           this.totalAmount = totalMADAmount;
+  //         },
+  //         (error) => {
+  //           console.error('Error calculating total MAD amount:', error);
+  //         }
+  //       );
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching transactions amounts:', error);
+  //     }
+  //   );
+  // }
 
   fetchTransactionsTotalAmounts() {
     this.transitionService.getTransactions().subscribe(

@@ -6,7 +6,9 @@
             </h1>
         </a>        
     </div>
+
     <ul class="menu-links">
+
         <li>
             <a [routerLink]="commonServices.prepareRoute(appRoutes.Marchand, marchandRoutes.Dashboard)"
                 routerLinkActive="active" class="menu-item" ariaCurrentWhenActive="page">
@@ -14,10 +16,9 @@
                 <span>Tableau de bord</span>
             </a>
         </li>
-        
 
 
-        
+
         <li>
             <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="true"
                 (click)="subMenuToggleHandler($event)">
@@ -27,9 +28,9 @@
             <ul class="sub-menu-item">
                 <li>
                     <a class="menu-item"
-                        [routerLink]="commonServices.prepareRoute(appRoutes.Marchand, marchandRoutes.Settings, settingRoutes.Profile)"
+                        [routerLink]="commonServices.prepareRoute(appRoutes.Marchand, marchandRoutes.Settings, 'profile/' + marchandId)"
                         routerLinkActive="active" ariaCurrentWhenActive="page">
-                        <span>Profil</span>
+                            <span>Profil</span><!-- <p>Marchand ID: {{ marchandId.toString() }}</p> -->
                     </a>
                 </li>
                 <!-- <li>
@@ -74,13 +75,15 @@
         </li>        
 
 
-        
+
         <li>
             <a href="#" class="menu-item" (click)="onLogout()">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Se déconnecter</span>
             </a>
         </li>
+
+
     </ul>
 </aside>
 

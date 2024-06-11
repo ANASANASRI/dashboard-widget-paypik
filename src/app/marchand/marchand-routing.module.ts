@@ -53,10 +53,10 @@ children: [
 path: MarchandRoutes.Settings,
 children: [
     {
-    title: 'Settings',
-    path: SettingRoutes.Profile,
-    component: ProfileComponent,
-    },
+        title: 'Settings',
+        path: SettingRoutes.Profile + '/:id', // Add the parameter here
+        component: ProfileComponent,
+    },     
     {
     title: 'Users',
     path: SettingRoutes.Users,

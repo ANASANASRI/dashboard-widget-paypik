@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Signin } from './signin/signin.model';
 import { Observable } from 'rxjs';
 import { Token } from './signin/Token';
@@ -18,6 +18,22 @@ export class AuthService {
   
   signin(credentials: Signin): Observable<Token> {
     return this.http.post<Token>(this.url, credentials);
+  }
+
+  updatePassword(userId: number, oldPassword: string, newPassword: string): Observable<any> {
+    const url = `${environment.apiUrl}/auth/users/${userId}/password`;
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const body = {
+      oldPassword: oldPassword,
+      newPassword: newPassword
+    };
+    return this.http.put<any>(url, body, { headers });
+  }
+
+  getUserByMarchandId(marchandId: number): Observable<number> {
+    const url = `${environment.apiUrl}/auth/userbymarchandid/${marchandId}`;
+    const headers = new HttpHeaders({'Accept': '*/*'});
+    return this.http.get<number>(url, { headers });
   }
 
   getUserById(id: number): Observable<User> {

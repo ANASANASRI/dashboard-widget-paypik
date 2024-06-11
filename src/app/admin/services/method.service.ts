@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment.development';
 })
 export class MethodService {
 
-  private host:string="http://localhost:8085";
 
   constructor(private http:HttpClient){ }
 
