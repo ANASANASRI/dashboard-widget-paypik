@@ -14,12 +14,12 @@
             </div> -->
             <div class="relative inline-block profile-dropdown">
                 <div class="flex items-center" (click)="onClickProfile()">
-                    <button type="button" 
+                    <div type="button" 
                         class="flex w-10 h-10 overflow-hidden rounded-full border-2 border-emerald-500 shadow">
                         <img src={{user?.profilLogoUrl}} alt="user logo url" class="w-full object-cover">
-                    </button>
+                    </div>
                     <div class="text-left ml-3">
-                        <p>{{ user?.firstName }} {{ user?.lastName }}</p>
+                        <p>{{user?.username}} </p>
                         <p class="text-light text-xs">{{ user?.roles?.length !>= 2 ? 'Administrateur: "Marchand"' : 'Marchand' }}</p>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                         </div>
                         <div>
                             <div class="flex gap-1 text-sm font-semibold">
-                                <span>{{ user?.firstName }} {{ user?.lastName }}</span>
+                                <span>{{ user?.username }}</span>
                                 <span class="text-emerald-600">
                                     <i class="bi bi-check2-circle"></i>
                                 </span>
