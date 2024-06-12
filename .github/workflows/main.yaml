@@ -24,5 +24,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist/browser
-          branch: prod  
+          branch: prod 
           token: ${{ secrets.DASH_TOKEN }}
