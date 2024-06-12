@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dashboard-widget": {
+    "dashboard-widget-paypik": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "dashboard-widget:build:production"
+              "buildTarget": "dashboard-widget-paypik:build:production"
             },
             "development": {
-              "buildTarget": "dashboard-widget:build:development"
+              "buildTarget": "dashboard-widget-paypik:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "dashboard-widget:build"
+            "buildTarget": "dashboard-widget-paypik:build"
           }
         },
         "test": {
