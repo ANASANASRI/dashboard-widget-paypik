@@ -56,7 +56,6 @@ export class SigninComponent {
   }
 
   onSubmit(): void {
-    //console.log(this.signInForm.value);
   
     const username = this.signInForm.value.username;
     const password = this.signInForm.value.password;
@@ -82,12 +81,11 @@ export class SigninComponent {
             this.authService.findMarchandIdByMarchandName(username).subscribe(
               (marchandId) => {
                 this.marchandId = marchandId;
-                //console.log('Marchand ID:', marchandId);
                 this.router.navigate(['/marchand/dashboard/' + this.marchandId]);
               },
               (error) => {
                 console.error('Error fetching marchand ID:', error);
-                // Gérer les erreurs ici...
+
                 alert('An error occurred while fetching the marchand ID. Please try again.');
               }
             );

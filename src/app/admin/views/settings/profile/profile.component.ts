@@ -24,22 +24,11 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.marchandId = +params['id'];  // Retrieve the marchandId from the URL
-      this.fetchUserId();  // Fetch the userId based on the marchandId
-    });
+      this.fetchUserId();  
   }
 
   fetchUserId(): void {
-    this.authService.getUserByMarchandId(this.marchandId).subscribe(
-      userId => {
-        this.userId = userId;  // Set the userId from the response
-      },
-      error => {
-        console.error(error);
-        alert('An error occurred while fetching the user ID.');
-      }
-    );
+        this.userId = this.authService.getAuthenticatedUserId();  // Set the userId from the response
   }
 
   onSubmit(form: NgForm): void {
