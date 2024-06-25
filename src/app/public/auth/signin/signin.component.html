@@ -1,4 +1,5 @@
 <div [@pageTransition] class="pt-36 pb-28 main flex justify-center items-center shadow-2xl">
+    
     <div class="card p-5 w-10/12 xl:w-1/2 grid grid-cols-1 md:grid-cols-2">
         <div class="relative flex flex-col p-1 md:p-8">
             <h2 class="text-lg pb-2">
@@ -7,8 +8,38 @@
 
             <p class="text-xs">Entrez vos identifiants pour accéder à votre tableau de bord</p>
 
-            <app-alert (hideAlert)="onAlertCloseHandler($event)" [dismissible]="true" [messages]="serverErrors"
-                [show]="serverErrors.length > 0" [type]="AlertType.Danger"></app-alert>
+            <div *ngIf="loginError"
+                class="absolute animate-fade-up animate-once bg-red-100 p-5 mt-20 mr-8 border border-red-400 text-red-700 px-4 py-3 rounded-lg " role="alert">
+                <strong class="font-bold">Erreur de connexion !</strong>
+                <span class="block sm:inline"> Quelque chose s'est mal passé lors de la connexion de l'utilisateur.</span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <lord-icon (click)="loginError = false"  src="https://cdn.lordicon.com/nqtddedc.json" trigger="hover"
+                        colors="primary:#b91c1c" style="width:30px;height:30px">
+                    </lord-icon>
+                </span>
+            </div>
+
+            <div *ngIf="isEmpty"
+                class="absolute animate-fade-up animate-once bg-red-100 p-5 mt-20 mr-8 border border-red-400 text-red-700 px-4 py-3 rounded-lg " role="alert">
+                <strong class="font-bold">Erreur de connexion !</strong>
+                <span class="block sm:inline"> Veuillez entrer à la fois le nom d'utilisateur et le mot de passe.</span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <lord-icon (click)="isEmpty = false"  src="https://cdn.lordicon.com/nqtddedc.json" trigger="hover"
+                        colors="primary:#b91c1c" style="width:30px;height:30px">
+                    </lord-icon>
+                </span>
+            </div>
+            <div *ngIf="loginMarchandError"
+                class="absolute animate-fade-up animate-once bg-red-100 p-5 mt-20 mr-8 border border-red-400 text-red-700 px-4 py-3 rounded-lg" role="alert">
+                <strong class="font-bold">Erreur de connexion !</strong>
+                <span class="block sm:inline">Une erreur s'est produite lors de la récupération de l'ID du marchand. Veuillez réessayer.</span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <lord-icon (click)="loginMarchandError = false" src="https://cdn.lordicon.com/nqtddedc.json" trigger="hover"
+                        colors="primary:#b91c1c" style="width:30px;height:30px">
+                    </lord-icon>
+                </span>
+            </div>
+
 
             <form class="my-5 mt-28" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">

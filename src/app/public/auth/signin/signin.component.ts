@@ -24,6 +24,9 @@ export class SigninComponent {
   isLoading: boolean = false;
   readonly publicRoutes = PublicRoutes;
   readonly currentYear: number = DatetimeHelper.currentYear;
+  loginError: boolean = false;
+  isEmpty: boolean = false;
+  loginMarchandError: boolean = false;
 
   serverErrors: string[] = [];
 
@@ -60,6 +63,8 @@ export class SigninComponent {
     const username = this.signInForm.value.username;
     const password = this.signInForm.value.password;
   
+    this.isLoading = true;
+
     if (username && password) {
       const signinData: Signin = { username, password };
   
@@ -84,28 +89,33 @@ export class SigninComponent {
                 this.router.navigate(['/marchand/dashboard/' + this.marchandId]);
               },
               (error) => {
+                this.loginMarchandError = true;
+                setTimeout(() => {
+                  this.loginMarchandError = false;
+                }, 6000); 
                 console.error('Error fetching marchand ID:', error);
-
-                alert('An error occurred while fetching the marchand ID. Please try again.');
               }
             );
           } else {
             // Pour les autres rôles, rediriger en fonction du rôle
             this.redirectBasedOnRole(data.roles);
+            this.isLoading = false;
           }
         },
         (err) => {
-          console.log('Login Error:', err);
-          if (err.status === 401) {
-            alert('Email or password is incorrect.');
-          } else {
-            alert('An error occurred during login. Please try again.');
-          }
+          this.isLoading = false;
+          this.loginError = true;
+          setTimeout(() => {
+            this.loginError = false;
+          }, 6000); 
         }
       );
     } else {
-      alert('Please enter both username and password.');
-      console.log('Username or password is not defined');
+      this.isLoading = false;
+      this.isEmpty = true;
+      setTimeout(() => {
+        this.isEmpty = false;
+      }, 6000); 
     }
   }
 
