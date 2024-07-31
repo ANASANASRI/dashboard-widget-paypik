@@ -76,10 +76,7 @@
                                     class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     Date
                                 </th>
-                                <th scope="col"
-                                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    Status
-                                </th>
+                                
                                 <th scope="col"
                                     class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     Info de client 
@@ -89,6 +86,10 @@
                                     Montant
                                 </th>
                                 <th scope="col"
+                                    class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    Status
+                                </th>
+                                <th scope="col"
                                     class="relative py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     Details
                                 </th>
@@ -96,7 +97,7 @@
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                             <ng-container *ngFor="let transaction of pagedTransactions">
-                                <tr>
+                                <tr class="animate-fade-down animate-once"> 
                                     <td
                                         class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                         <div class="inline-flex items-center gap-x-3">
@@ -105,27 +106,7 @@
                                     </td>
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{
                                         transaction.timestamp }}</td>
-                                    <td class="px-4 py-4 text-sm font-medium whitespace-nowrap"
-                                        [ngStyle]="getStatusStyles(transaction.status)">
-                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2"
-                                            [ngStyle]="getStatusBadgeStyles(transaction.status)">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="animate-jump-in animate-once animate-duration-[2500ms]"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <!-- Affiche l'icône pour 'completed' -->
-                                                <path *ngIf="transaction.status === 'completed'" d="M10 3L4.5 8.5L2 6"
-                                                    [ngStyle]="getStatusIconStyles(transaction.status)" />
-                                                <!-- Affiche l'icône pour 'cancelled' -->
-                                                <path *ngIf="transaction.status === 'cancelled'"
-                                                d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                <!-- Affiche l'icône par défaut -->
-                                                <path *ngIf="transaction.status === 'pending'"
-                                                    d="M4.5 7L2 4.5M2 4.5L4.5 2M2 4.5H8C8.53043 4.5 9.03914 4.71071 9.41421 5.08579C9.78929 5.46086 10 5.96957 10 6.5V10"
-                                                    stroke="#854d0e" stroke-width="1.5" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                            <h2 class="text-sm font-normal">{{ transaction.status }}</h2>
-                                        </div>
-                                    </td>
+                                    
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                         <div class="flex items-center gap-x-2">
                                             <div>
@@ -139,7 +120,27 @@
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                         {{transaction.amount}} &ensp; {{transaction.currency}}
                                     </td>
-
+                                    <td class="px-4 py-4 text-sm font-medium whitespace-nowrap"
+                                    [ngStyle]="getStatusStyles(transaction.status)">
+                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2"
+                                        [ngStyle]="getStatusBadgeStyles(transaction.status)">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="animate-jump-in animate-once animate-duration-[2500ms]"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Affiche l'icône pour 'completed' -->
+                                            <path *ngIf="transaction.status === 'completed'" d="M10 3L4.5 8.5L2 6"
+                                                [ngStyle]="getStatusIconStyles(transaction.status)" />
+                                            <!-- Affiche l'icône pour 'cancelled' -->
+                                            <path *ngIf="transaction.status === 'cancelled'"
+                                            d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <!-- Affiche l'icône par défaut -->
+                                            <path *ngIf="transaction.status === 'pending'"
+                                                d="M4.5 7L2 4.5M2 4.5L4.5 2M2 4.5H8C8.53043 4.5 9.03914 4.71071 9.41421 5.08579C9.78929 5.46086 10 5.96957 10 6.5V10"
+                                                stroke="#854d0e" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                        <h2 class="text-sm font-normal">{{ transaction.status }}</h2>
+                                    </div>
+                                </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
                                         <div class="inline-block">
                                             <a [routerLink]="['/marchand/dashboard/more/transaction' ,marchandId ,transaction.transactionId ,transaction.clientName]"
@@ -164,26 +165,42 @@
 
     <div class="flex items-center justify-between mt-6">
         <a class="flex items-center px-5 py-2 text-sm text-green-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-green-900 dark:text-green-200 dark:border-green-700 dark:hover:bg-green-800"
-            (click)="goToPreviousPage()" [class.disabled]="currentPage === 1">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-            </svg>
-            <span>Previous</span>
+        (click)="goToPreviousPage()" [class.disabled]="currentPage === 1">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"/>
+        </svg>
+        <span class="select-none">Précédent</span>
         </a>
+        
         <div class="items-center hidden md:flex gap-x-3">
-            <ng-container *ngFor="let page of pages">
-                <a class="px-2 py-1 text-sm text-green-500 rounded-md dark:bg-green-800 bg-green-100/60"
-                    (click)="onPageChange(page)">{{ page }}</a>
+            <ng-container *ngFor="let page of displayPages">
+            <ng-container *ngIf="page === '...'; else pageLink">
+                <span class="ellipsis">...</span>
+            </ng-container>
+            <ng-template #pageLink>
+                <a 
+                    *ngIf="isNumber(page)" 
+                    class=" select-none px-2 py-1 text-sm text-green-500 rounded-md dark:bg-green-800"
+                    [ngClass]="{
+                        'bg-green-100/40 border border-gray-400 text-gray-400': page === currentPage,
+                        'bg-green-100/60': page !== currentPage
+                    }"
+                    (click)="setPage(page)">
+                {{ page }}
+                </a>
+            </ng-template>
             </ng-container>
         </div>
+            
+
         <a class="flex items-center px-5 py-2 text-sm text-green-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-green-900 dark:text-green-200 dark:border-green-700 dark:hover:bg-green-800"
-            (click)="goToNextPage()" [class.disabled]="currentPage === totalPages">
-            <span>Next</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-            </svg>
+        (click)="goToNextPage()" [class.disabled]="currentPage === totalPages">
+        <span class="select-none">Suivant</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/>
+        </svg>
         </a>
     </div>
 

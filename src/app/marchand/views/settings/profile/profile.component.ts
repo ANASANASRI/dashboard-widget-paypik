@@ -20,20 +20,24 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private route: ActivatedRoute  // Inject ActivatedRoute
+    private route: ActivatedRoute
   ) { }
+
+  //! Initialize component and load data  ///////////////////////////////////////////////////////////////////////////////////////////->
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.marchandId = +params['id'];  // Retrieve the marchandId from the URL
-      this.fetchUserId();  // Fetch the userId based on the marchandId
+      this.marchandId = +params['id']; // Retrieve the marchandId from the URL
+      this.fetchUserId(); // Fetch the userId based on the marchandId
     });
   }
+
+  //! Fetch user ID based on the marchand ID  ///////////////////////////////////////////////////////////////////////////////////////////->
 
   fetchUserId(): void {
     this.authService.getUserByMarchandId(this.marchandId).subscribe(
       userId => {
-        this.userId = userId;  // Set the userId from the response
+        this.userId = userId; // Set the userId from the response
       },
       error => {
         console.error(error);
@@ -41,6 +45,8 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+
+  //! Handle form submission for updating password  ///////////////////////////////////////////////////////////////////////////////////////////->
 
   onSubmit(form: NgForm): void {
     if (this.newPassword !== this.confirmPassword) {
@@ -60,6 +66,8 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+
+  //! Toggle visibility of the password input fields  ///////////////////////////////////////////////////////////////////////////////////////////->
 
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;

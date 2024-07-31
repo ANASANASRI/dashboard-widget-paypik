@@ -9,7 +9,7 @@ import { Component,HostListener } from '@angular/core';
 })
 export class ScrollToTopComponent {
 
-   // Function to scroll to the top of the page smoothly
+  //! Function to scroll to the top of the page smoothly
   goToTop() {
     window.scrollTo({
       top: 0,
@@ -17,7 +17,7 @@ export class ScrollToTopComponent {
     });
   }
 
-  // Listen to the scroll event and toggle button visibility based on scroll position
+  //! Listen to the scroll event and toggle button visibility based on scroll position
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const toTopButton = document.getElementById("to-top-button");
