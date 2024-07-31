@@ -80,7 +80,6 @@ export class AuthService {
     return userRoles.includes('ROLE_MARCHAND');
   }
 
-  
   private getUserRoles(): string[] {
     const token = localStorage.getItem('token');
     if (!token) {

@@ -3,5 +3,6 @@ export enum PublicRoutes {
   Signup = 'signup',
   Signin = 'signin',
   Integration = 'integration',
-  Contact = 'contact'
+  Contact = 'contact',
+  Unauthorized = 'unauthorized'
 }

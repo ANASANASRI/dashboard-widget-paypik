@@ -13,7 +13,7 @@ export class SuperadminGuard implements CanActivate {
     if (this.authService.isSuperAdmin()) {
       return true;
     } else {
-      this.router.navigate(['/signin']); // Redirect to the sign-in page if the user is not a super admin
+      this.router.navigate(['/unauthorized']); // Redirect to the sign-in page if the user is not a super admin
       return false;
     }
   }

@@ -22,7 +22,7 @@ export class MarchandGuard implements CanActivate {
     }
 
     // Redirect if neither condition is met
-    this.router.navigate(['/signin']); // Redirect to the sign-in page if the user is not a marchand
+    this.router.navigate(['/unauthorized']); // Redirect to the sign-in page if the user is not a marchand
     return false;
   }
   

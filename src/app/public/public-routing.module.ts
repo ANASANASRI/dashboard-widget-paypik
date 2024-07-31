@@ -1,3 +1,4 @@
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +22,11 @@ const routes: Routes = [
     title: "Contact",
     path: PublicRoutes.Contact,
     component: ContactComponent
+  },
+  {
+    title: "Unauthorized",
+    path: PublicRoutes.Unauthorized,
+    component: UnauthorizedComponent
   },
   // {
   //   path: '',

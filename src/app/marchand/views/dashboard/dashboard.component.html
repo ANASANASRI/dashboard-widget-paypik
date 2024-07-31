@@ -60,7 +60,7 @@
             <div class="bg-white rounded-xl shadow-md mt-14 ">
                 <div class="card-title px-4 pt-3 bg-transparent">
                     <h4 class="text-xl font-bold leading-none text-gray-600">
-                        Méthodes les plus utilisées :
+                        Méthodes les plus utilisées
                     </h4>
                 </div>
                 <div id="chart" class="widthT mx-auto mb-0 pb-0 " (mouseenter)="showTitle = true"
@@ -79,7 +79,7 @@
                 <app-chart  [marchandId]="marchantId"></app-chart>
             </div>
             <h2 (click)="scrollToSection()"
-                class="animate-jump-in animate-once  hover:scale-105 duration-700 w-auto mt-5 p-5 text-base font-medium text-white rounded-lg bg-emerald-300 bg-opacity-25 hover:text-gray-900 hover:bg-emerald-200 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                class="animate-jump animate-once animate-duration-[2000ms] animate-ease-in-out animate-reverse hover:scale-105 duration-700 w-auto mt-5 p-5 text-base font-medium text-white rounded-lg bg-emerald-300 bg-opacity-25 hover:text-gray-900 hover:bg-emerald-200 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
                 <span class="text-4xl font-bold">
                     {{ calculateTotalTransactions }}
                 </span>

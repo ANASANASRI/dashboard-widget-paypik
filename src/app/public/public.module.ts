@@ -8,9 +8,10 @@ import { PublicHeaderComponent } from './layouts/header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PublicRoutingModule } from './public-routing.module';
 import { PublicComponent } from './public.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 @NgModule({
-  declarations: [PublicComponent, PageNotFoundComponent, HomeComponent],
+  declarations: [PublicComponent, PageNotFoundComponent, HomeComponent, UnauthorizedComponent],
   imports: [
     CommonModule,
     PublicRoutingModule,

@@ -20,7 +20,7 @@ export class CommercialGuard implements CanActivate {
     }
 
     // Redirect to the sign-in page if neither condition is met
-    this.router.navigate(['/signin']);
+    this.router.navigate(['/unauthorized']);
     return false;
   }
 }
