@@ -57,7 +57,7 @@ export class SignupComponent implements OnInit{
       c_dg: ['',Validators.required],
       c_field: ['',Validators.required],
       c_web: ['',Validators.required],
-      email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@gmail\\.com')]],
+      email: ['', [Validators.required, Validators.pattern('[^@]+@[^@]+\.[a-zA-Z]{2,6}')]],
       telephone: ['', [Validators.required, Validators.pattern('\\+?\\d[\\d\\+\\s()-]*')]],
       c_fieldyears: ['',Validators.required],
       c_products: ['',Validators.required]

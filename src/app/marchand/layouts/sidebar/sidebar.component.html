@@ -9,15 +9,14 @@
 
     <ul class="menu-links">
 
-        <li>
-            <a [routerLink]="commonServices.prepareRoute(appRoutes.Marchand, marchandRoutes.Dashboard)"
+        <li>           
+            <!-- <a [routerLink]="commonServices.prepareRoute(appRoutes.Marchand, marchandRoutes.Dashboard)" -->
+            <a [routerLink]="['dashboard/',marchandId]"
                 routerLinkActive="active" class="menu-item" ariaCurrentWhenActive="page">
                 <i class="bi bi-columns-gap"></i>
                 <span>Tableau de bord</span>
             </a>
         </li>
-
-
 
         <li>
             <a href="javascript:void(0)" class="menu-item sub-menu" aria-expanded="true"

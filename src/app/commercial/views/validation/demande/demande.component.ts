@@ -79,24 +79,21 @@ updateDemandeAccepted(demandeId: number) {
     (data) => {
       console.log('Demande accepted successfully:', data);
 
-      // Fetch demande information
       this.demandeService.getDemande(demandeId).subscribe(
         (demandeData) => {
           console.log('Fetched demande data:', demandeData);
 
-          // Map demandeData to SignupRequest object
-          const addFormData : any = {
+          const addFormData: any = {
             username: demandeData.demandeMarchandName,
-            firstName:  '*',
-            lastName:  '*', // Assuming the same name for lastName if not provided
+            firstName: demandeData.demandeMarchandName,
+            lastName: demandeData.demandeMarchandName,
             email: demandeData.demandeMarchandEmail,
             profilLogoUrl: demandeData.demandeMarchandLogoUrl || '',
-            roles: ['ROLE_MARCHAND'], // Assign the ROLE_MARCHAND role
-            status: 'Inactif', // Set status to Active
-            password: this.generatePassword() // Generate and set a default password
+            roles: ['ROLE_MARCHAND'],
+            status: 'Inactive',
+            password: this.generatePassword()
           };
 
-          // Add the user
           this.userService.addUser(addFormData).subscribe(
             () => {
               console.log('User added successfully');
@@ -104,6 +101,18 @@ updateDemandeAccepted(demandeId: number) {
             },
             (error) => {
               console.error('Error adding user:', error);
+
+              if (error && error.error && typeof error.error === 'object') {
+                if (error.error.general) {
+                  error.error.general.forEach((message: string) => {
+                    console.error(`Error: ${message}`);
+                  });
+                } else {
+                  console.error('Error response:', error.error);
+                }
+              } else {
+                console.error('Unexpected error format:', error);
+              }
             }
           );
         },
@@ -117,7 +126,6 @@ updateDemandeAccepted(demandeId: number) {
     }
   );
 }
-
 
 generatePassword(length: number = 8): string {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -144,15 +152,15 @@ updateDemandeUpdateAndAccepted(demandeId: number ,updatedDemande: any) {
           console.log('Fetched demande data:', demandeData);
 
           // Map demandeData to SignupRequest object
-          const addFormData : any = {
+          const addFormData: any = {
             username: demandeData.demandeMarchandName,
-            firstName:  '*',
-            lastName:  '*', // Assuming the same name for lastName if not provided
+            firstName: demandeData.demandeMarchandName,
+            lastName: demandeData.demandeMarchandName,
             email: demandeData.demandeMarchandEmail,
             profilLogoUrl: demandeData.demandeMarchandLogoUrl || '',
-            roles: ['ROLE_MARCHAND'], // Assign the ROLE_MARCHAND role
-            status: 'Inactif', // Set status to Active
-            password: this.generatePassword() // Generate and set a default password
+            roles: ['ROLE_MARCHAND'],
+            status: 'Inactive',
+            password: this.generatePassword()
           };
 
           // Add the user

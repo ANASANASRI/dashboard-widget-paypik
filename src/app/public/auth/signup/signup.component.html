@@ -136,14 +136,14 @@
 
                 <div class="relative">
                     <input type="text" id="email" formControlName="email" class="form-control w-full ps-10"
-                        placeholder="* Adresse e-mail" pattern="[a-zA-Z0-9._%+-]+@gmail\.com" />
+                        placeholder="* Adresse e-mail" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}"/>
                     <span class="absolute top-2 left-0 ps-3 text-gray-400">
                         <i class="bi bi-envelope-at"></i>
                     </span>
                     <div *ngIf="form.get('email')?.hasError('pattern') 
                 " class="text-red-500 text-sm mt-1">
                         Veuillez entrer une adresse e-mail Gmail valide (ex:
-                        exemple&#64;gmail.com).
+                        exemple&#64;exemple.exemple).
                     </div>
                     <!-- Error Message -->
                     <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched"

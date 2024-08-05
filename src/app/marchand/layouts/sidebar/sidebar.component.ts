@@ -1,19 +1,11 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewEncapsulation
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommonService } from 'src/app/_core/services/common.service';
 import { AppRoutes } from 'src/app/app.routes';
-import { MarchandRoutes, SettingRoutes ,SupportRoutes } from '../../marchand.routes';
+import { MarchandRoutes, SettingRoutes, SupportRoutes } from '../../marchand.routes';
 import { TokenService } from 'src/app/public/auth/token.service';
+import { AuthService } from 'src/app/public/auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -21,7 +13,6 @@ import { TokenService } from 'src/app/public/auth/token.service';
   styleUrls: ['./sidebar.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-
 export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   sidebarIsCollapsed: boolean = true;
   readonly appRoutes = AppRoutes;
@@ -36,51 +27,59 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
     public readonly commonServices: CommonService,
     private readonly elementRef: ElementRef,
     private readonly tokenService: TokenService,
-    private readonly route: ActivatedRoute, // Use readonly for consistency
-    private readonly router: Router // Use readonly for consistency
-  ) { }
+    private authService: AuthService,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router
+  ) {    
+    this.userId = this.authService.getAuthenticatedUserId();
+    console.log('User ID:', this.userId);
+  }
 
-  marchandId!: number;
+  userId: number;
+  marchandId: number | null = null;
+  errorMessage: string | null = null;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const rawId = params['id'];
-      console.log("Raw ID from params:", rawId); // Check if rawId is correctly retrieved
-      this.marchandId = +rawId;
-      console.log("Parsed ID:", this.marchandId); // Check if marchandId is correctly parsed
+      console.log("Raw ID from params:", rawId);
+      if (rawId) {
+        this.marchandId = +rawId;
+        console.log("Parsed ID:", this.marchandId);
+      } else {
+        console.warn("No Marchand ID found in route parameters.");
+      }
     });
+  
+    this.userId = this.authService.getAuthenticatedUserId();
+    console.log("ID de l'utilisateur authentifié:", this.userId);
+  
+    if (this.userId) {
+      this.getMarchandIdByUserId();
+    } else {
+      console.error("Invalid user ID");
+    }
   }
 
-  
-  // marchandId!: number;
-  // Id!: number; // ID de l'utilisateur
-  // user: User | null = null; // Utilisateur authentifié
-
-  // ngOnInit(): void {
-  //   // Récupérer l'ID de l'utilisateur authentifié lors de l'initialisation du composant
-  //   this.Id = this.authService.getAuthenticatedUserId();
-  //   console.log("ID de l'utilisateur authentifié:", this.Id);
-  //   if (this.Id !== 0) { // Vérifier si l'ID de l'utilisateur est valide
-  //     this.retrieveUserById(); // Appel à la méthode pour récupérer les données de l'utilisateur
-  //   } else {
-  //     console.error('ID d\'utilisateur invalide:', this.Id);
-  //   }
-  // }
-
-  // retrieveUserById(): void {
-  //   // Appel au service pour récupérer les données de l'utilisateur en utilisant son ID
-  //   this.authService.getUserById(this.Id).subscribe({
-  //     next: (data: User) => {
-  //       //console.log('Données de l\'utilisateur:', data);
-  //       this.user = data;
-  //     },
-  //     error: (error) => console.error('Erreur lors de la récupération de l\'utilisateur:', error),
-  //   });
-  // }
-  
-  getMarchandI(){
-    return this.marchandId;
+  getMarchandIdByUserId(): void {
+    if (this.userId > 0) {
+      this.authService.findMarchandIdByUserId(this.userId).subscribe(
+        (marchandId: number) => {
+          console.log('API Response:', marchandId); // Log the response to check if it's valid
+          this.marchandId = marchandId;
+          console.log('Marchand ID:', this.marchandId);
+        },
+        (error) => {
+          this.errorMessage = 'Error fetching Marchand ID';
+          console.error(this.errorMessage, error);
+        }
+      );
+    } else {
+      this.errorMessage = 'Invalid user ID';
+    }
   }
+  
+  
   ngAfterViewInit(): void {
     this.subMenuToggleHandlerOnRouteChange();
     setTimeout(() => {
@@ -131,7 +130,6 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  // Method to handle logout
   onLogout(): void {
     this.tokenService.logOut();
   }
