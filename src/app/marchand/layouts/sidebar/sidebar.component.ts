@@ -20,6 +20,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly settingRoutes = SettingRoutes;
   readonly supportRoutes = SupportRoutes;
   private routerSubscription: Subscription = new Subscription();
+  isMarchand: boolean = false;
 
   @Output() sidebarCollapsed = new EventEmitter<boolean>();
 
@@ -40,25 +41,38 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   errorMessage: string | null = null;
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const rawId = params['id'];
-      console.log("Raw ID from params:", rawId);
-      if (rawId) {
-        this.marchandId = +rawId;
-        console.log("Parsed ID:", this.marchandId);
+    this.checkIfUserIsOnlyMarchand();
+    
+    if (this.isMarchand) {
+      this.route.params.subscribe(params => {
+        const rawId = params['id'];
+        console.log("Raw ID from params:", rawId);
+        if (rawId) {
+          this.marchandId = +rawId;
+          console.log("Parsed ID:", this.marchandId);
+        } else {
+          console.warn("No Marchand ID found in route parameters.");
+        }
+      });
+  
+      this.userId = this.authService.getAuthenticatedUserId();
+      console.log("ID de l'utilisateur authentifié:", this.userId);
+  
+      if (this.userId) {
+        this.getMarchandIdByUserId();
       } else {
-        console.warn("No Marchand ID found in route parameters.");
+        console.error("Invalid user ID");
       }
-    });
-  
-    this.userId = this.authService.getAuthenticatedUserId();
-    console.log("ID de l'utilisateur authentifié:", this.userId);
-  
-    if (this.userId) {
-      this.getMarchandIdByUserId();
     } else {
-      console.error("Invalid user ID");
+      console.log("User is not only a Marchand. Skipping Marchand-specific initialization.");
     }
+  }
+  
+
+  checkIfUserIsOnlyMarchand(): void {
+    const userRoles = this.authService.getUserRoles();
+    this.isMarchand = userRoles.length === 1 && userRoles[0] === 'ROLE_MARCHAND';
+    console.log('isMarchand:', this.isMarchand);
   }
 
   getMarchandIdByUserId(): void {
@@ -78,7 +92,6 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
       this.errorMessage = 'Invalid user ID';
     }
   }
-  
   
   ngAfterViewInit(): void {
     this.subMenuToggleHandlerOnRouteChange();
@@ -128,6 +141,10 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       }
     });
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 
   onLogout(): void {

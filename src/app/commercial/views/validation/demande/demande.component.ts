@@ -85,8 +85,8 @@ updateDemandeAccepted(demandeId: number) {
 
           const addFormData: any = {
             username: demandeData.demandeMarchandName,
-            firstName: demandeData.demandeMarchandName,
-            lastName: demandeData.demandeMarchandName,
+            firstName: 'NaN',
+            lastName: 'NaN',
             email: demandeData.demandeMarchandEmail,
             profilLogoUrl: demandeData.demandeMarchandLogoUrl || '',
             roles: ['ROLE_MARCHAND'],
@@ -154,8 +154,8 @@ updateDemandeUpdateAndAccepted(demandeId: number ,updatedDemande: any) {
           // Map demandeData to SignupRequest object
           const addFormData: any = {
             username: demandeData.demandeMarchandName,
-            firstName: demandeData.demandeMarchandName,
-            lastName: demandeData.demandeMarchandName,
+            firstName: 'NaN',
+            lastName: 'NaN',
             email: demandeData.demandeMarchandEmail,
             profilLogoUrl: demandeData.demandeMarchandLogoUrl || '',
             roles: ['ROLE_MARCHAND'],

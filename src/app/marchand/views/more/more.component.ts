@@ -123,7 +123,7 @@ export class MoreComponent implements OnInit {
       const pdf = new jsPDF();
       const imgWidth = 210;
       const imgHeight = canvas.height * imgWidth / canvas.width;
-      const paddingTop = 80; // Adjust as needed
+      const paddingTop = 40; // Adjust as needed
 
       const headerImg = new Image();
       headerImg.src = 'assets/images/logo/header.png';

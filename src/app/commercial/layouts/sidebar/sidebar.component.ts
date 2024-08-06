@@ -16,6 +16,7 @@ import { CommercialRoutes, ElementRoutes, SettingRoutes } from '../../commercial
 import { Demandedto } from '../../model/demandedto.model';
 import { DemandeService } from '../../services/demande.service';
 import { TokenService } from 'src/app/public/auth/token.service';
+import { AuthService } from 'src/app/public/auth/auth.service'; // Import AuthService
 
 @Component({
   selector: 'app-sidebar',
@@ -31,40 +32,48 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly settingRoutes = SettingRoutes;
   readonly elementRoutes = ElementRoutes;
   private routerSubscription: Subscription = new Subscription();
-
+  
   @Output() sidebarCollapsed = new EventEmitter<boolean>();
+
+  isCommercialOnly: boolean = false; // Track if the user has only ROLE_COMMERCIAL
 
   constructor(
     public readonly commonServices: CommonService,
     private readonly elementRef: ElementRef,
     private demandeService: DemandeService,
-    private tokenService:TokenService,
-    private router: Router) { }
+    private tokenService: TokenService,
+    private router: Router,
+    private authService: AuthService // Inject AuthService
+  ) { }
 
-  // ngOnInit(): void {
-  //   this.getAllDemandesNotVerified();
-  // }
-
-//every 5 seconds
   ngOnInit(): void {
-    this.getAllDemandesNotVerified();
-    this.pollDemandes(); // Start polling for updates
+    this.checkIfUserIsOnlyCommercial();
+    
+    if (this.isCommercialOnly) {
+      this.getAllDemandesNotVerified();
+      this.pollDemandes(); // Start polling for updates
+    }
   }
+
+  checkIfUserIsOnlyCommercial(): void {
+    const roles = this.authService.getUserRoles();
+    this.isCommercialOnly = roles.length === 1 && roles[0] === 'ROLE_COMMERCIAL';
+    console.log('isCommercialOnly:', this.isCommercialOnly);
+  }
+
   pollDemandes() {
     setInterval(() => {
-      this.getAllDemandesNotVerified();
+      if (this.isCommercialOnly) {
+        this.getAllDemandesNotVerified();
+      }
     }, 5000); // Poll every 5 seconds (adjust as needed)
   }
-  
-
-
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-        this.subMenuToggleHandlerOnPageReload();
+      this.subMenuToggleHandlerOnPageReload();
     }, 100); // Adjust the delay as needed
-}
-
+  }
 
   ngOnDestroy(): void {
     this.routerSubscription.unsubscribe();
@@ -87,8 +96,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
     const subMenu = elem?.previousSibling as Element;
 
     subMenu?.setAttribute('aria-expanded', 'true');
-}
-
+  }
 
   subMenuToggleHandlerOnRouteChange = (): void => {
     this.routerSubscription = this.router.events.subscribe((event) => {
@@ -103,18 +111,18 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
             subMenu.setAttribute('aria-expanded', 'false');
         });
       }
-    })
+    });
   }
+
   /////////////////////////////////////////get demandes  (notification)
   unverifiedDemandes: Demandedto[] = [];
-  demandLength !:number;
+  demandLength!: number;
 
   getAllDemandesNotVerified() {
     this.demandeService.getAllDemandesNotVerified().subscribe(
       (data) => {
         this.unverifiedDemandes = data;
         this.demandLength = this.unverifiedDemandes.length;
-
       },
       (error) => {
         console.error('Error fetching unverified demandes:', error);
@@ -122,7 +130,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  get demandelenght(){
+  get demandelenght() {
     return this.unverifiedDemandes.length;
   }
 

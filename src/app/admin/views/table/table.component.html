@@ -267,19 +267,19 @@
                                 <option value="200">200</option>
                             </select>
                         </div>
-                        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+                        <span class="select-none">Page {{ currentPage }} of {{ totalPages }}</span>
 
                     </div>
 
-                    <ul class="inline-flex -space-x-px rtl:space-x-reverse text-xs h-8">
+                    <ul class="inline-flex -space-x-px rtl:space-x-reverse text-xs h-8 select-none">
 
                         <li>
                             <a (click)="prevPage()" [class.disabled]="currentPage === 1"
-                                class="ng-wind-page-prev">Prev</a>
+                                class="ng-wind-page-prev select-none">Prev</a>
                         </li>
                         <li>
                             <a (click)="nextPage()" [class.disabled]="currentPage === totalPages"
-                                class="ng-wind-page-next">Next</a>
+                                class="ng-wind-page-next select-none">Next</a>
                         </li>
                     </ul>
                 </nav>

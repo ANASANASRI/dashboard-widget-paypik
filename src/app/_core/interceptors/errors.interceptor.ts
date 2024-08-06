@@ -19,7 +19,7 @@ export class ErrorsInterceptor implements HttpInterceptor {
           this.shouldRetry(errors, retryCount)
       }),
       catchError((errors: HttpErrorResponse) => {
-        let errorMessage = "The server is not ready to process your request.";
+        let errorMessage = "Le serveur n'est pas prêt à traiter votre demande.";
 
         if (errors.status !== 0) {
           errorMessage = errors.error?.title || errorMessage;
@@ -59,10 +59,10 @@ export class ErrorsInterceptor implements HttpInterceptor {
         errorMessages['general'] = errors.general;
       } else {
         // Handle other possible formats if needed
-        console.error("Unexpected error format in handleFormErrors:", errors);
+        console.error("Format d'erreur inattendu dans handleFormErrors:", errors);
       }
     } else {
-      console.error("Unexpected error format:", errors);
+      console.error("Format d'erreur inattendu:", errors);
     }
   
     return errorMessages;

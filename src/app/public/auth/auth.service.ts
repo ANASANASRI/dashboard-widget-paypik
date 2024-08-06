@@ -84,7 +84,7 @@ export class AuthService {
     return userRoles.includes('ROLE_MARCHAND');
   }
 
-  private getUserRoles(): string[] {
+  getUserRoles(): string[] {
     const token = localStorage.getItem('token');
     if (!token) {
       return [];
@@ -93,7 +93,7 @@ export class AuthService {
     return payload.roles || [];
   }
 
-  private getUserRole(): string {
+  getUserRole(): string {
     const token = localStorage.getItem('token');
     if (!token) {
       return '';
