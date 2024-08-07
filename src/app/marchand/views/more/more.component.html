@@ -51,30 +51,24 @@
                                 <!-- Carte -->
                                 <div class="flex flex-col p-4 sm:p-10 bg-white shadow-md rounded-xl dark:bg-neutral-800">
                                     <!-- profile card -->
-                                    <div class="flex flex-col sticky top-20 z-10 pb-6">
+                                    <div class="flex flex-col sticky top-20 hover:scale-105 duration-700 pb-6">
                                         <div class="bg-white border  shadow-lg rounded-2xl p-4">
                                             <div class="flex-none sm:flex ">
-                                                <div class="hover:scale-105 duration-700 relative sm:mb-0 mb-3"
-                                                    width="196" height="296">
-                                                    <img src="{{ marchand.marchandLogoUrl }}" alt="aji"
-                                                        class="h-28 object-cover rounded-2xl" />
+                                                <div class="hover:scale-105 duration-700 relative sm:mb-0 mb-3" width="196" height="296">
+                                                    <img src="{{ marchand.marchandLogoUrl }}" alt="aji" class="h-28 object-cover rounded-2xl" />
                                                 </div>
                                                 <div class="flex-auto sm:ml-5 justify-evenly">
-                                                    <div class="flex items-center justify-between sm:mt-2"
-                                                        *ngFor="let marchand of marchands">
+                                                    <div class="flex items-center justify-between sm:mt-2" *ngFor="let marchand of marchands">
                                                         <div class="flex items-center">
                                                             <div class="flex flex-col">
-                                                                <div
-                                                                    class="w-full flex-none text-lg text-gray-400 font-bold leading-none">
+                                                                <div class="w-full flex-none text-lg text-gray-400 font-bold leading-none">
                                                                     {{ marchand.marchandName }}
                                                                 </div>
                                                                 <div class="flex-auto text-gray-400 my-1">
-                                                                    <span class="mr-3"> {{ marchand.marchandHost
-                                                                        }}</span>
+                                                                    <span class="mr-3"> {{ marchand.marchandHost }}</span>
                                                                 </div>
                                                                 <div class="flex-auto text-gray-400 my-1">
-                                                                    <span class="mr-3">
-                                                                        {{ marchand.marchandDescription }}</span>
+                                                                    <span class="mr-3">{{ marchand.marchandDescription }}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -102,8 +96,7 @@
                                             </div>
                                         </div>
                                         <div class="hover:scale-105 duration-700 col-span-12 sm:col-span-4">
-                                            <div
-                                                class="p-4 flex flex-row justify-between relative bg-white border  shadow-lg rounded-2xl">
+                                            <div class="p-4 flex flex-row justify-between relative bg-white border  shadow-lg rounded-2xl">
                                                 <div *ngFor="let transaction of transactions">
                                                     <div class="underline pb-3 font-medium leading-none  text-gray-400">
                                                         N° Commande:&ensp;{{ transaction.orderId }}

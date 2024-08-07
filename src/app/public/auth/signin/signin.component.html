@@ -1,5 +1,5 @@
 <div [@pageTransition] class="pt-36 pb-28 main flex justify-center items-center shadow-2xl">
-    
+
     <div class="card p-5 w-10/12 xl:w-1/2 grid grid-cols-1 md:grid-cols-2">
         <div class="relative flex flex-col p-1 md:p-8">
             <h2 class="text-lg pb-2">
@@ -9,33 +9,38 @@
             <p class="text-xs">Entrez vos identifiants pour accéder à votre tableau de bord</p>
 
             <div *ngIf="loginError"
-                class="absolute animate-fade-up animate-once bg-red-100 p-5 mt-20 mr-8 border border-red-400 text-red-700 px-4 py-3 rounded-lg " role="alert">
+                class="absolute animate-fade-up animate-once bg-red-100 p-5 mt-20 mr-8 border border-red-400 text-red-700 px-4 py-3 rounded-lg "
+                role="alert">
                 <strong class="font-bold">Erreur de connexion !</strong>
-                <span class="block sm:inline"> Quelque chose s'est mal passé lors de la connexion de l'utilisateur.</span>
+                <span class="block sm:inline"> Quelque chose s'est mal passé lors de la connexion de
+                    l'utilisateur.</span>
                 <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                    <lord-icon (click)="loginError = false"  src="https://cdn.lordicon.com/nqtddedc.json" trigger="hover"
+                    <lord-icon (click)="loginError = false" src="https://cdn.lordicon.com/nqtddedc.json" trigger="hover"
                         colors="primary:#b91c1c" style="width:30px;height:30px">
                     </lord-icon>
                 </span>
             </div>
 
             <div *ngIf="isEmpty"
-                class="absolute animate-fade-up animate-once bg-red-100 p-5 mt-20 mr-8 border border-red-400 text-red-700 px-4 py-3 rounded-lg " role="alert">
+                class="absolute animate-fade-up animate-once bg-red-100 p-5 mt-20 mr-8 border border-red-400 text-red-700 px-4 py-3 rounded-lg "
+                role="alert">
                 <strong class="font-bold">Erreur de connexion !</strong>
                 <span class="block sm:inline"> Veuillez entrer à la fois le nom d'utilisateur et le mot de passe.</span>
                 <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                    <lord-icon (click)="isEmpty = false"  src="https://cdn.lordicon.com/nqtddedc.json" trigger="hover"
+                    <lord-icon (click)="isEmpty = false" src="https://cdn.lordicon.com/nqtddedc.json" trigger="hover"
                         colors="primary:#b91c1c" style="width:30px;height:30px">
                     </lord-icon>
                 </span>
             </div>
             <div *ngIf="loginMarchandError"
-                class="absolute animate-fade-up animate-once bg-red-100 p-5 mt-20 mr-8 border border-red-400 text-red-700 px-4 py-3 rounded-lg" role="alert">
+                class="absolute animate-fade-up animate-once bg-red-100 p-5 mt-20 mr-8 border border-red-400 text-red-700 px-4 py-3 rounded-lg"
+                role="alert">
                 <strong class="font-bold">Erreur de connexion !</strong>
-                <span class="block sm:inline">Une erreur s'est produite lors de la récupération de l'ID du marchand. Veuillez réessayer.</span>
+                <span class="block sm:inline">Une erreur s'est produite lors de la récupération de l'ID du marchand.
+                    Veuillez réessayer.</span>
                 <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                    <lord-icon (click)="loginMarchandError = false" src="https://cdn.lordicon.com/nqtddedc.json" trigger="hover"
-                        colors="primary:#b91c1c" style="width:30px;height:30px">
+                    <lord-icon (click)="loginMarchandError = false" src="https://cdn.lordicon.com/nqtddedc.json"
+                        trigger="hover" colors="primary:#b91c1c" style="width:30px;height:30px">
                     </lord-icon>
                 </span>
             </div>
@@ -66,7 +71,8 @@
 
                 <div class="text-sm my-4">
                     <div class="inline-flex items-center gap-x-1">
-                        <input type="checkbox" id="rememberme" class="h-auto cursor-pointer" (change)="togglePasswordVisibility()">
+                        <input type="checkbox" id="rememberme" class="h-auto cursor-pointer"
+                            (change)="togglePasswordVisibility()">
                         <label for="rememberme" class="cursor-pointer">Voir mot de passe</label>
                     </div>
                     <a (click)="togglePassForget()" href="javascript:void(0)" class="text-emerald-600 float-right">
@@ -110,8 +116,14 @@
         <!-- Contenu du modal -->
         <div
             class="mt-7 bg-white rounded-xl shadow-lg dark:bg-gray-800 dark:border-gray-700 border-2 border-emerald-300">
-            <button (click)="togglePassForget()" type="button" class="text-gray-400 absolute top-12 right-5 bg-transparent hover:bg-gray-100 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            <button (click)="togglePassForget()" type="button"
+                class="text-gray-400 absolute top-12 right-5 bg-transparent hover:bg-gray-100 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
                 <span class="sr-only"></span>
             </button>
             <div class="p-4 sm:p-7">
@@ -136,7 +148,8 @@
                                         class="py-3 px-4 block w-full border-2 border-gray-200 rounded-md text-sm focus:border-emerald-500 focus:ring-emerald-500 shadow-sm"
                                         required aria-describedby="email-error">
                                 </div>
-                                <p class="hidden text-xs text-red-600 mt-2" id="email-error">Veuillez inclure une adresse e-mail valide afin que nous puissions vous recontacter</p>
+                                <p class="hidden text-xs text-red-600 mt-2" id="email-error">Veuillez inclure une
+                                    adresse e-mail valide afin que nous puissions vous recontacter</p>
                             </div>
                             <button type="submit"
                                 class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-emerald-500 text-white hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800">Réinitialiser

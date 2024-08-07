@@ -1,6 +1,6 @@
 <section class=" ">
 
-    
+
     <!-- Alert for successful suppression -->
     <div *ngIf="deleteReussie" class="bg-red-100 border mt-5 border-red-400 text-red-700 px-4 py-3 rounded-lg relative"
         role="alert">
@@ -22,7 +22,8 @@
                     d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
                     clip-rule="evenodd" />
             </svg>
-            <p>Impossible de supprimer ce marchand : des transactions ont déjà été effectuées dans le magasin de ce marchand.</p>
+            <p>Impossible de supprimer ce marchand : des transactions ont déjà été effectuées dans le magasin de ce
+                marchand.</p>
         </div>
         <button (click)="errorMessage = false" class="text-red-100 hover:text-white">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -77,14 +78,14 @@
                             <button type="button"
                                 class="ml-8 w-auto flex items-center px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-emerald-600 rounded-lg hover:bg-emerald-500 focus:outline-none focus:ring focus:ring-emerald-300 focus:ring-opacity-80"
                                 (click)="resetFilters()">
-                                    <!-- <lord-icon
+                                <!-- <lord-icon
                                         src="https://cdn.lordicon.com/twemlvxy.json"
                                         trigger="loop-on-hover"
                                         colors="primary:#ffffff"
                                         style="width:20px;height:20px"
                                         class="mx-1">
                                     </lord-icon> -->
-                                    
+
                                 <svg class="animate-spin animate-thrice animate-duration-[4000ms] animate-reverse w-5 h-5 mx-1"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd"
@@ -165,8 +166,8 @@
                                                     <img class="hover:scale-110 duration-700 h-10 w-10 rounded-md"
                                                         [src]="marchand.marchandLogoUrl" alt="">
                                                     <span
-                                                    class="absolute right-0 bottom-0 h-2 w-2 rounded-full ring ring-white"
-                                                    [ngClass]="{
+                                                        class="absolute right-0 bottom-0 h-2 w-2 rounded-full ring ring-white"
+                                                        [ngClass]="{
                                                         'bg-green-400': marchand.marchandStatus === 'Active',
                                                         'bg-red-400': marchand.marchandStatus === 'Inactive',
                                                         'bg-yellow-400': marchand.marchandStatus === 'JustCreated'
@@ -205,8 +206,8 @@
                                             <a [routerLink]="['/admin/dashboard/marchand/edit', marchand.marchandId]"
                                                 x-data="{ tooltip: 'Edite' }"
                                                 class=" text-indigo-600 hover:text-indigo-900">
-                                                <lord-icon src="https://cdn.lordicon.com/wuvorxbv.json" trigger="loop-on-hover" 
-                                                    colors="primary:#312e81  ,secondary:#4f46e5"
+                                                <lord-icon src="https://cdn.lordicon.com/wuvorxbv.json"
+                                                    trigger="loop-on-hover" colors="primary:#312e81  ,secondary:#4f46e5"
                                                     style="width:24px;height:24px">
                                                 </lord-icon>
                                             </a>
@@ -214,16 +215,18 @@
                                             <a (click)="swipeMarchand(marchand.marchandId)"
                                                 x-data="{ tooltip: 'Swipe' }"
                                                 class="ml-3 text-yellow-400 hover:text-yellow-600 ">
-                                                <lord-icon src="https://cdn.lordicon.com/xunzgeah.json" trigger="loop-on-hover"
-                                                    colors="primary:#ca8a04 " style="width:24px;height:24px">
+                                                <lord-icon src="https://cdn.lordicon.com/xunzgeah.json"
+                                                    trigger="loop-on-hover" colors="primary:#ca8a04 "
+                                                    style="width:24px;height:24px">
                                                 </lord-icon>
                                             </a>
 
                                             <a (click)="toggleReject(marchand.marchandId)"
                                                 x-data="{ tooltip: 'Delete' }"
                                                 class="ml-3 text-red-600 hover:text-red-900 ">
-                                                <lord-icon src="https://cdn.lordicon.com/wpyrrmcq.json" trigger="loop-on-hover"
-                                                    colors="primary:#dc2626" style="width:24px;height:24px">
+                                                <lord-icon src="https://cdn.lordicon.com/wpyrrmcq.json"
+                                                    trigger="loop-on-hover" colors="primary:#dc2626"
+                                                    style="width:24px;height:24px">
                                                 </lord-icon>
                                             </a>
                                         </td>
@@ -323,20 +326,21 @@
                     </button>
                     <!-- ////////////////// -->
                     <section>
-                        <button *ngIf="loading; else notLoadingDelete"
-                                type="button" 
-                                class="inline-flex py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">
-                            <svg width="20" height="20" fill="currentColor" class="mr-2 animate-spin" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
+                        <button *ngIf="loading; else notLoadingDelete" type="button"
+                            class="inline-flex py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">
+                            <svg width="20" height="20" fill="currentColor" class="mr-2 animate-spin"
+                                viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z">
+                                </path>
                             </svg>
                             <span class="ml-2">Processing...</span>
                         </button>
-                        
+
                         <ng-template #notLoadingDelete>
-                            <button (click)="startDelete(marchandId)"
-                                    type="submit" 
-                                    class="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">
-                                    <i class="bi bi-trash3"></i> Oui, je suis sûr
+                            <button (click)="startDelete(marchandId)" type="submit"
+                                class="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">
+                                <i class="bi bi-trash3"></i> Oui, je suis sûr
                             </button>
                         </ng-template>
                     </section>

@@ -12,33 +12,51 @@
 
 
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="current-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mot de passe actuel</label>
-                        <input [type]="showPassword ? 'text' : 'password'" name="currentPassword" id="current-password" [(ngModel)]="currentPassword" class="shadow-sm bg-gray-50 border text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500" placeholder="••••••••" required>
+                        <label for="current-password"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mot de passe
+                            actuel</label>
+                        <input [type]="showPassword ? 'text' : 'password'" name="currentPassword" id="current-password"
+                            [(ngModel)]="currentPassword"
+                            class="shadow-sm bg-gray-50 border text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
+                            placeholder="••••••••" required>
                     </div>
 
 
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nouveau mot de passe</label>
-                        <input [type]="showPassword ? 'text' : 'password'" id="password" name="newPassword" [(ngModel)]="newPassword" class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="••••••••" required>
+                        <label for="password"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nouveau mot de
+                            passe</label>
+                        <input [type]="showPassword ? 'text' : 'password'" id="password" name="newPassword"
+                            [(ngModel)]="newPassword"
+                            class="bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="••••••••" required>
                     </div>
 
 
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="confirm-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmer le mot de passe</label>
-                        <input [type]="showPassword ? 'text' : 'password'" name="confirmPassword" id="confirm-password" [(ngModel)]="confirmPassword" class="shadow-sm bg-gray-50 border text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500" placeholder="••••••••" required>
+                        <label for="confirm-password"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirmer le mot de
+                            passe</label>
+                        <input [type]="showPassword ? 'text' : 'password'" name="confirmPassword" id="confirm-password"
+                            [(ngModel)]="confirmPassword"
+                            class="shadow-sm bg-gray-50 border text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500"
+                            placeholder="••••••••" required>
                     </div>
 
 
                     <div class="col-span-6 sm:col-full">
                         <div class="inline-flex items-center gap-x-1">
-                            <input type="checkbox" id="showPassword" class="h-auto cursor-pointer" (change)="togglePasswordVisibility()">
+                            <input type="checkbox" id="showPassword" class="h-auto cursor-pointer"
+                                (change)="togglePasswordVisibility()">
                             <label for="showPassword" class="cursor-pointer">Voir mot de passe</label>
                         </div>
                     </div>
 
 
                     <div class="col-span-6 sm:col-full">
-                        <button class="text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-600 dark:focus:ring-emerald-700" type="submit">Tout sauvegarder</button>
+                        <button
+                            class="text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-600 dark:focus:ring-emerald-700"
+                            type="submit">Tout sauvegarder</button>
                     </div>
 
                 </div>
